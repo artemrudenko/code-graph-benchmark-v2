@@ -1,0 +1,18 @@
+flowchart LR
+    A[Set project root<br/>and build options] --> B[Build or refresh<br/>code context]
+    B --> C[Ask repeated questions<br/>symbols, callers, tests]
+    C --> D{Exact target<br/>and right scope?}
+    D -- Yes --> E[Check source<br/>then act]
+    D -- No --> F[Read source or<br/>fix setup]
+    E --> G[Code changes]
+    F --> G
+    G --> B
+
+    classDef setup fill:#E6F0FF,stroke:#2D5B9C,color:#102A43,stroke-width:1.5px;
+    classDef query fill:#FFF3D6,stroke:#A15C00,color:#4C2A00,stroke-width:1.5px;
+    classDef verify fill:#DDF4E4,stroke:#2E7D4F,color:#103D25,stroke-width:1.5px;
+    classDef fallback fill:#FCE5E5,stroke:#B43C3C,color:#591313,stroke-width:1.5px;
+    class A,B,G setup;
+    class C,D query;
+    class E verify;
+    class F fallback;

@@ -1,24 +1,25 @@
 # LinkedIn post draft
 
-The code graph said 17 functions called a parser. The source had one.
+I kept noticing the same pattern while working with coding agents: they would trace a relationship in a codebase, then reopen the same files and rediscover it during the next task.
 
-I was testing whether compact code context is safe enough for an AI agent to act on. A short result can save context, but only if it keeps the relationship that matters.
+At first I treated this as a token problem. It is also a navigation and working-memory problem.
 
-I checked 14 retrieval runs across 12 repositories and found four questions I now ask before trusting the answer:
+I started testing persistent code context: tools that can keep a map of symbols, callers, imports, and tests across repeated questions. The goal was not to name a winner. I wanted to understand what could be trusted when an agent is planning a change or refactor.
 
-1. Did it resolve the exact function?
-2. Did the index cover the right repository and module?
-3. Are production callers and test callers separated?
-4. Is this an exact match or only a related suggestion?
+A few source checks changed the direction of the work:
 
-In the Ktor case, 16 of 17 reported callers belonged to another overload. In ripgrep, 24 of 28 callers were tests. A FastAPI control changed the same lookup from 1 of 4 references to 4 of 4 by indexing the repository root.
+- In Ktor, one caller query returned 17 results. Only one belonged to the requested parser; the other 16 belonged to another overload with the same name.
+- In ripgrep, 24 of 28 callers were tests. The production and test impact needed to be separated.
+- In FastAPI, changing only the indexing root changed the same reference lookup from 1 of 4 known references to 4 of 4.
 
-This does not measure whether an agent finishes work faster or better. It shows why a low token count is not enough evidence that the context is safe.
+So I stopped treating low output size as the result. A compact answer only helps when it preserves the relationship an agent needs to act on.
 
-The full article and source-checked evidence archive are linked below.
+The current work is now a practical selection method: start from the questions that recur in your repository, record scope and setup, verify answers in source, test warm queries and refreshes after a change, then measure a full agent task. That is the point where a claim about saved context, time, or rework becomes meaningful.
 
-What do you check before trusting a "no callers found" answer from an AI coding tool?
+The source-checked evidence and the pilot framework are here: https://github.com/artemrudenko/code-graph-benchmark-v2
+
+What question does your coding agent keep re-investigating in the same repository?
 
 ---
 
-Editorial note: add the verified article and evidence-repository links before publishing. Keep this note out of the post. Suggested attachment: the Ktor diagram, labelled "Expected: 1 caller / Returned: 1 correct + 16 unrelated." Do not present it as a screenshot of the tool.
+Editorial note: add the final DEV article URL before publishing. Suggested attachment: `assets/diagrams/code-context-lifecycle.png` with the label “A codebase map is useful only if it stays accurate as code changes.” Keep this note out of the post.

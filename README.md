@@ -1,24 +1,25 @@
 # code-graph-benchmark-v2
 
-Research archive of a code-context tool comparison: code-review-graph (CRG), codebase-memory-mcp (CBM), Serena, and graphify. The September 9–10, 2026 run log covers 14 rounds across 12 tested repositories and eight languages. A thirteenth repository, Cobra, was downloaded during selection but not benchmarked.
+Research archive for choosing persistent code context for AI coding agents. The September 9–10, 2026 evidence pack covers source-checked retrieval cases from code-review-graph (CRG), codebase-memory-mcp (CBM), Serena, and graphify across 12 repositories and eight languages. A thirteenth repository, Cobra, was downloaded during selection but not benchmarked.
 
-The question is whether a compact retrieval response preserves the code relationships an AI agent needs. The archive documents individual successes, omissions, and ambiguous results. It does not measure end-to-end agent quality or establish a general token-savings ranking.
+The question is whether compact retrieval preserves the code relationships an AI agent needs while reducing repeated navigation over time. The archive documents individual successes, omissions, ambiguous results, and a selection pilot. It does not measure end-to-end agent quality, total token savings, or establish a general winner.
 
 ## Start here
 
 - [Standalone article draft](docs/devto-article-draft.md)
+- [Selection and evaluation framework](docs/selection-and-evaluation-framework.md) — research objective, tool classes, question taxonomy, and the pilot needed to measure lifecycle payoff honestly
 - [Reproducibility manifest](docs/reproducibility-manifest.md) — exact URL, full 40-char SHA, scope/exclusions, tool version, command, and query text for every (repo × tool × query) cell in the benchmark
 - [Evidence index](docs/evidence-index.md) — the four central claims (bbolt/mmap, ktor/parseHeaderValue, ripgrep's 28-result split, all 12 graphify canary queries), each traced from raw tool output to an independently re-verified source-code check
 - [Editorial audit and evidence gaps, in Russian](docs/editorial-review-ru.md) — the review that identified the gaps closed by the two files above
 - [LinkedIn post draft](docs/linkedin-post-draft.md)
 - [Original protocol and evolving run log](docs/code-graph-benchmark-v2-protocol.md)
-- [Publication images](assets/README.md) — cover image and three article diagrams, with editable SVG sources and upload-ready PNG files
+- [Publication images](assets/README.md) — cover image and five article diagrams, with editable SVG sources and upload-ready PNG files
 
 ## Saved material
 
 `raw-data/<repo>/` contains tool responses, Serena logs and query scripts, and graphify health reports. All saved tool outputs use paths relative to each repository root. The missing Q3/Q7 evidence for pydantic, ng-mocks, and Next.js was reconstructed on the pinned revisions on 2026-09-10 (files carry the `reconstructed` suffix); a previously-unsaved alternate-phrasing canary result for ng-mocks (`who calls reflectTemplate` vs `callers of reflectTemplate`) was also captured (`ngm_graphify_q7_altphrasing.txt`). `docs/reproducibility-manifest.md` lists exactly which (repo × tool × query) cells have a saved raw file and which don't (Serena's failed installs on 7 of 12 repos have no raw output to save, by nature — the failure itself is documented in the protocol's prose).
 
-`scripts/count_tokens.js` counts the entire text of a supplied file with `gpt-tokenizer`. It requires that dependency to be installed. This archive has no automated pipeline that extracts comparable response payloads and generates result tables — every number in the article was read from the raw files by hand and cross-checked against `evidence-index.md`.
+`scripts/count_tokens.js` counts the entire text of a supplied file with `gpt-tokenizer`. It requires that dependency to be installed. This archive has no automated pipeline that extracts comparable response payloads and generates result tables — every numeric claim in the article was read from the raw files by hand and cross-checked against `evidence-index.md`. The selection framework intentionally does not turn these cases into a single score.
 
 ## Reproduction
 
@@ -36,4 +37,4 @@ This archive's own content (protocol, article, manifest, evidence index, scripts
 
 ## Provenance
 
-Assembled from a Cowork session that recorded the original tool runs on 2026-09-09/10, with an editorial review and evidence-pack backfill (manifest, evidence index, path cleanup, licensing) completed 2026-09-10. The DEV article draft remains unpublished. This repository is the public evidence package for the article; it contains the material needed to inspect the reported cases and reconstruct a run from the manifest.
+Assembled from a Cowork session that recorded the original tool runs on 2026-09-09/10, with an editorial review and evidence-pack backfill (manifest, evidence index, path cleanup, licensing) completed 2026-09-10. The DEV article draft remains unpublished. The public evidence package is available at https://github.com/artemrudenko/code-graph-benchmark-v2 and contains the material needed to inspect the reported cases and reconstruct a run from the manifest.

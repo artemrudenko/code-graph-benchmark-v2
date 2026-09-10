@@ -1,0 +1,17 @@
+flowchart TB
+    A[Work question] --> B{What do I need?}
+    B -- Read a module --> C[Context packager]
+    B -- Find definition<br/>or references --> D[LSP navigation]
+    B -- Trace callers<br/>or change impact --> E[AST or graph index]
+    B -- Find or change<br/>a code pattern --> F[Structural patterns]
+    C --> G[Verify in source]
+    D --> G
+    E --> G
+    F --> G
+
+    classDef question fill:#E6F0FF,stroke:#2D5B9C,color:#102A43,stroke-width:1.5px;
+    classDef option fill:#FFF3D6,stroke:#A15C00,color:#4C2A00,stroke-width:1.5px;
+    classDef verify fill:#DDF4E4,stroke:#2E7D4F,color:#103D25,stroke-width:1.5px;
+    class A,B question;
+    class C,D,E,F option;
+    class G verify;
