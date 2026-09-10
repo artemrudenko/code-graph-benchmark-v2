@@ -1,0 +1,5 @@
+{
+  "status": "not_found",
+  "summary": "No node found matching 'resolve_deferred_annotation_cache'.",
+  "confidence": "target not indexed: no node matching 'resolve_deferred_annotation_cache', so this 0 is not evidence that none exist"
+}

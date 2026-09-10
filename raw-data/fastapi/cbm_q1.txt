@@ -1,0 +1,7 @@
+total: 2
+search_mode: bm25
+results: 2  (cols: qn label file lines rank)
+  home-claude-benchmark-v2-repos-fastapi-fastapi.routing._FrontendRouteGroup._solve_dependencies Method routing.py 2216-2252 -18.96
+  home-claude-benchmark-v2-repos-fastapi-fastapi.dependencies.utils.solve_dependencies Function dependencies/utils.py 586-731 -18.86
+has_more: false
+

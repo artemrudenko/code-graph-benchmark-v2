@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "query": "resolveDeferredNodeBinding",
+  "search_mode": "none",
+  "summary": "Found 0 node(s) matching 'resolveDeferredNodeBinding'",
+  "results": [],
+  "confidence": "no indexed node matches 'resolveDeferredNodeBinding'; search covers names, paths and signatures, not source text",
+  "_hints": {
+    "next_steps": [
+      {
+        "tool": "query_graph",
+        "suggestion": "Inspect callers/callees of a search result"
+      },
+      {
+        "tool": "get_flow",
+        "suggestion": "See the execution flow through a matched node"
+      },
+      {
+        "tool": "get_impact_radius",
+        "suggestion": "Check the blast radius from matched nodes"
+      }
+    ],
+    "related": [],
+    "warnings": []
+  }
+}

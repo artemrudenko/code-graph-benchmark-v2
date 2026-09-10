@@ -1,0 +1,16 @@
+=== Q7 alternate phrasing: graphify query "who calls reflectTemplate" (canary) ===
+=== Reconstructed 2026-09-10 on the same pinned HEAD (f5bdf1fc4e7d4b87fbd3b17178cffe65bf036508), same graph.json build as ngm_graphify_q7_reconstructed.txt ===
+=== For comparison: "callers of reflectTemplate" (the phrasing used throughout the rest of the protocol) gives a clean "No matching nodes found." — see ngm_graphify_q7_reconstructed.txt ===
+
+Graph: graphify-out/graph.json (1247 nodes) | Traversal: BFS depth=2 | Start: ['calls'] | Context: call (heuristic) | 1 nodes found
+
+NODE calls [src=lib/mock-helper/mock-helper.auto-spy.ts loc=L7 community=4]
+
+=== Interpretation ===
+The query parser's heuristic seeding picked up the literal word "calls" from the question text itself
+("who CALLS reflectTemplate") as a node-name candidate, matched it against a real node named "calls" in
+the graph (an unrelated helper in mock-helper.auto-spy.ts), and returned that as a 1-node BFS result --
+instead of failing to find "reflectTemplate" and reporting "not found" as it does with the "callers of X"
+phrasing. This is a canary-safety failure via a different mechanism than the fuzzy multi-token expansion
+seen elsewhere in the benchmark (e.g. ripgrep round 11, resolve_deferred_ignore_chain): here it's triggered
+by the query's own English wording, not by the target symbol's naming convention.

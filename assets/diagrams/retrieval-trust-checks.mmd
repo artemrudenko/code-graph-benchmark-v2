@@ -1,0 +1,26 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","clusterBkg":"#0D202D","clusterBorder":"#35596A","edgeLabelBackground":"#08131E","fontFamily":"Arial"}}}%%
+flowchart LR
+  A[Short retrieval answer]
+  B{Exact symbol}
+  C{Right scope}
+  D{Tests split}
+  E{Exact match}
+  F[Use in a plan]
+  G[Any no or unclear]
+  V[Verify in source]
+
+  A --> B --> C --> D --> E --> F
+  B -.-> G
+  C -.-> G
+  D -.-> G
+  E -.-> G
+  G --> V
+
+  classDef answer fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+  classDef check fill:#0D202D,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+  classDef result fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:3px;
+  classDef verify fill:#2A2530,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
+  class A answer;
+  class B,C,D,E check;
+  class F result;
+  class V verify;

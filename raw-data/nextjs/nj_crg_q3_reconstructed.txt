@@ -1,0 +1,118 @@
+=== Q3: callers_of renderToHTMLImpl ===
+{
+  "status": "ambiguous",
+  "summary": "'renderToHTMLImpl' matches 2 node(s). Re-run with a qualified_name from disambiguation.",
+  "candidates": [
+    {
+      "id": 56629,
+      "kind": "Function",
+      "name": "renderToHTMLImpl",
+      "qualified_name": "nextjs/packages/next/src/server/base-server.ts::renderToHTMLImpl",
+      "file_path": "nextjs/packages/next/src/server/base-server.ts",
+      "line_start": 3140,
+      "line_end": 3152,
+      "language": "typescript",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 59104,
+      "kind": "Function",
+      "name": "renderToHTMLImpl",
+      "qualified_name": "nextjs/packages/next/src/server/render.tsx::renderToHTMLImpl",
+      "file_path": "nextjs/packages/next/src/server/render.tsx",
+      "line_start": 457,
+      "line_end": 1610,
+      "language": "tsx",
+      "parent_name": null,
+      "is_test": false
+    }
+  ],
+  "disambiguation": [
+    {
+      "id": 56629,
+      "kind": "Function",
+      "name": "renderToHTMLImpl",
+      "qualified_name": "nextjs/packages/next/src/server/base-server.ts::renderToHTMLImpl",
+      "file_path": "nextjs/packages/next/src/server/base-server.ts",
+      "line_start": 3140,
+      "line_end": 3152,
+      "language": "typescript",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 59104,
+      "kind": "Function",
+      "name": "renderToHTMLImpl",
+      "qualified_name": "nextjs/packages/next/src/server/render.tsx::renderToHTMLImpl",
+      "file_path": "nextjs/packages/next/src/server/render.tsx",
+      "line_start": 457,
+      "line_end": 1610,
+      "language": "tsx",
+      "parent_name": null,
+      "is_test": false
+    }
+  ],
+  "candidate_count": 2,
+  "candidates_truncated": false,
+  "hint": "Use a qualified_name from disambiguation as the target parameter."
+}
+=== Q3 disambiguated: callers_of render.tsx::renderToHTMLImpl ===
+{
+  "status": "ok",
+  "pattern": "callers_of",
+  "target": "nextjs/packages/next/src/server/render.tsx::renderToHTMLImpl",
+  "description": "Find all functions that call a given function",
+  "summary": "Found 2 result(s) for callers_of('nextjs/packages/next/src/server/render.tsx::renderToHTMLImpl')",
+  "result_count": 2,
+  "results_omitted": 0,
+  "results": [
+    {
+      "id": 59118,
+      "kind": "Function",
+      "name": "renderToHTML",
+      "qualified_name": "nextjs/packages/next/src/server/render.tsx::renderToHTML",
+      "file_path": "nextjs/packages/next/src/server/render.tsx",
+      "line_start": 1622,
+      "line_end": 1641,
+      "language": "tsx",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 59606,
+      "kind": "Function",
+      "name": "render",
+      "qualified_name": "nextjs/packages/next/src/server/route-modules/pages/module.ts::PagesRouteModule.render",
+      "file_path": "nextjs/packages/next/src/server/route-modules/pages/module.ts",
+      "line_start": 136,
+      "line_end": 154,
+      "language": "typescript",
+      "parent_name": "PagesRouteModule",
+      "is_test": false
+    }
+  ],
+  "edges": [
+    {
+      "id": 332737,
+      "kind": "CALLS",
+      "source": "nextjs/packages/next/src/server/render.tsx::renderToHTML",
+      "target": "nextjs/packages/next/src/server/render.tsx::renderToHTMLImpl",
+      "file_path": "nextjs/packages/next/src/server/render.tsx",
+      "line": 1631,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 336280,
+      "kind": "CALLS",
+      "source": "nextjs/packages/next/src/server/route-modules/pages/module.ts::PagesRouteModule.render",
+      "target": "nextjs/packages/next/src/server/render.tsx::renderToHTMLImpl",
+      "file_path": "nextjs/packages/next/src/server/route-modules/pages/module.ts",
+      "line": 141,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    }
+  ]
+}

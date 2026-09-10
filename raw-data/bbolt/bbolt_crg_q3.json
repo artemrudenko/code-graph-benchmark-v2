@@ -1,0 +1,155 @@
+{
+  "status": "ambiguous",
+  "summary": "'mmap' matches 6 node(s). Re-run with a qualified_name from disambiguation.",
+  "candidates": [
+    {
+      "id": 6,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_aix.go::mmap",
+      "file_path": "bbolt/bolt_aix.go",
+      "line_start": 60,
+      "line_end": 77,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 11,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_android.go::mmap",
+      "file_path": "bbolt/bolt_android.go",
+      "line_start": 58,
+      "line_end": 77,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 21,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_solaris.go::mmap",
+      "file_path": "bbolt/bolt_solaris.go",
+      "line_start": 58,
+      "line_end": 75,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 26,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_unix.go::mmap",
+      "file_path": "bbolt/bolt_unix.go",
+      "line_start": 55,
+      "line_end": 74,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 32,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_windows.go::mmap",
+      "file_path": "bbolt/bolt_windows.go",
+      "line_start": 67,
+      "line_end": 103,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 471,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/db.go::DB.mmap",
+      "file_path": "bbolt/db.go",
+      "line_start": 456,
+      "line_end": 553,
+      "language": "go",
+      "parent_name": "DB",
+      "is_test": false
+    }
+  ],
+  "disambiguation": [
+    {
+      "id": 6,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_aix.go::mmap",
+      "file_path": "bbolt/bolt_aix.go",
+      "line_start": 60,
+      "line_end": 77,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 11,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_android.go::mmap",
+      "file_path": "bbolt/bolt_android.go",
+      "line_start": 58,
+      "line_end": 77,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 21,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_solaris.go::mmap",
+      "file_path": "bbolt/bolt_solaris.go",
+      "line_start": 58,
+      "line_end": 75,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 26,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_unix.go::mmap",
+      "file_path": "bbolt/bolt_unix.go",
+      "line_start": 55,
+      "line_end": 74,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 32,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/bolt_windows.go::mmap",
+      "file_path": "bbolt/bolt_windows.go",
+      "line_start": 67,
+      "line_end": 103,
+      "language": "go",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 471,
+      "kind": "Function",
+      "name": "mmap",
+      "qualified_name": "bbolt/db.go::DB.mmap",
+      "file_path": "bbolt/db.go",
+      "line_start": 456,
+      "line_end": 553,
+      "language": "go",
+      "parent_name": "DB",
+      "is_test": false
+    }
+  ],
+  "candidate_count": 6,
+  "candidates_truncated": false,
+  "hint": "Use a qualified_name from disambiguation as the target parameter."
+}

@@ -1,0 +1,61 @@
+=== Q3: callers_of MockBuilder ===
+      "kind": "CALLS",
+      "source": "ng-mocks/libs/ng-mocks/src/lib/mock-service/guards.spec.ts::it:removes an individually excluded guard without removing other guards@L143",
+      "target": "ng-mocks/libs/ng-mocks/src/lib/mock-builder/mock-builder.ts::MockBuilder",
+      "file_path": "ng-mocks/libs/ng-mocks/src/lib/mock-service/guards.spec.ts",
+      "line": 144,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 13304,
+      "kind": "CALLS",
+      "source": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts::it:removes excluded things from an array@L414",
+      "target": "ng-mocks/libs/ng-mocks/src/lib/mock-builder/mock-builder.ts::MockBuilder",
+      "file_path": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts",
+      "line": 429,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 13320,
+      "kind": "CALLS",
+      "source": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts::it:removes excluded things from an object@L440",
+      "target": "ng-mocks/libs/ng-mocks/src/lib/mock-builder/mock-builder.ts::MockBuilder",
+      "file_path": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts",
+      "line": 455,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 13335,
+      "kind": "CALLS",
+      "source": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts::it:keeps all guards without excluding NG_MOCKS_GUARDS@L466",
+      "target": "ng-mocks/libs/ng-mocks/src/lib/mock-builder/mock-builder.ts::MockBuilder",
+      "file_path": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts",
+      "line": 483,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 13351,
+      "kind": "CALLS",
+      "source": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts::it:ignores all guards with excluded NG_MOCKS_GUARDS@L494",
+      "target": "ng-mocks/libs/ng-mocks/src/lib/mock-builder/mock-builder.ts::MockBuilder",
+      "file_path": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts",
+      "line": 511,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 13364,
+      "kind": "CALLS",
+      "source": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts::it:ignores helperUseFactory and useValue interceptors with excluded NG_MOCKS_INTERCEPTORS@L523",
+      "target": "ng-mocks/libs/ng-mocks/src/lib/mock-builder/mock-builder.ts::MockBuilder",
+      "file_path": "ng-mocks/libs/ng-mocks/src/lib/mock-service/mock-service.spec.ts",
+      "line": 541,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    }
+  ]
+}

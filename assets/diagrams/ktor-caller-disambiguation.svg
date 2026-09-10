@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ktor caller disambiguation</title>
+  <desc id="desc">The CIO parseHeaderValue function has one real caller. CRG returned that caller plus sixteen unrelated public-parser and test callers.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#A9DDE7"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#04101A" flood-opacity=".25"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="#08131E"/>
+  <text x="100" y="112" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">Ktor: one target, seventeen reported callers</text>
+  <text x="100" y="158" fill="#AABCC5" font-family="Arial, Helvetica, sans-serif" font-size="25">The CIO function parseHeaderValue has one real incoming call.</text>
+
+  <rect x="100" y="244" width="620" height="474" rx="26" fill="#0D202D" stroke="#35596A" stroke-width="2"/>
+  <text x="148" y="308" fill="#A9DDE7" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="2">SOURCE TRUTH</text>
+  <rect x="148" y="372" width="224" height="108" rx="16" fill="#102D3A" stroke="#A9DDE7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="260" y="438" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">parseHeaders</text>
+  <path d="M382 426H472" stroke="#A9DDE7" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="427" y="397" text-anchor="middle" fill="#AABCC5" font-family="Arial, Helvetica, sans-serif" font-size="18">1 real caller</text>
+  <rect x="490" y="362" width="184" height="128" rx="16" fill="#233039" stroke="#F26B5B" stroke-width="3" filter="url(#shadow)"/>
+  <text x="582" y="418" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">CIO</text>
+  <text x="582" y="452" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">parser</text>
+  <rect x="148" y="566" width="526" height="88" rx="14" fill="#102D3A" stroke="#2F5669" stroke-width="2"/>
+  <text x="411" y="621" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">True caller count: 1</text>
+
+  <rect x="780" y="244" width="720" height="474" rx="26" fill="#0D202D" stroke="#704752" stroke-width="2"/>
+  <text x="828" y="308" fill="#F26B5B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="2">CRG RESPONSE</text>
+  <text x="828" y="344" fill="#AABCC5" font-family="Arial, Helvetica, sans-serif" font-size="21">17 results, all labelled as the CIO target</text>
+  <rect x="828" y="390" width="212" height="102" rx="15" fill="#102D3A" stroke="#A9DDE7" stroke-width="2"/>
+  <text x="934" y="451" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">1 correct</text>
+  <path d="M1050 440H1152" stroke="#A9DDE7" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1170" y="378" width="254" height="126" rx="15" fill="#233039" stroke="#F26B5B" stroke-width="3"/>
+  <text x="1297" y="432" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">CIO parser</text>
+  <text x="1297" y="465" text-anchor="middle" fill="#F26B5B" font-family="Arial, Helvetica, sans-serif" font-size="18">reported target</text>
+  <rect x="828" y="548" width="596" height="106" rx="15" fill="#2A2530" stroke="#F26B5B" stroke-width="2"/>
+  <text x="1126" y="596" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">16 unrelated callers</text>
+  <text x="1126" y="630" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="20">from the public parser and tests</text>
+
+  <rect x="100" y="770" width="1400" height="74" rx="14" fill="#2A2530" stroke="#F26B5B" stroke-width="2"/>
+  <text x="800" y="817" text-anchor="middle" fill="#F0EDE4" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">A large caller count can still describe the wrong function.</text>
+</svg>

@@ -1,0 +1,66 @@
+Graph: graphify-out/graph.json (804 nodes) | Traversal: BFS depth=2 | Start: ['jsonable_encoder()', 'encoders.py'] | Context: call (heuristic) | 27 nodes found
+
+[i] Complete answer over budget: all 27 nodes and 35 edges shown (~2147 tokens vs the requested ~2000-token budget). Edges are never dropped once every node fits, so this is already the full answer — raising --budget further will not shrink it. Narrow with context_filter=['call'] or use get_node for a specific symbol to reduce size instead.
+
+NODE jsonable_encoder() [src=encoders.py loc=L129 community=JSON Encoders]
+NODE encoders.py [src=encoders.py loc=L1 community=JSON Encoders]
+NODE get_openapi() [src=openapi/utils.py loc=L585 community=JSON Encoders]
+NODE _get_openapi_operation_parameters() [src=openapi/utils.py loc=L159 community=JSON Encoders]
+NODE get_swagger_ui_html() [src=openapi/docs.py loc=L40 community=OpenAPI Docs HTML (Swagger/ReDoc)]
+NODE get_openapi_operation_request_body() [src=openapi/utils.py loc=L231 community=JSON Encoders]
+NODE _get_openapi_security_definitions() [src=openapi/utils.py loc=L132 community=JSON Encoders]
+NODE request_validation_exception_handler() [src=exception_handlers.py loc=L20 community=JSON Encoders]
+NODE serialize_response() [src=routing.py loc=L301 community=JSON Encoders]
+NODE is_pydantic_v1_model_instance() [src=_compat/shared.py loc=L186 community=Pydantic v1/v2 Compat Layer]
+NODE websocket_request_validation_exception_handler() [src=exception_handlers.py loc=L29 community=JSON Encoders]
+NODE lenient_issubclass() [src=_compat/shared.py loc=L47 community=Pydantic v1/v2 Compat Layer]
+NODE get_openapi_path() [src=openapi/utils.py loc=L311 community=JSON Encoders]
+NODE get_definitions() [src=_compat/v2.py loc=L285 community=Pydantic v1/v2 Compat Layer]
+NODE _get_flat_fields_from_params() [src=dependencies/utils.py loc=L157 community=Pydantic v1/v2 Compat Layer]
+NODE get_validation_alias() [src=dependencies/utils.py loc=L1051 community=Pydantic v1/v2 Compat Layer]
+NODE get_flat_models_from_fields() [src=_compat/v2.py loc=L478 community=Pydantic v1/v2 Compat Layer]
+NODE get_schema_from_model_field() [src=_compat/v2.py loc=L254 community=Pydantic v1/v2 Compat Layer]
+NODE HTMLResponse [src= loc= community=OpenAPI Docs HTML (Swagger/ReDoc)]
+NODE get_fields_from_routes() [src=openapi/utils.py loc=L551 community=JSON Encoders]
+NODE get_model_name_map() [src=_compat/v2.py loc=L429 community=Pydantic v1/v2 Compat Layer]
+NODE _get_security_scheme() [src=dependencies/models.py loc=L130 community=Dependency Injection & Concurrency]
+NODE JSONResponse [src= loc= community=JSON Encoders]
+NODE EndpointContext [src=exceptions.py loc=L10 community=Exceptions]
+NODE _get_api_route_for_openapi() [src=openapi/utils.py loc=L543 community=JSON Encoders]
+NODE .openapi() [src=applications.py loc=L1070 community=FastAPI App & Routing Core]
+NODE _html_safe_json() [src=openapi/docs.py loc=L9 community=OpenAPI Docs HTML (Swagger/ReDoc)]
+EDGE jsonable_encoder() --calls [EXTRACTED context=call]--> is_pydantic_v1_model_instance() at=encoders.py:L341
+EDGE get_swagger_ui_html() --calls [INFERRED context=call]--> jsonable_encoder() at=openapi/docs.py:L172
+EDGE request_validation_exception_handler() --calls [INFERRED context=call]--> jsonable_encoder() at=exception_handlers.py:L25
+EDGE websocket_request_validation_exception_handler() --calls [INFERRED context=call]--> jsonable_encoder() at=exception_handlers.py:L33
+EDGE get_openapi() --calls [INFERRED context=call]--> jsonable_encoder() at=openapi/utils.py:L679
+EDGE _get_openapi_operation_parameters() --calls [INFERRED context=call]--> jsonable_encoder() at=openapi/utils.py:L222
+EDGE get_openapi_operation_request_body() --calls [INFERRED context=call]--> jsonable_encoder() at=openapi/utils.py:L257
+EDGE _get_openapi_security_definitions() --calls [INFERRED context=call]--> jsonable_encoder() at=openapi/utils.py:L140
+EDGE serialize_response() --calls [INFERRED context=call]--> jsonable_encoder() at=routing.py:L341
+EDGE get_swagger_ui_html() --calls [EXTRACTED context=call]--> _html_safe_json() at=openapi/docs.py:L172
+EDGE get_swagger_ui_html() --calls [EXTRACTED context=call]--> HTMLResponse at=openapi/docs.py:L194
+EDGE .openapi() --calls [INFERRED context=call]--> get_openapi() at=applications.py:L1086
+EDGE get_openapi() --calls [INFERRED context=call]--> get_definitions() at=openapi/utils.py:L623
+EDGE get_openapi() --calls [INFERRED context=call]--> get_flat_models_from_fields() at=openapi/utils.py:L621
+EDGE get_openapi() --calls [INFERRED context=call]--> get_model_name_map() at=openapi/utils.py:L622
+EDGE get_openapi() --calls [EXTRACTED context=call]--> _get_api_route_for_openapi() at=openapi/utils.py:L629
+EDGE get_openapi() --calls [EXTRACTED context=call]--> get_fields_from_routes() at=openapi/utils.py:L620
+EDGE get_openapi() --calls [EXTRACTED context=call]--> get_openapi_path() at=openapi/utils.py:L631
+EDGE _get_openapi_operation_parameters() --calls [INFERRED context=call]--> lenient_issubclass() at=openapi/utils.py:L182
+EDGE _get_openapi_operation_parameters() --calls [INFERRED context=call]--> get_schema_from_model_field() at=openapi/utils.py:L192
+EDGE _get_openapi_operation_parameters() --calls [INFERRED context=call]--> _get_flat_fields_from_params() at=openapi/utils.py:L169
+EDGE _get_openapi_operation_parameters() --calls [INFERRED context=call]--> get_validation_alias() at=openapi/utils.py:L198
+EDGE get_openapi_path() --calls [EXTRACTED context=call]--> _get_openapi_operation_parameters() at=openapi/utils.py:L357
+EDGE request_validation_exception_handler() --calls [EXTRACTED context=call]--> JSONResponse at=exception_handlers.py:L23
+EDGE serialize_response() --calls [EXTRACTED context=call]--> EndpointContext at=routing.py:L323
+EDGE get_openapi_path() --calls [EXTRACTED context=call]--> _get_openapi_security_definitions() at=openapi/utils.py:L349
+EDGE _get_openapi_security_definitions() --calls [INFERRED context=call]--> _get_security_scheme() at=openapi/utils.py:L139
+EDGE get_openapi_operation_request_body() --calls [INFERRED context=call]--> get_schema_from_model_field() at=openapi/utils.py:L243
+EDGE get_openapi_path() --calls [EXTRACTED context=call]--> get_openapi_operation_request_body() at=openapi/utils.py:L378
+EDGE _get_flat_fields_from_params() --calls [INFERRED context=call]--> lenient_issubclass() at=dependencies/utils.py:L161
+EDGE get_openapi_path() --calls [INFERRED context=call]--> lenient_issubclass() at=openapi/utils.py:L458
+EDGE get_definitions() --calls [EXTRACTED context=call]--> get_flat_models_from_fields() at=_compat/v2.py:L297
+EDGE get_openapi_path() --calls [INFERRED context=call]--> get_schema_from_model_field() at=openapi/utils.py:L424
+EDGE get_openapi_path() --calls [INFERRED context=call]--> _get_flat_fields_from_params() at=openapi/utils.py:L341
+EDGE get_fields_from_routes() --calls [EXTRACTED context=call]--> _get_api_route_for_openapi() at=openapi/utils.py:L559

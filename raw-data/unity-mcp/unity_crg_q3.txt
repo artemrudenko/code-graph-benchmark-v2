@@ -1,0 +1,39 @@
+{
+  "status": "ok",
+  "query": "ToolParams.Get",
+  "search_mode": "fts",
+  "summary": "Found 1 node(s) matching 'ToolParams.Get'",
+  "results": [
+    {
+      "name": "Get",
+      "qualified_name": "unity-mcp/MCPForUnity/Editor/Helpers/ToolParams.cs::ToolParams.Get",
+      "kind": "Function",
+      "file_path": "unity-mcp/MCPForUnity/Editor/Helpers/ToolParams.cs",
+      "line_start": 40,
+      "line_end": 43,
+      "language": "csharp",
+      "params": "(string key, string defaultValue = null)",
+      "return_type": null,
+      "signature": "def Get((string key, string defaultValue = null))",
+      "score": 0.065574
+    }
+  ],
+  "_hints": {
+    "next_steps": [
+      {
+        "tool": "query_graph",
+        "suggestion": "Inspect callers/callees of a search result"
+      },
+      {
+        "tool": "get_flow",
+        "suggestion": "See the execution flow through a matched node"
+      },
+      {
+        "tool": "get_impact_radius",
+        "suggestion": "Check the blast radius from matched nodes"
+      }
+    ],
+    "related": [],
+    "warnings": []
+  }
+}

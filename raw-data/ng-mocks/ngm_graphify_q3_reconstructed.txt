@@ -1,0 +1,72 @@
+=== Q3: graphify query 'callers of MockBuilder' ===
+Graph: graphify-out/graph.json (1247 nodes) | Traversal: BFS depth=2 | Start: ['MockBuilder()'] | Context: call (heuristic) | 27 nodes found
+
+[i] Complete answer over budget: all 27 nodes and 39 edges shown (~2378 tokens vs the requested ~2000-token budget). Edges are never dropped once every node fits, so this is already the full answer — raising --budget further will not shrink it. Narrow with context_filter=['call'] or use get_node for a specific symbol to reduce size instead.
+
+NODE MockBuilder() [src=lib/mock-builder/mock-builder.ts loc=L25 community=1]
+NODE configureTestingModule() [src=lib/common/ng-mocks-global-overrides.ts loc=L241 community=1]
+NODE flatten() [src=lib/common/core.helpers.ts loc=L38 community=1]
+NODE isStandalone() [src=lib/common/func.is-standalone.ts loc=L8 community=3]
+NODE MockBuilderPerformance [src=lib/mock-builder/mock-builder.performance.ts loc=L13 community=29]
+NODE isNgDef() [src=lib/common/func.is-ng-def.ts loc=L115 community=3]
+NODE isNgModuleDefWithProviders() [src=lib/common/func.is-ng-module-def-with-providers.ts loc=L21 community=6]
+NODE isMockNgDef() [src=lib/common/func.is-mock-ng-def.ts loc=L74 community=40]
+NODE funcExtractDeps() [src=lib/common/func.extract-deps.ts loc=L9 community=0]
+NODE getNgType() [src=lib/common/func.get-ng-type.ts loc=L19 community=0]
+NODE applyPlatformOverrides() [src=lib/common/ng-mocks-global-overrides.ts loc=L228 community=1]
+NODE collectMockDeclarations() [src=lib/common/ng-mocks-global-overrides.ts loc=L156 community=1]
+NODE handleDef() [src=lib/mock-builder/promise/init-ng-modules.ts loc=L20 community=3]
+NODE handleDestructuring() [src=lib/mock-helper/mock-helper.guts.ts loc=L109 community=6]
+NODE getSourceOfMock() [src=lib/common/func.get-source-of-mock.ts loc=L68 community=35]
+NODE generateTouches() [src=lib/common/ng-mocks-global-overrides.ts loc=L107 community=1]
+NODE initTestBed() [src=lib/common/ng-mocks-global-overrides.ts loc=L95 community=1]
+NODE addExports() [src=lib/mock-module/mock-ng-def.ts loc=L116 community=1]
+NODE registerTemplateMiddleware() [src=lib/mock-render/func.reflect-template.ts loc=L10 community=3]
+NODE applyOverrides() [src=lib/common/ng-mocks-global-overrides.ts loc=L72 community=1]
+NODE defineTouches() [src=lib/common/ng-mocks-global-overrides.ts loc=L138 community=1]
+NODE rememberMockDeclarations() [src=lib/common/ng-mocks-injected-declarations.ts loc=L75 community=1]
+NODE .provide() [src=lib/mock-builder/mock-builder.promise.ts loc=L182 community=27]
+NODE generateData() [src=lib/mock-helper/mock-helper.guts.ts loc=L199 community=6]
+NODE flatToExisting() [src=lib/mock-module/mock-ng-def.ts loc=L13 community=1]
+NODE iterator() [src=lib/common/func.iterate-declaration.ts loc=L8 community=31]
+NODE rememberTestModuleOptions() [src=lib/common/ng-mocks-test-module-metadata.ts loc=L10 community=1]
+EDGE MockBuilder() --calls [EXTRACTED context=call]--> MockBuilderPerformance at=lib/mock-builder/mock-builder.ts:L28
+EDGE MockBuilder() --calls [EXTRACTED context=call]--> flatten() at=lib/mock-builder/mock-builder.ts:L41
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> MockBuilder() at=lib/common/ng-mocks-global-overrides.ts:L282
+EDGE MockBuilder() --calls [EXTRACTED context=call]--> isStandalone() at=lib/mock-builder/mock-builder.ts:L44
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> funcExtractDeps() at=lib/common/ng-mocks-global-overrides.ts:L301
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> applyOverrides() at=lib/common/ng-mocks-global-overrides.ts:L352
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> applyPlatformOverrides() at=lib/common/ng-mocks-global-overrides.ts:L357
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> collectMockDeclarations() at=lib/common/ng-mocks-global-overrides.ts:L348
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> initTestBed() at=lib/common/ng-mocks-global-overrides.ts:L247
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> isMockNgDef() at=lib/common/ng-mocks-global-overrides.ts:L263
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> isNgModuleDefWithProviders() at=lib/common/ng-mocks-global-overrides.ts:L272
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> getSourceOfMock() at=lib/common/ng-mocks-global-overrides.ts:L274
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> isNgDef() at=lib/common/ng-mocks-global-overrides.ts:L315
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> defineTouches() at=lib/common/ng-mocks-global-overrides.ts:L340
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> rememberMockDeclarations() at=lib/common/ng-mocks-global-overrides.ts:L348
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> rememberTestModuleOptions() at=lib/common/ng-mocks-global-overrides.ts:L361
+EDGE funcExtractDeps() --calls [EXTRACTED context=call]--> flatten() at=lib/common/func.extract-deps.ts:L35
+EDGE iterator() --calls [EXTRACTED context=call]--> flatten() at=lib/common/func.iterate-declaration.ts:L19
+EDGE applyPlatformOverrides() --calls [EXTRACTED context=call]--> flatten() at=lib/common/ng-mocks-global-overrides.ts:L233
+EDGE collectMockDeclarations() --calls [EXTRACTED context=call]--> flatten() at=lib/common/ng-mocks-global-overrides.ts:L160
+EDGE generateTouches() --calls [EXTRACTED context=call]--> flatten() at=lib/common/ng-mocks-global-overrides.ts:L109
+EDGE .provide() --calls [EXTRACTED context=call]--> flatten() at=lib/mock-builder/mock-builder.promise.ts:L183
+EDGE handleDef() --calls [EXTRACTED context=call]--> flatten() at=lib/mock-builder/promise/init-ng-modules.ts:L34
+EDGE generateData() --calls [EXTRACTED context=call]--> flatten() at=lib/mock-helper/mock-helper.guts.ts:L200
+EDGE handleDestructuring() --calls [EXTRACTED context=call]--> flatten() at=lib/mock-helper/mock-helper.guts.ts:L115
+EDGE addExports() --calls [EXTRACTED context=call]--> flatten() at=lib/mock-module/mock-ng-def.ts:L124
+EDGE flatToExisting() --calls [EXTRACTED context=call]--> flatten() at=lib/mock-module/mock-ng-def.ts:L14
+EDGE isStandalone() --calls [EXTRACTED context=call]--> getNgType() at=lib/common/func.is-standalone.ts:L9
+EDGE handleDef() --calls [EXTRACTED context=call]--> isStandalone() at=lib/mock-builder/promise/init-ng-modules.ts:L41
+EDGE registerTemplateMiddleware() --calls [EXTRACTED context=call]--> isStandalone() at=lib/mock-render/func.reflect-template.ts:L46
+EDGE configureTestingModule() --calls [EXTRACTED context=call]--> flatten() at=lib/common/ng-mocks-global-overrides.ts:L258
+EDGE funcExtractDeps() --calls [EXTRACTED context=call]--> getNgType() at=lib/common/func.extract-deps.ts:L23
+EDGE collectMockDeclarations() --calls [EXTRACTED context=call]--> getSourceOfMock() at=lib/common/ng-mocks-global-overrides.ts:L163
+EDGE collectMockDeclarations() --calls [EXTRACTED context=call]--> isMockNgDef() at=lib/common/ng-mocks-global-overrides.ts:L162
+EDGE isMockNgDef() --calls [EXTRACTED context=call]--> isNgDef() at=lib/common/func.is-mock-ng-def.ts:L85
+EDGE handleDef() --calls [EXTRACTED context=call]--> isNgDef() at=lib/mock-builder/promise/init-ng-modules.ts:L27
+EDGE registerTemplateMiddleware() --calls [EXTRACTED context=call]--> isNgDef() at=lib/mock-render/func.reflect-template.ts:L31
+EDGE generateTouches() --calls [EXTRACTED context=call]--> isNgModuleDefWithProviders() at=lib/common/ng-mocks-global-overrides.ts:L111
+EDGE defineTouches() --calls [EXTRACTED context=call]--> generateTouches() at=lib/common/ng-mocks-global-overrides.ts:L150
+

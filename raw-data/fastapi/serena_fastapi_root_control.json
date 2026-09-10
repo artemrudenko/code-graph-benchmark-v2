@@ -1,0 +1,15 @@
+{
+  "find_symbol": {
+    "time_s": 2.0822417736053467,
+    "content": [
+      "[{\"name_path\": \"solve_dependencies\", \"kind\": \"Function\", \"relative_path\": \"fastapi/dependencies/utils.py\", \"body_location\": {\"start_line\": 585, \"end_line\": 730}}]"
+    ]
+  },
+  "find_referencing_symbols": {
+    "time_s": 2.8794496059417725,
+    "content": [
+      "{\"fastapi/routing.py\": {\"File\": [{\"name_path\": \"routing\", \"body_location\": {\"start_line\": 0, \"end_line\": 6448}, \"content_around_reference\": \"...  65:    get_typed_return_annotation,\\n  >  66:    solve_dependencies,\\n...  67:)\"}], \"Variable\": [{\"name_path\": \"get_request_handler/app/solved_result\", \"body_location\": {\"start_line\": 480, \"end_line\": 480}, \"content_around_reference\": \"... 479:        )\\n  > 480:        solved_result = await solve_dependencies(\\n... 481:            request=request,\"}, {\"name_path\": \"get_websocket_app/app/solved_result\", \"body_location\": {\"start_line\": 782, \"end_line\": 782}, \"content_around_reference\": \"... 781:        )\\n  > 782:        solved_result = await solve_dependencies(\\n... 783:            request=websocket,\"}, {\"name_path\": \"_FrontendRouteGroup/_solve_dependencies/solved_result\", \"body_location\": {\"start_line\": 2233, \"end_line\": 2233}, \"content_around_reference\": \"...2232:                    scope[\\\"fastapi_function_astack\\\"] = function_stack\\n  >2233:                    solved_result = await solve_dependencies(\\n...2234:                        request=request,\"}]}, \"fastapi/dependencies/utils.py\": {\"Variable\": [{\"name_path\": \"solve_dependencies/solved_result\", \"body_location\": {\"start_line\": 639, \"end_line\": 639}, \"content_around_reference\": \"... 638:\\n  > 639:        solved_result = await solve_dependencies(\\n... 640:            request=request,\"}]}}"
+    ]
+  },
+  "connect_time_s": 0.17661666870117188
+}

@@ -1,0 +1,79 @@
+{
+  "status": "ok",
+  "pattern": "callers_of",
+  "target": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+  "description": "Find all functions that call a given function",
+  "summary": "Found 3 result(s) for callers_of('fastapi/fastapi/dependencies/utils.py::solve_dependencies')",
+  "result_count": 3,
+  "results_omitted": 0,
+  "results": [
+    {
+      "id": 147,
+      "kind": "Function",
+      "name": "solve_dependencies",
+      "qualified_name": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "file_path": "fastapi/fastapi/dependencies/utils.py",
+      "line_start": 586,
+      "line_end": 731,
+      "language": "python",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 312,
+      "kind": "Function",
+      "name": "app",
+      "qualified_name": "fastapi/fastapi/routing.py::app",
+      "file_path": "fastapi/fastapi/routing.py",
+      "line_start": 769,
+      "line_end": 796,
+      "language": "python",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 431,
+      "kind": "Function",
+      "name": "_solve_dependencies",
+      "qualified_name": "fastapi/fastapi/routing.py::_FrontendRouteGroup._solve_dependencies",
+      "file_path": "fastapi/fastapi/routing.py",
+      "line_start": 2216,
+      "line_end": 2252,
+      "language": "python",
+      "parent_name": "_FrontendRouteGroup",
+      "is_test": false
+    }
+  ],
+  "edges": [
+    {
+      "id": 1138,
+      "kind": "CALLS",
+      "source": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "target": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "file_path": "fastapi/fastapi/dependencies/utils.py",
+      "line": 640,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 2478,
+      "kind": "CALLS",
+      "source": "fastapi/fastapi/routing.py::app",
+      "target": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "file_path": "fastapi/fastapi/routing.py",
+      "line": 481,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 3088,
+      "kind": "CALLS",
+      "source": "fastapi/fastapi/routing.py::_FrontendRouteGroup._solve_dependencies",
+      "target": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "file_path": "fastapi/fastapi/routing.py",
+      "line": 2234,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    }
+  ]
+}

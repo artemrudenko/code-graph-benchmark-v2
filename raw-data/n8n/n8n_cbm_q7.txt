@@ -1,0 +1,5 @@
+level=info msg=version_cohort.claimed_unheld build=1175645cb30560e7e47d78611cd1bcb509478eaf6d4e51f72fe18327ee9c1351
+level=info msg=mem.allocator.owned classes=all
+level=info msg=mem.init budget_mb=2005 total_ram_mb=8023 source=ram_fraction
+hint: this command started a temporary CBM daemon. `codebase-memory-mcp daemon start` keeps one warm and removes this startup cost from every CLI command.
+{"error":"function not found","function_name":"resolveDeferredNodeBinding","hint":"Use search_graph(name_pattern=\".*resolveDeferredNodeBinding.*\") to find the exact name, then pass it to trace_path."}

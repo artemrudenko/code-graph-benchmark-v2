@@ -1,0 +1,51 @@
+=== Query 1: 'who calls validate in binding' (avoids 'function' word) ===
+Graph: graphify-out/graph.json (1711 nodes) | Traversal: BFS depth=2 | Start: ['validate()', 'Binding'] | Context: call (heuristic) | 2 nodes found
+
+NODE validate() [src=binding/binding_nomsgpack.go loc=L116 community=Community 57]
+NODE Binding [src=binding/binding.go loc=L32 community=Community 61]
+
+=== Query 2: 'who calls the validate function' (contains generic word 'function') ===
+Graph: graphify-out/graph.json (1711 nodes) | Traversal: BFS depth=2 | Start: ['function()', 'validate()'] | Context: call (heuristic) | 7 nodes found
+
+NODE function() [src=recovery.go loc=L177 community=Community 16]
+NODE validate() [src=binding/binding_nomsgpack.go loc=L116 community=Community 57]
+NODE stack() [src=recovery.go loc=L119 community=Community 16]
+NODE TestFunction() [src=recovery_test.go loc=L92 community=Community 16]
+NODE CustomRecoveryWithWriter() [src=recovery.go loc=L53 community=Community 16]
+NODE readNthLine() [src=recovery.go loc=L151 community=Community 16]
+NODE BenchmarkStack() [src=recovery_test.go loc=L408 community=Community 16]
+EDGE stack() --calls [EXTRACTED context=call]--> function() at=recovery.go:L142
+EDGE TestFunction() --calls [INFERRED context=call]--> function() at=recovery_test.go:L93
+EDGE CustomRecoveryWithWriter() --calls [EXTRACTED context=call]--> stack() at=recovery.go:L75
+EDGE stack() --calls [EXTRACTED context=call]--> readNthLine() at=recovery.go:L136
+EDGE BenchmarkStack() --calls [INFERRED context=call]--> stack() at=recovery_test.go:L411
+
+=== Query 3: 'who references validate binding.go' (deeper BFS, no depth limit hit apparently) ===
+Graph: graphify-out/graph.json (1711 nodes) | Traversal: BFS depth=2 | Start: ['validate()', 'Binding'] | 13 nodes found
+
+NODE validate() [src=binding/binding_nomsgpack.go loc=L116 community=Community 57]
+NODE Binding [src=binding/binding.go loc=L32 community=Community 61]
+NODE binding_nomsgpack.go [src=binding/binding_nomsgpack.go loc=L1 community=Community 57]
+NODE Default() [src=binding/binding.go loc=L95 community=Community 61]
+NODE BindingBody [src=binding/binding.go loc=L39 community=Community 61]
+NODE BindingUri [src=binding/binding.go loc=L46 community=Community 61]
+NODE StructValidator [src=binding/binding.go loc=L55 community=Community 61]
+NODE validate() [src=binding/binding.go loc=L122 community=Community 61]
+NODE Binding [src=binding/binding_nomsgpack.go loc=L30 community=Community 57]
+NODE Default() [src=binding/binding_nomsgpack.go loc=L91 community=Community 57]
+NODE BindingBody [src=binding/binding_nomsgpack.go loc=L37 community=Community 57]
+NODE BindingUri [src=binding/binding_nomsgpack.go loc=L44 community=Community 57]
+NODE StructValidator [src=binding/binding_nomsgpack.go loc=L53 community=Community 57]
+EDGE binding_nomsgpack.go --contains [EXTRACTED]--> validate() at=binding/binding_nomsgpack.go:L116
+EDGE Binding --contains [EXTRACTED context=return_type]--> Default() at=binding/binding.go:L95
+EDGE Binding --contains [EXTRACTED]--> validate() at=binding/binding.go:L122
+EDGE Binding --contains [EXTRACTED]--> BindingUri at=binding/binding.go:L46
+EDGE Binding --contains [EXTRACTED]--> StructValidator at=binding/binding.go:L55
+EDGE BindingBody --embeds [EXTRACTED]--> Binding at=binding/binding.go:L40
+EDGE binding_nomsgpack.go --contains [EXTRACTED]--> Binding at=binding/binding_nomsgpack.go:L30
+EDGE binding_nomsgpack.go --contains [EXTRACTED]--> BindingBody at=binding/binding_nomsgpack.go:L37
+EDGE binding_nomsgpack.go --contains [EXTRACTED]--> BindingUri at=binding/binding_nomsgpack.go:L44
+EDGE binding_nomsgpack.go --contains [EXTRACTED]--> StructValidator at=binding/binding_nomsgpack.go:L53
+EDGE binding_nomsgpack.go --contains [EXTRACTED]--> Default() at=binding/binding_nomsgpack.go:L91
+EDGE Default() --references [EXTRACTED context=return_type]--> Binding at=binding/binding_nomsgpack.go:L91
+EDGE BindingBody --embeds [EXTRACTED]--> Binding at=binding/binding_nomsgpack.go:L38

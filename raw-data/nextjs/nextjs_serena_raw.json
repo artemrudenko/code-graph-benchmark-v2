@@ -1,0 +1,15 @@
+{
+  "connect_time_s": 0.14829635620117188,
+  "Q3": {
+    "time_s": 5.779009580612183,
+    "content": [
+      "{\"server/render.tsx\": {\"Constant\": [{\"name_path\": \"renderToHTML\", \"body_location\": {\"start_line\": 1621, \"end_line\": 1640}, \"content_around_reference\": \"...1629:) => {\\n  >1630:  return renderToHTMLImpl(\\n...1631:    req,\"}]}, \"server/route-modules/pages/module.ts\": {\"File\": [{\"name_path\": \"module\", \"body_location\": {\"start_line\": 0, \"end_line\": 165}, \"content_around_reference\": \"...  22:} from '../route-module'\\n  >  23:import { renderToHTMLImpl, renderToHTML } from '../../render'\\n...  24:import * as vendoredContexts from './vendored/contexts/entrypoints'\"}], \"Method\": [{\"name_path\": \"PagesRouteModule/render\", \"body_location\": {\"start_line\": 135, \"end_line\": 153}, \"content_around_reference\": \"... 139:  ): Promise<RenderResult> {\\n  > 140:    return renderToHTMLImpl(\\n... 141:      req,\"}]}}"
+    ]
+  },
+  "Q7": {
+    "time_s": 3.12178635597229,
+    "content": [
+      "[]"
+    ]
+  }
+}

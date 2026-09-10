@@ -1,0 +1,219 @@
+/usr/local/bin/graphify
+=== Query: 'who calls parseHeaderValue' ===
+Graph: graphify-out/graph.json (1531 nodes) | Traversal: BFS depth=2 | Start: ['parseHeaderValue()'] | Context: call (heuristic) | 34 nodes found
+
+[i] Complete answer over budget: all 34 nodes and 79 edges shown (~5279 tokens vs the requested ~2000-token budget). Edges are never dropped once every node fits, so this is already the full answer — raising --budget further will not shrink it. Narrow with context_filter=['call'] or use get_node for a specific symbol to reduce size instead.
+
+NODE parseHeaderValue() [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L85 community=1]
+NODE parseAndSortContentTypeHeader() [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L66 community=1]
+NODE parseHeaderValueItem() [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L122 community=1]
+NODE `parse quoted parameter value with escaped character at the end`() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L181 community=1]
+NODE `parse round trips a rendered parameter value ending with a quote`() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L197 community=1]
+NODE parseBrokenHeadersShouldntFail() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L156 community=1]
+NODE parseJustValueWithMultipleParameters() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L109 community=1]
+NODE parseJustValueWithQuotedAndSimpleParameters() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L139 community=1]
+NODE parseJustValueWithQuotedParameter() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L126 community=1]
+NODE parseJustValueWithSingleParameter() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L91 community=1]
+NODE parseJustValueWithSingleParameterAndSpaces() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L100 community=1]
+NODE parseJustValueWithSingleParameterWithValue() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L82 community=1]
+NODE parseParametersOnly() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L225 community=1]
+NODE parsingQuotedParamsWorks() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L244 community=1]
+NODE .parse() [src=common/src/io/ktor/http/content/Versions.kt loc=L275 community=9]
+NODE parseSingleValue() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L76 community=1]
+NODE valueOrEmpty() [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L117 community=1]
+NODE .parse() [src=common/src/io/ktor/http/HeaderValueWithParameters.kt loc=L69 community=37]
+NODE parseAndSortHeader() [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L58 community=1]
+NODE cacheControl() [src=common/src/io/ktor/http/HttpMessageProperties.kt loc=L136 community=1]
+NODE parseRealLifeHeadersShouldntFail() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L207 community=1]
+NODE .assertEquals() [src=common/test/io/ktor/tests/http/RangesTest.kt loc=L271 community=10]
+NODE HeaderValueParam [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L16 community=1]
+NODE HeaderValue [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L40 community=1]
+NODE parseAcceptHeaderWithExtraParameters() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L48 community=1]
+NODE parseAcceptHeaderWithExtraParametersAndFallback() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L58 community=1]
+NODE parseAcceptHeaderWithPreference() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L38 community=1]
+NODE .check() [src=common/src/io/ktor/http/content/Versions.kt loc=L193 community=9]
+NODE .parseSingle() [src=common/src/io/ktor/http/content/Versions.kt loc=L290 community=9]
+NODE parseHeaderValueParameter() [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L158 community=1]
+NODE subtrim() [src=common/src/io/ktor/http/HttpHeaderValueParser.kt loc=L118 community=1]
+NODE parseAcceptHeaderWithFallback() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L21 community=1]
+NODE parseQualityParameterCaseInsensitive() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L29 community=1]
+NODE parseSimpleAcceptHeader() [src=common/test/io/ktor/tests/http/CommonHeadersTest.kt loc=L14 community=1]
+EDGE parseAndSortContentTypeHeader() --calls [EXTRACTED context=call]--> parseHeaderValue() at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L66
+EDGE parseAndSortHeader() --calls [EXTRACTED context=call]--> parseHeaderValue() at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L59
+EDGE parseHeaderValue() --calls [EXTRACTED context=call]--> parseHeaderValueItem() at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L104
+EDGE parseHeaderValue() --calls [EXTRACTED context=call]--> valueOrEmpty() at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L106
+EDGE .parse() --calls [INFERRED context=call]--> parseHeaderValue() at=common/src/io/ktor/http/content/Versions.kt:L276
+EDGE .parse() --calls [INFERRED context=call]--> parseHeaderValue() at=common/src/io/ktor/http/HeaderValueWithParameters.kt:L70
+EDGE cacheControl() --calls [INFERRED context=call]--> parseHeaderValue() at=common/src/io/ktor/http/HttpMessageProperties.kt:L137
+EDGE `parse quoted parameter value with escaped character at the end`() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L185
+EDGE `parse round trips a rendered parameter value ending with a quote`() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L203
+EDGE parseBrokenHeadersShouldntFail() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L158
+EDGE parseJustValueWithMultipleParameters() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L111
+EDGE parseJustValueWithQuotedAndSimpleParameters() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L152
+EDGE parseJustValueWithQuotedParameter() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L135
+EDGE parseJustValueWithSingleParameter() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L93
+EDGE parseJustValueWithSingleParameterAndSpaces() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L103
+EDGE parseJustValueWithSingleParameterWithValue() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L84
+EDGE parseParametersOnly() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L229
+EDGE parseRealLifeHeadersShouldntFail() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L221
+EDGE parseSingleValue() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L78
+EDGE parsingQuotedParamsWorks() --calls [INFERRED context=call]--> parseHeaderValue() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L250
+EDGE parseHeaderValueItem() --calls [EXTRACTED context=call]--> HeaderValue at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L135
+EDGE parseHeaderValueItem() --calls [EXTRACTED context=call]--> subtrim() at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L135
+EDGE parseHeaderValueItem() --calls [EXTRACTED context=call]--> parseHeaderValueParameter() at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L141
+EDGE `parse round trips a rendered parameter value ending with a quote`() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L202
+EDGE `parse round trips a rendered parameter value ending with a quote`() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L202
+EDGE `parse round trips a rendered parameter value ending with a quote`() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L200
+EDGE `parse quoted parameter value with escaped character at the end`() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L184
+EDGE `parse quoted parameter value with escaped character at the end`() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L184
+EDGE `parse quoted parameter value with escaped character at the end`() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L183
+EDGE parseBrokenHeadersShouldntFail() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L158
+EDGE parseBrokenHeadersShouldntFail() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L162
+EDGE parseBrokenHeadersShouldntFail() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L158
+EDGE parseParametersOnly() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L228
+EDGE parseParametersOnly() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L228
+EDGE parseParametersOnly() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L227
+EDGE parseAcceptHeaderWithExtraParameters() --calls [INFERRED context=call]--> parseAndSortContentTypeHeader() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L50
+EDGE parseAcceptHeaderWithExtraParametersAndFallback() --calls [INFERRED context=call]--> parseAndSortContentTypeHeader() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L60
+EDGE parseAcceptHeaderWithFallback() --calls [INFERRED context=call]--> parseAndSortContentTypeHeader() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L23
+EDGE parseAcceptHeaderWithPreference() --calls [INFERRED context=call]--> parseAndSortContentTypeHeader() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L40
+EDGE parseQualityParameterCaseInsensitive() --calls [INFERRED context=call]--> parseAndSortContentTypeHeader() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L31
+EDGE parseSimpleAcceptHeader() --calls [INFERRED context=call]--> parseAndSortContentTypeHeader() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L16
+EDGE parseSingleValue() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L79
+EDGE parseSingleValue() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L79
+EDGE parseJustValueWithSingleParameter() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L95
+EDGE parseJustValueWithSingleParameter() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L95
+EDGE parseJustValueWithSingleParameter() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L94
+EDGE parseJustValueWithSingleParameterAndSpaces() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L102
+EDGE parseJustValueWithSingleParameterAndSpaces() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L102
+EDGE parseJustValueWithSingleParameterAndSpaces() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L103
+EDGE parseJustValueWithSingleParameterWithValue() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L86
+EDGE parseJustValueWithSingleParameterWithValue() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L86
+EDGE parseJustValueWithSingleParameterWithValue() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L85
+EDGE parsingQuotedParamsWorks() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L248
+EDGE parsingQuotedParamsWorks() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L248
+EDGE parsingQuotedParamsWorks() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L246
+EDGE parseJustValueWithMultipleParameters() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L114
+EDGE parseJustValueWithMultipleParameters() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L117
+EDGE parseJustValueWithMultipleParameters() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L112
+EDGE .check() --calls [EXTRACTED context=call]--> .parse() at=common/src/io/ktor/http/content/Versions.kt:L194
+EDGE .parse() --calls [EXTRACTED context=call]--> .parseSingle() at=common/src/io/ktor/http/content/Versions.kt:L281
+EDGE parseJustValueWithQuotedParameter() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L130
+EDGE parseJustValueWithQuotedParameter() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L132
+EDGE parseJustValueWithQuotedParameter() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L128
+EDGE parseJustValueWithQuotedAndSimpleParameters() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L143
+EDGE parseJustValueWithQuotedAndSimpleParameters() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L146
+EDGE parseJustValueWithQuotedAndSimpleParameters() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L141
+EDGE parseAcceptHeaderWithExtraParameters() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L51
+EDGE parseAcceptHeaderWithExtraParametersAndFallback() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L63
+EDGE parseAcceptHeaderWithPreference() --calls [INFERRED context=call]--> HeaderValue at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L42
+EDGE parseAcceptHeaderWithExtraParameters() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L51
+EDGE parseAcceptHeaderWithExtraParametersAndFallback() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L63
+EDGE parseAcceptHeaderWithPreference() --calls [INFERRED context=call]--> HeaderValueParam at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L44
+EDGE parseHeaderValueItem() --calls [EXTRACTED context=call]--> valueOrEmpty() at=common/src/io/ktor/http/HttpHeaderValueParser.kt:L135
+EDGE parseAcceptHeaderWithExtraParameters() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L55
+EDGE parseAcceptHeaderWithExtraParametersAndFallback() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L68
+EDGE parseAcceptHeaderWithFallback() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L24
+EDGE parseAcceptHeaderWithPreference() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L41
+EDGE parseQualityParameterCaseInsensitive() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L32
+EDGE parseSimpleAcceptHeader() --calls [INFERRED context=call]--> .assertEquals() at=common/test/io/ktor/tests/http/CommonHeadersTest.kt:L17
+
+=== Query: 'who calls parseHeaderValue in HttpParser cio' (targeting the CIO-specific one) ===
+Graph: graphify-out/graph.json (1531 nodes) | Traversal: BFS depth=2 | Start: ['parseHeaderValue()', 'HttpParser.kt'] | Context: call (heuristic) | 44 nodes found
+
+[i] Complete answer over budget: all 44 nodes and 50 edges shown (~4429 tokens vs the requested ~2000-token budget). Edges are never dropped once every node fits, so this is already the full answer — raising --budget further will not shrink it. Narrow with context_filter=['call'] or use get_node for a specific symbol to reduce size instead.
+
+NODE parseHeaderValue() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L277 community=4]
+NODE HttpParser.kt [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L1 community=18]
+NODE parseHeaders() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L103 community=21]
+NODE characterIsNotAllowed() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L310 community=18]
+NODE skipSpacesAndHorizontalTabs() [src=ktor-http-cio/common/src/io/ktor/http/cio/internals/Tokenizer.kt loc=L14 community=4]
+NODE parseRequest() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L39 community=26]
+NODE CharArrayBuilder [src=ktor-http-cio/common/src/io/ktor/http/cio/internals/CharArrayBuilder.kt loc=L10 community=4]
+NODE parseResponse() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L75 community=48]
+NODE HttpHeadersMap [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpHeadersMap.kt loc=L40 community=4]
+NODE ParserException [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L16 community=18]
+NODE parseHeaderName() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L243 community=18]
+NODE parsePartHeadersImpl() [src=ktor-http-cio/common/src/io/ktor/http/cio/Multipart.kt loc=L134 community=28]
+NODE parseHeaderNameFailed() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L264 community=18]
+NODE .parseHeadersNoLeadingSpace() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L49 community=19]
+NODE .parseHeadersNoLeadingSpaceWithTrailingSpaces() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L65 community=19]
+NODE .parseHeadersSmokeTest() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L16 community=19]
+NODE .parseHeadersWithEmptyValue() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L98 community=19]
+NODE .parseHeadersWithMultipleEmptyValues() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L114 community=19]
+NODE .parseHeadersWithMultipleValuesSeparatedWithComma() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L81 community=19]
+NODE .testParseCookieHeader() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L34 community=19]
+NODE validateHostHeader() [src=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt loc=L155 community=18]
+NODE .parseHeadersDelimitersInHeaderNameShouldBeProhibited() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L163 community=19]
+NODE .parseHeadersEmptyHeaderNameShouldBeProhibited() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L175 community=19]
+NODE .parseHeadersFoldingShouldBeProhibited() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L189 community=19]
+NODE .parseHeadersSpaceAfterHeaderNameShouldBeProhibited() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L129 community=19]
+NODE .parseHeadersSpacesInHeaderNameShouldBeProhibited() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L141 community=19]
+NODE .parseHeadersSpacesInHeaderNameShouldBeProhibitedFixed() [src=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt loc=L153 community=19]
+NODE .alternativeLineSeparatorsBoth() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L107 community=21]
+NODE .alternativeLineSeparatorsFirst() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L89 community=21]
+NODE .alternativeLineSeparatorsSecond() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L98 community=21]
+NODE .extraSpacesMiddle() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L55 community=21]
+NODE .extraSpacesTrailing() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L80 community=21]
+NODE .smokeTest() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L23 community=21]
+NODE .smokeTestUnicode() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L37 community=21]
+NODE .testBlankHeaderValue() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L220 community=21]
+NODE .testEmptyHeaderValue() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L200 community=21]
+NODE .extraSpacesLeading() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L47 community=21]
+NODE .extraSpacesMiddleBeforeColon() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L64 community=21]
+NODE .extraSpacesMiddleBeforeColonNoAfter() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L72 community=21]
+NODE .`Host header with invalid '#' character`() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L258 community=21]
+NODE .`Host header with invalid character (question mark)`() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L249 community=21]
+NODE .`Host header with invalid character (slash)`() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L240 community=21]
+NODE .testNoColon() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L209 community=21]
+NODE .testWrongHeader() [src=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt loc=L229 community=21]
+EDGE parseHeaderValue() --calls [EXTRACTED context=call]--> characterIsNotAllowed() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L295
+EDGE parseHeaders() --calls [EXTRACTED context=call]--> parseHeaderValue() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L134
+EDGE parseHeaderValue() --calls [INFERRED context=call]--> skipSpacesAndHorizontalTabs() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L282
+EDGE characterIsNotAllowed() --calls [EXTRACTED context=call]--> ParserException at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L311
+EDGE parseHeaderNameFailed() --calls [EXTRACTED context=call]--> characterIsNotAllowed() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L274
+EDGE parseHeaders() --calls [EXTRACTED context=call]--> HttpHeadersMap at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L105
+EDGE parseHeaders() --calls [EXTRACTED context=call]--> CharArrayBuilder at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L104
+EDGE parseHeaders() --calls [EXTRACTED context=call]--> parseHeaderName() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L132
+EDGE parseHeaders() --calls [EXTRACTED context=call]--> validateHostHeader() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L145
+EDGE .parseHeadersDelimitersInHeaderNameShouldBeProhibited() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L171
+EDGE .parseHeadersEmptyHeaderNameShouldBeProhibited() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L183
+EDGE .parseHeadersFoldingShouldBeProhibited() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L195
+EDGE .parseHeadersNoLeadingSpace() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L55
+EDGE .parseHeadersNoLeadingSpaceWithTrailingSpaces() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L71
+EDGE .parseHeadersSmokeTest() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L23
+EDGE .parseHeadersSpaceAfterHeaderNameShouldBeProhibited() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L137
+EDGE .parseHeadersSpacesInHeaderNameShouldBeProhibited() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L149
+EDGE .parseHeadersSpacesInHeaderNameShouldBeProhibitedFixed() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L160
+EDGE .parseHeadersWithEmptyValue() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L104
+EDGE .parseHeadersWithMultipleEmptyValues() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L120
+EDGE .parseHeadersWithMultipleValuesSeparatedWithComma() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L87
+EDGE .testParseCookieHeader() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/test/io/ktor/tests/http/cio/HeaderParserTest.kt:L39
+EDGE parseRequest() --calls [EXTRACTED context=call]--> parseHeaders() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L60
+EDGE parseResponse() --calls [EXTRACTED context=call]--> parseHeaders() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L89
+EDGE parsePartHeadersImpl() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/common/src/io/ktor/http/cio/Multipart.kt:L137
+EDGE .alternativeLineSeparatorsBoth() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L110
+EDGE .alternativeLineSeparatorsFirst() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L92
+EDGE .alternativeLineSeparatorsSecond() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L101
+EDGE .extraSpacesLeading() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L51
+EDGE .extraSpacesMiddle() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L58
+EDGE .extraSpacesMiddleBeforeColon() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L68
+EDGE .extraSpacesMiddleBeforeColonNoAfter() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L76
+EDGE .extraSpacesTrailing() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L83
+EDGE .`Host header with invalid '#' character`() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L263
+EDGE .`Host header with invalid character (question mark)`() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L254
+EDGE .`Host header with invalid character (slash)`() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L245
+EDGE .smokeTest() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L26
+EDGE .smokeTestUnicode() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L40
+EDGE .testBlankHeaderValue() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L223
+EDGE .testEmptyHeaderValue() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L203
+EDGE .testNoColon() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L215
+EDGE .testWrongHeader() --calls [INFERRED context=call]--> parseHeaders() at=ktor-http-cio/jvm/test/io/ktor/tests/http/cio/HeadersJvmTest.kt:L235
+EDGE parseResponse() --calls [EXTRACTED context=call]--> HttpHeadersMap at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L89
+EDGE parseHeaderName() --calls [EXTRACTED context=call]--> parseHeaderNameFailed() at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L255
+EDGE parseHeaderNameFailed() --calls [EXTRACTED context=call]--> ParserException at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L266
+EDGE parseRequest() --calls [EXTRACTED context=call]--> ParserException at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L55
+EDGE parseRequest() --calls [EXTRACTED context=call]--> CharArrayBuilder at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L40
+EDGE parseResponse() --calls [EXTRACTED context=call]--> CharArrayBuilder at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L76
+EDGE validateHostHeader() --calls [EXTRACTED context=call]--> ParserException at=ktor-http-cio/common/src/io/ktor/http/cio/HttpParser.kt:L157
+EDGE parsePartHeadersImpl() --calls [INFERRED context=call]--> CharArrayBuilder at=ktor-http-cio/common/src/io/ktor/http/cio/Multipart.kt:L135

@@ -1,0 +1,10 @@
+function: solve_dependencies
+direction: inbound
+callers_total: 3
+callers: 3  (rows: name hop; qn = group prefix + "." + name)
+home-claude-benchmark-v2-repos-fastapi-fastapi.routing._FrontendRouteGroup:
+  _solve_dependencies 1
+  handle 2
+home-claude-benchmark-v2-repos-fastapi-fastapi.routing.py:
+  __file__ 1
+

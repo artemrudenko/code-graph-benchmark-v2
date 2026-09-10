@@ -1,0 +1,21 @@
+{
+  "connect_time_s": 0.15505623817443848,
+  "Q3_find_referencing_symbols_jsonable_encoder": {
+    "time_s": 2.42018461227417,
+    "content": [
+      "{\"encoders.py\": {\"Function\": [{\"name_path\": \"jsonable_encoder\", \"body_location\": {\"start_line\": 128, \"end_line\": 365}, \"content_around_reference\": \"... 251:        )\\n  > 252:        return jsonable_encoder(\\n... 253:            obj_dict,\"}, {\"name_path\": \"jsonable_encoder\", \"body_location\": {\"start_line\": 128, \"end_line\": 365}, \"content_around_reference\": \"... 260:        obj_dict = dataclasses.asdict(obj)\\n  > 261:        return jsonable_encoder(\\n... 262:            obj_dict,\"}, {\"name_path\": \"jsonable_encoder\", \"body_location\": {\"start_line\": 128, \"end_line\": 365}, \"content_around_reference\": \"... 320:            encoded_list.append(\\n  > 321:                jsonable_encoder(\\n... 322:                    item,\"}, {\"name_path\": \"jsonable_encoder\", \"body_location\": {\"start_line\": 128, \"end_line\": 365}, \"content_around_reference\": \"... 354:            raise ValueError(errors) from e\\n  > 355:    return jsonable_encoder(\\n... 356:        data,\"}], \"Variable\": [{\"name_path\": \"jsonable_encoder/encoded_key\", \"body_location\": {\"start_line\": 297, \"end_line\": 297}, \"content_around_reference\": \"... 296:            ):\\n  > 297:                encoded_key = jsonable_encoder(\\n... 298:                    key,\"}, {\"name_path\": \"jsonable_encoder/encoded_value\", \"body_location\": {\"start_line\": 306, \"end_line\": 306}, \"content_around_reference\": \"... 305:                )\\n  > 306:                encoded_value = jsonable_encoder(\\n... 307:                    value,\"}]}}"
+    ]
+  },
+  "Q6_search_for_pattern_tests": {
+    "time_s": 0.07834649085998535,
+    "content": [
+      "Error executing tool search_for_pattern: FileNotFoundError: Relative path tests does not exist."
+    ]
+  },
+  "Q7_find_symbol_canary": {
+    "time_s": 0.14335870742797852,
+    "content": [
+      "[]"
+    ]
+  }
+}

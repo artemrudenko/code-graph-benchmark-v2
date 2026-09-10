@@ -1,0 +1,10 @@
+=== Query: 'who calls mmap' ===
+Graph: graphify-out/graph.json (1268 nodes) | Traversal: BFS depth=2 | Start: ['mmap()'] | Context: call (heuristic) | 1 nodes found
+
+NODE mmap() [src=bolt_aix.go loc=L60 community=42]
+
+=== Query: 'who calls the mmap function in bbolt' ===
+Graph: graphify-out/graph.json (1268 nodes) | Traversal: BFS depth=2 | Start: ['mmap()', 'go.etcd.io/bbolt'] | Context: call (heuristic) | 2 nodes found
+
+NODE mmap() [src=bolt_aix.go loc=L60 community=42]
+NODE go.etcd.io/bbolt [src=go.mod loc=L1 community=75]

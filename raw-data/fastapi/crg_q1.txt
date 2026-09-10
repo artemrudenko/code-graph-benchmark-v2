@@ -1,0 +1,59 @@
+{
+  "status": "ambiguous",
+  "summary": "'solve_dependencies' matches 2 node(s). Re-run with a qualified_name from disambiguation.",
+  "candidates": [
+    {
+      "id": 147,
+      "kind": "Function",
+      "name": "solve_dependencies",
+      "qualified_name": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "file_path": "fastapi/fastapi/dependencies/utils.py",
+      "line_start": 586,
+      "line_end": 731,
+      "language": "python",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 431,
+      "kind": "Function",
+      "name": "_solve_dependencies",
+      "qualified_name": "fastapi/fastapi/routing.py::_FrontendRouteGroup._solve_dependencies",
+      "file_path": "fastapi/fastapi/routing.py",
+      "line_start": 2216,
+      "line_end": 2252,
+      "language": "python",
+      "parent_name": "_FrontendRouteGroup",
+      "is_test": false
+    }
+  ],
+  "disambiguation": [
+    {
+      "id": 147,
+      "kind": "Function",
+      "name": "solve_dependencies",
+      "qualified_name": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "file_path": "fastapi/fastapi/dependencies/utils.py",
+      "line_start": 586,
+      "line_end": 731,
+      "language": "python",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 431,
+      "kind": "Function",
+      "name": "_solve_dependencies",
+      "qualified_name": "fastapi/fastapi/routing.py::_FrontendRouteGroup._solve_dependencies",
+      "file_path": "fastapi/fastapi/routing.py",
+      "line_start": 2216,
+      "line_end": 2252,
+      "language": "python",
+      "parent_name": "_FrontendRouteGroup",
+      "is_test": false
+    }
+  ],
+  "candidate_count": 2,
+  "candidates_truncated": false,
+  "hint": "Use a qualified_name from disambiguation as the target parameter."
+}

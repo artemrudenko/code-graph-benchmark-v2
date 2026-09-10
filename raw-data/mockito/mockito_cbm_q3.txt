@@ -1,0 +1,126 @@
+level=info msg=version_cohort.claimed_unheld build=1175645cb30560e7e47d78611cd1bcb509478eaf6d4e51f72fe18327ee9c1351
+level=info msg=mem.allocator.owned classes=all
+level=info msg=mem.init budget_mb=2005 total_ram_mb=8023 source=ram_fraction
+hint: this command started a temporary CBM daemon. `codebase-memory-mcp daemon start` keeps one warm and removes this startup cost from every CLI command.
+function: mockingProgress
+direction: inbound
+callers_total: 159
+callers: 100  (rows: name hop; qn = group prefix + "." + name)
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.AdditionalMatchers:
+  and 1
+  aryEq 2
+  cmpEq 2
+  eq 2
+  find 2
+  geq 2
+  gt 2
+  leq 2
+  lt 2
+  not 1
+  or 1
+  reportMatcher 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.ArgumentMatchers:
+  any 2
+  anyBoolean 2
+  anyByte 2
+  anyChar 2
+  anyCollection 2
+  anyDouble 2
+  anyFloat 2
+  anyInt 2
+  anyIterable 2
+  anyList 2
+  anyLong 2
+  anyMap 2
+  anySet 2
+  anyShort 2
+  anyString 2
+  argThat 2
+  booleanThat 2
+  byteThat 2
+  charThat 2
+  contains 2
+  doubleThat 2
+  endsWith 2
+  eq 2
+  floatThat 2
+  intThat 2
+  isA 2
+  isNull 2
+  longThat 2
+  matches 2
+  notNull 2
+  nullable 2
+  refEq 2
+  reportMatcher 1
+  same 2
+  shortThat 2
+  startsWith 2
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.Mockito:
+  clearInvocations 2
+  doAnswer 2
+  doCallRealMethod 2
+  doNothing 2
+  doReturn 2
+  doThrow 2
+  mockSingleton 2
+  mockStatic 2
+  reset 2
+  validateMockitoUsage 2
+  verify 2
+  verifyNoInteractions 2
+  verifyNoMoreInteractions 2
+  when 2
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.hamcrest.MockitoHamcrest:
+  argThat 2
+  booleanThat 2
+  byteThat 2
+  charThat 2
+  intThat 2
+  reportMatcher 1
+  shortThat 2
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.MockedStaticImpl:
+  clearInvocations 1
+  reset 1
+  verify 1
+  verifyNoInteractions 1
+  verifyNoMoreInteractions 1
+  when 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.MockitoCore:
+  clearInvocations 1
+  getLastInvocation 1
+  mock 1
+  mockSingleton 1
+  mockStatic 1
+  reset 1
+  stubber 1
+  validateMockitoUsage 1
+  verify 1
+  verifyNoInteractions 1
+  verifyNoMoreInteractions 1
+  verifyNoMoreInteractionsInOrder 1
+  when 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.creation.bytebuddy.MockMethodAdvice.java:
+  __file__ 2
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator:
+  mockClass 2
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.framework.DefaultMockitoFramework:
+  addListener 1
+  removeListener 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.handler.MockHandlerImpl:
+  handle 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.junit.VerificationCollectorImpl:
+  assertLazily 1
+  collectAndReport 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.runners.DefaultInternalRunner.java:
+  __file__ 2
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.stubbing.BaseStubbing:
+  thenThrow 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.stubbing.InvocationContainerImpl:
+  addAnswer 1
+home-claude-benchmark-v2-repos-mockito-mockito-core-src-main-java.org.mockito.internal.stubbing.StubberImpl:
+  doThrow 1
+  when 1
+truncated: true
+hint: "more rows exist — re-call with a higher 'limit' (cursors unavailable: index predates generation tracking)"
+

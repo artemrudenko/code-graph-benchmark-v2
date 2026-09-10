@@ -1,0 +1,6 @@
+=== Q7: callers_of resolveDeferredHydrationBoundary (canary) ===
+{
+  "status": "not_found",
+  "summary": "No node found matching 'resolveDeferredHydrationBoundary'.",
+  "confidence": "target not indexed: no node matching 'resolveDeferredHydrationBoundary', so this 0 is not evidence that none exist"
+}

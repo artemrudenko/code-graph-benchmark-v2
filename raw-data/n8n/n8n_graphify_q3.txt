@@ -1,0 +1,36 @@
+Graph: graphify-out/graph.json (1930 nodes) | Traversal: BFS depth=2 | Start: ['deepCopy()'] | Context: call (heuristic) | 17 nodes found
+
+NODE deepCopy() [src=utils.ts loc=L57 community=78]
+NODE getNodeParameters() [src=node-helpers.ts loc=L752 community=10]
+NODE getGlobalState() [src=global-state.ts loc=L13 community=78]
+NODE getNodeOutputs() [src=node-helpers.ts loc=L1266 community=3]
+NODE .toJSON() [src=utils.ts loc=L17 community=78]
+NODE generateNodesGraph() [src=telemetry-helpers.ts loc=L310 community=30]
+NODE isExpression() [src=expressions/expression-helpers.ts loc=L5 community=19]
+NODE displayParameter() [src=node-helpers.ts loc=L419 community=47]
+NODE .constructor() [src=workflow.ts loc=L87 community=44]
+NODE extractLastExecutedNodeStructuredOutputErrorInfo() [src=telemetry-helpers.ts loc=L913 community=30]
+NODE .constructor() [src=workflow-data-proxy.ts loc=L99 community=32]
+NODE hasSingleMainIO() [src=node-grouping-validation.ts loc=L501 community=3]
+NODE isExecutable() [src=node-helpers.ts loc=L1880 community=3]
+NODE isFromAIOnlyExpression() [src=from-ai-parse-utils.ts loc=L365 community=39]
+NODE getParameterResolveOrder() [src=node-helpers.ts loc=L669 community=10]
+NODE replaceCircularReferences() [src=utils.ts loc=L215 community=5]
+NODE getParameterDependencies() [src=node-helpers.ts loc=L630 community=10]
+EDGE getNodeParameters() --calls [EXTRACTED context=call]--> deepCopy() at=node-helpers.ts:L861
+EDGE getNodeOutputs() --calls [EXTRACTED context=call]--> deepCopy() at=node-helpers.ts:L1299
+EDGE getGlobalState() --calls [EXTRACTED context=call]--> deepCopy() at=global-state.ts:L14
+EDGE deepCopy() --calls [EXTRACTED context=call]--> .toJSON() at=utils.ts:L70
+EDGE getNodeParameters() --calls [EXTRACTED context=call]--> getParameterDependencies() at=node-helpers.ts:L764
+EDGE getNodeParameters() --calls [EXTRACTED context=call]--> getParameterResolveOrder() at=node-helpers.ts:L806
+EDGE getNodeParameters() --calls [EXTRACTED context=call]--> displayParameter() at=node-helpers.ts:L824
+EDGE getNodeParameters() --calls [EXTRACTED context=call]--> isExpression() at=node-helpers.ts:L912
+EDGE getNodeParameters() --calls [EXTRACTED context=call]--> isFromAIOnlyExpression() at=node-helpers.ts:L912
+EDGE extractLastExecutedNodeStructuredOutputErrorInfo() --calls [EXTRACTED context=call]--> getNodeParameters() at=telemetry-helpers.ts:L959
+EDGE generateNodesGraph() --calls [EXTRACTED context=call]--> getNodeParameters() at=telemetry-helpers.ts:L345
+EDGE replaceCircularReferences() --calls [EXTRACTED context=call]--> .toJSON() at=utils.ts:L217
+EDGE .constructor() --calls [EXTRACTED context=call]--> getGlobalState() at=workflow-data-proxy.ts:L125
+EDGE .constructor() --calls [EXTRACTED context=call]--> getGlobalState() at=workflow.ts:L131
+EDGE hasSingleMainIO() --calls [EXTRACTED context=call]--> getNodeOutputs() at=node-grouping-validation.ts:L523
+EDGE isExecutable() --calls [EXTRACTED context=call]--> getNodeOutputs() at=node-helpers.ts:L1888
+EDGE generateNodesGraph() --calls [EXTRACTED context=call]--> isExpression() at=telemetry-helpers.ts:L598

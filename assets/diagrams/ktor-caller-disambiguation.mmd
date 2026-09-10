@@ -1,0 +1,21 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","clusterBkg":"#0D202D","clusterBorder":"#35596A","edgeLabelBackground":"#08131E","fontFamily":"Arial"}}}%%
+flowchart TB
+  A[Source truth]
+  H[parseHeaders]
+  C[CIO parseHeaderValue]
+  D[CRG response: 17 results]
+  P[parseHeaders]
+  U[16 unrelated public or test callers]
+  T[CIO parseHeaderValue]
+
+  A --> H -->|1 real caller| C
+  C ~~~ D
+  D --> P -->|1 correct| T
+  U -->|wrongly attributed| T
+
+  classDef source fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+  classDef target fill:#213039,stroke:#F26B5B,color:#F0EDE4,stroke-width:3px;
+  classDef wrong fill:#2A2530,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
+  class H,P source;
+  class C,T target;
+  class U wrong;

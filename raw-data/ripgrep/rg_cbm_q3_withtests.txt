@@ -1,0 +1,41 @@
+level=info msg=version_cohort.claimed_unheld build=1175645cb30560e7e47d78611cd1bcb509478eaf6d4e51f72fe18327ee9c1351
+level=info msg=mem.allocator.owned classes=all
+level=info msg=mem.init budget_mb=2005 total_ram_mb=8023 source=ram_fraction
+hint: this command started a temporary CBM daemon. `codebase-memory-mcp daemon start` keeps one warm and removes this startup cost from every CLI command.
+function: home-claude-benchmark-v2-repos-ripgrep-crates.ignore.src.dir.Ignore.add_child
+direction: inbound
+callers_total: 28
+callers: 28  (rows: name hop; qn = group prefix + "." + name)
+home-claude-benchmark-v2-repos-ripgrep-crates.ignore.src.dir:
+  absolute_parent 1
+  absolute_parent_anchored 1
+  absolute_parent_matchers_are_cached_across_roots 1
+  custom_ignore 1
+  custom_ignore_over_ignore 1
+  custom_ignore_precedence 1
+  errored 1
+  errored_both 1
+  errored_partial 1
+  errored_partial_and_ignore 1
+  exclude_lowest 1
+  explicit_ignore 1
+  git_exclude 1
+  git_info_exclude_in_linked_worktree 1
+  gitignore 1
+  gitignore_allowed_no_git 1
+  gitignore_no_git 1
+  gitignore_with_jj 1
+  ignore 1
+  ignore_over_gitignore 1
+  multi_root_custom_ignore_order_independent 1
+  multi_root_gitignore_order_independent 1
+  not_present_empty 1
+  stops_at_git_dir 1
+home-claude-benchmark-v2-repos-ripgrep-crates.ignore.src.incremental.IncrementalIgnore:
+  matched_with_errors_ignore 1
+  root_ignore 1
+home-claude-benchmark-v2-repos-ripgrep-crates.ignore.src.walk.Walk:
+  next 1
+home-claude-benchmark-v2-repos-ripgrep-crates.ignore.src.walk.Work:
+  add_ignore 1
+

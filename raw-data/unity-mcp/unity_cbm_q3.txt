@@ -1,0 +1,152 @@
+level=info msg=version_cohort.claimed_unheld build=1175645cb30560e7e47d78611cd1bcb509478eaf6d4e51f72fe18327ee9c1351
+level=info msg=mem.allocator.owned classes=all
+level=info msg=mem.init budget_mb=2005 total_ram_mb=8023 source=ram_fraction
+hint: this command started a temporary CBM daemon. `codebase-memory-mcp daemon start` keeps one warm and removes this startup cost from every CLI command.
+function: home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Helpers.ToolParams.ToolParams.Get
+direction: inbound
+callers_total: 103
+callers: 103  (rows: name hop; qn = group prefix + "." + name)
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Setup.RoslynInstaller.RoslynInstaller:
+  Install 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.AssetGen.AssetGenToolHelpers.AssetGenToolHelpers:
+  Cancel 1
+  Status 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.AssetGen.GenerateAudio.GenerateAudio:
+  Generate 1
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.AssetGen.GenerateImage.GenerateImage:
+  Generate 1
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.AssetGen.GenerateModel.GenerateModel:
+  Generate 1
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.AssetGen.ImportModel.ImportModel:
+  Cancel 1
+  HandleCommand 1
+  Import 1
+  Preview 1
+  Search 1
+  Status 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.AssetGen.ImportModelFile.ImportModelFile:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Cameras.ManageCamera.ManageCamera:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.FindGameObjects.FindGameObjects:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.GraphicsHelpers.GraphicsHelpers:
+  FindVolume 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.LightBakingOps.LightBakingOps:
+  BakeReflectionProbe 1
+  CreateLightProbeGroup 1
+  CreateReflectionProbe 1
+  SetProbePositions 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.ManageGraphics.ManageGraphics:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.RenderPipelineOps.RenderPipelineOps:
+  SetQuality 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.RendererFeatureOps.RendererFeatureOps:
+  AddFeature 1
+  ConfigureFeature 1
+  RemoveFeature 1
+  ToggleFeature 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.RenderingStatsOps.RenderingStatsOps:
+  ListCounters 1
+  SetSceneDebugMode 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.SkyboxOps.SkyboxOps:
+  SetAmbient 1
+  SetFog 1
+  SetMaterial 1
+  SetReflection 1
+  SetSun 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Graphics.VolumeOps.VolumeOps:
+  AddEffect 1
+  CreateProfile 1
+  CreateVolume 1
+  RemoveEffect 1
+  SetEffect 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ManageBuild.ManageBuild:
+  HandleBatch 1
+  HandleBuild 1
+  HandlePlatform 1
+  HandleProfiles 1
+  HandleSettings 1
+  HandleStatus 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ManageEditor.ManageEditor:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ManageMaterial.ManageMaterial:
+  SetRendererColor 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ManagePackages.ManagePackages:
+  GetStatus 1
+  RemoveRegistry 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ManageScene.ManageScene:
+  ToSceneCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ManageScript.ManageScript:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ManageUI.ManageUI:
+  AttachUIDocument 1
+  CreateFile 1
+  CreatePanelSettings 1
+  DeleteFile 1
+  GetDecodedContents 1
+  LinkStylesheet 1
+  ListUIAssets 1
+  ModifyVisualElement 1
+  ReadFile 1
+  RenderUI 1
+  UpdateFile 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.CollisionMatrixOps.CollisionMatrixOps:
+  GetCollisionMatrix 1
+  SetCollisionMatrix 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.JointOps.JointOps:
+  AddJoint 1
+  ConfigureJoint 1
+  RemoveJoint 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.ManagePhysics.ManagePhysics:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.PhysicsForceOps.PhysicsForceOps:
+  ApplyExplosionForce 1
+  ApplyForce 1
+  ApplyNormalForce 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.PhysicsMaterialOps.PhysicsMaterialOps:
+  Assign 1
+  Configure 1
+  Create 1
+  Create3D 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.PhysicsQueryOps.PhysicsQueryOps:
+  Linecast 1
+  Linecast2D 1
+  Linecast3D 1
+  Overlap 1
+  Raycast 1
+  Raycast2D 1
+  Raycast3D 1
+  RaycastAll 1
+  RaycastAll2D 1
+  RaycastAll3D 1
+  Shapecast 1
+  Shapecast2D 1
+  Shapecast3D 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.PhysicsRigidbodyOps.PhysicsRigidbodyOps:
+  ConfigureRigidbody 1
+  GetRigidbody 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.PhysicsSettingsOps.PhysicsSettingsOps:
+  GetSettings 1
+  SetSettings 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.PhysicsSimulationOps.PhysicsSimulationOps:
+  SimulateStep 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Physics.PhysicsValidationOps.PhysicsValidationOps:
+  Validate 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ProBuilder.ManageProBuilder.ManageProBuilder:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Profiler.ManageProfiler.ManageProfiler:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Profiler.Operations.MemorySnapshotOps.MemorySnapshotOps:
+  ListSnapshots 1
+  TakeSnapshotAsync 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.Profiler.Operations.SessionOps.SessionOps:
+  Start 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.ReadConsole.ReadConsole:
+  HandleCommand 1
+home-claude-benchmark-v2-repos-unity-mcp-MCPForUnity.Editor.Tools.UnityReflect.UnityReflect:
+  SearchTypes 1
+

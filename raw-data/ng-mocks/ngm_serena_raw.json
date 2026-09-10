@@ -1,0 +1,15 @@
+{
+  "connect_time_s": 0.15141510963439941,
+  "Q3_find_referencing_symbols_MockBuilder": {
+    "time_s": 0.10185837745666504,
+    "content": [
+      "Error executing tool find_referencing_symbols: ValueError: Found multiple 3 symbols matching 'MockBuilder'. They are: \n[\n  {\n    \"name_path\": \"MockBuilder[0]\",\n    \"kind\": \"Function\",\n    \"relative_path\": \"lib/mock-builder/mock-builder.ts\"\n  },\n  {\n    \"name_path\": \"MockBuilder[1]\",\n    \"kind\": \"Function\",\n    \"relative_path\": \"lib/mock-builder/mock-builder.ts\"\n  },\n  {\n    \"name_path\": \"MockBuilder[2]\",\n    \"kind\": \"Module\",\n    \"relative_path\": \"lib/mock-builder/mock-builder.ts\"\n  }\n]"
+    ]
+  },
+  "Q7_find_symbol_canary": {
+    "time_s": 0.33442115783691406,
+    "content": [
+      "[]"
+    ]
+  }
+}

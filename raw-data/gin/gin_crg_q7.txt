@@ -1,0 +1,5 @@
+{
+  "status": "not_found",
+  "summary": "No node found matching 'resolveBindingChain'.",
+  "confidence": "target not indexed: no node matching 'resolveBindingChain', so this 0 is not evidence that none exist"
+}

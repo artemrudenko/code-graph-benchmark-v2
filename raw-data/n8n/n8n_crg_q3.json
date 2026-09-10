@@ -1,0 +1,123 @@
+{
+  "status": "ok",
+  "pattern": "callers_of",
+  "target": "n8n/packages/workflow/src/utils.ts::deepCopy",
+  "description": "Find all functions that call a given function",
+  "summary": "Found 5 result(s) for callers_of('n8n/packages/workflow/src/utils.ts::deepCopy')",
+  "result_count": 5,
+  "results_omitted": 0,
+  "results": [
+    {
+      "id": 525,
+      "kind": "Function",
+      "name": "getGlobalState",
+      "qualified_name": "n8n/packages/workflow/src/global-state.ts::getGlobalState",
+      "file_path": "n8n/packages/workflow/src/global-state.ts",
+      "line_start": 13,
+      "line_end": 15,
+      "language": "typescript",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 1040,
+      "kind": "Function",
+      "name": "getNodeParameters",
+      "qualified_name": "n8n/packages/workflow/src/node-helpers.ts::getNodeParameters",
+      "file_path": "n8n/packages/workflow/src/node-helpers.ts",
+      "line_start": 752,
+      "line_end": 1165,
+      "language": "typescript",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 1046,
+      "kind": "Function",
+      "name": "getNodeOutputs",
+      "qualified_name": "n8n/packages/workflow/src/node-helpers.ts::getNodeOutputs",
+      "file_path": "n8n/packages/workflow/src/node-helpers.ts",
+      "line_start": 1266,
+      "line_end": 1320,
+      "language": "typescript",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 1322,
+      "kind": "Function",
+      "name": "deepCopy",
+      "qualified_name": "n8n/packages/workflow/src/utils.ts::deepCopy",
+      "file_path": "n8n/packages/workflow/src/utils.ts",
+      "line_start": 57,
+      "line_end": 93,
+      "language": "typescript",
+      "parent_name": null,
+      "is_test": false
+    },
+    {
+      "id": 1392,
+      "kind": "Function",
+      "name": "get",
+      "qualified_name": "n8n/packages/workflow/src/workflow-data-proxy.ts::WorkflowDataProxy.get",
+      "file_path": "n8n/packages/workflow/src/workflow-data-proxy.ts",
+      "line_start": 1717,
+      "line_end": 1738,
+      "language": "typescript",
+      "parent_name": "WorkflowDataProxy",
+      "is_test": false
+    }
+  ],
+  "edges": [
+    {
+      "id": 2115,
+      "kind": "CALLS",
+      "source": "n8n/packages/workflow/src/global-state.ts::getGlobalState",
+      "target": "n8n/packages/workflow/src/utils.ts::deepCopy",
+      "file_path": "n8n/packages/workflow/src/global-state.ts",
+      "line": 14,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 4326,
+      "kind": "CALLS",
+      "source": "n8n/packages/workflow/src/node-helpers.ts::getNodeParameters",
+      "target": "n8n/packages/workflow/src/utils.ts::deepCopy",
+      "file_path": "n8n/packages/workflow/src/node-helpers.ts",
+      "line": 861,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 4427,
+      "kind": "CALLS",
+      "source": "n8n/packages/workflow/src/node-helpers.ts::getNodeOutputs",
+      "target": "n8n/packages/workflow/src/utils.ts::deepCopy",
+      "file_path": "n8n/packages/workflow/src/node-helpers.ts",
+      "line": 1299,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 6374,
+      "kind": "CALLS",
+      "source": "n8n/packages/workflow/src/utils.ts::deepCopy",
+      "target": "n8n/packages/workflow/src/utils.ts::deepCopy",
+      "file_path": "n8n/packages/workflow/src/utils.ts",
+      "line": 80,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 6743,
+      "kind": "CALLS",
+      "source": "n8n/packages/workflow/src/workflow-data-proxy.ts::WorkflowDataProxy.get",
+      "target": "n8n/packages/workflow/src/utils.ts::deepCopy",
+      "file_path": "n8n/packages/workflow/src/workflow-data-proxy.ts",
+      "line": 367,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    }
+  ]
+}

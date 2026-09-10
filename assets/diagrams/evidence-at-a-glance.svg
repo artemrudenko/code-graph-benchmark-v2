@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Arial, sans-serif; fill: #f5f7fa; font-size: 44px; font-weight: 700; }
+    .sub { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Arial, sans-serif; fill: #aab7c4; font-size: 21px; }
+    .cardtitle { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Arial, sans-serif; fill: #b8c4cf; font-size: 19px; font-weight: 600; letter-spacing: .6px; }
+    .big { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Arial, sans-serif; fill: #f5f7fa; font-size: 48px; font-weight: 700; }
+    .body { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Arial, sans-serif; fill: #d7e0e7; font-size: 22px; }
+    .note { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Arial, sans-serif; fill: #7f92a3; font-size: 17px; }
+    .footer { font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Arial, sans-serif; fill: #aab7c4; font-size: 20px; }
+  </style>
+  <rect width="1600" height="900" fill="#08131e"/>
+  <text x="92" y="90" class="title">What the evidence says at a glance</text>
+  <text x="92" y="128" class="sub">Four checks from different question types — not an overall tool ranking.</text>
+  <g transform="translate(92 180)"><rect width="680" height="285" rx="22" fill="#102233" stroke="#23435c" stroke-width="2"/><text x="38" y="48" class="cardtitle">KTOR • CALLER DISAMBIGUATION</text><text x="38" y="112" class="big">17 reported</text><text x="38" y="150" class="body">1 real caller • 16 from another overload</text><rect x="38" y="186" width="34" height="22" rx="5" fill="#62d2c3"/><rect x="78" y="186" width="544" height="22" rx="5" fill="#f27e78"/><text x="38" y="245" class="note">The result count alone hid the true fan-in: one.</text></g>
+  <g transform="translate(828 180)"><rect width="680" height="285" rx="22" fill="#102233" stroke="#23435c" stroke-width="2"/><text x="38" y="48" class="cardtitle">RIPGREP • TESTS VS PRODUCTION</text><text x="38" y="112" class="big">28 callers</text><text x="38" y="150" class="body">4 production • 24 test functions</text><rect x="38" y="186" width="96" height="22" rx="5" fill="#6db8f0"/><rect x="140" y="186" width="480" height="22" rx="5" fill="#f3c969"/><text x="38" y="245" class="note">One answer needs two counts when the task is a code change.</text></g>
+  <g transform="translate(92 505)"><rect width="680" height="285" rx="22" fill="#102233" stroke="#23435c" stroke-width="2"/><text x="38" y="48" class="cardtitle">GRAPHIFY • SYMBOL DOES NOT EXIST</text><text x="38" y="112" class="big">3 / 12 substitutions</text><text x="38" y="150" class="body">9 queries honestly said “not found”</text><rect x="38" y="186" width="146" height="22" rx="5" fill="#f27e78"/><rect x="190" y="186" width="432" height="22" rx="5" fill="#62d2c3"/><text x="38" y="245" class="note">Related code is not an answer to an exact absent symbol.</text></g>
+  <g transform="translate(828 505)"><rect width="680" height="285" rx="22" fill="#102233" stroke="#23435c" stroke-width="2"/><text x="38" y="48" class="cardtitle">FASTAPI • SERENA PROJECT ROOT</text><text x="38" y="112" class="big">4 / 4 vs 1 / 4</text><text x="38" y="150" class="body">repository root • nested package root</text><rect x="38" y="186" width="580" height="22" rx="5" fill="#62d2c3"/><rect x="38" y="222" width="145" height="22" rx="5" fill="#f27e78"/><text x="210" y="241" class="note">Same commit; only the indexed root changed.</text></g>
+  <text x="92" y="852" class="footer">Ask the exact question • check the scope • split tests • verify “not found”</text>
+</svg>

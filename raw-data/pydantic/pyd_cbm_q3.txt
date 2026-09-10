@@ -1,0 +1,78 @@
+level=info msg=version_cohort.claimed_unheld build=1175645cb30560e7e47d78611cd1bcb509478eaf6d4e51f72fe18327ee9c1351
+level=info msg=mem.allocator.owned classes=all
+level=info msg=mem.init budget_mb=2005 total_ram_mb=8023 source=ram_fraction
+hint: this command started a temporary CBM daemon. `codebase-memory-mcp daemon start` keeps one warm and removes this startup cost from every CLI command.
+function: home-claude-benchmark-v2-repos-pydantic-pydantic._internal._generate_schema.GenerateSchema.generate_schema
+direction: inbound
+callers_total: 54
+callers: 54  (rows: name hop; qn = group prefix + "." + name)
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal._dataclasses:
+  complete_dataclass 1
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal:
+  _generate_schema 2
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal._generate_schema.GenerateSchema:
+  _apply_field_serializers 1
+  _apply_model_serializers 1
+  _arguments_schema 1
+  _call_schema 1
+  _common_field_schema 2
+  _computed_field_schema 1
+  _dataclass_schema 2
+  _deque_schema 1
+  _dict_schema 1
+  _frozendict_schema 1
+  _frozenset_schema 1
+  _generate_dc_field_schema 3
+  _generate_md_field_schema 3
+  _generate_schema_inner 1
+  _generate_td_field_schema 3
+  _iterable_schema 1
+  _list_schema 1
+  _mapping_schema 1
+  _match_generic_type 2
+  _model_schema 1
+  _sequence_schema 1
+  _set_schema 1
+  _subclass_schema 1
+  _tuple_schema 1
+  _type_alias_type_schema 1
+  _typed_dict_schema 1
+  _union_is_subclass_schema 1
+  _unsubstituted_typevar_schema 1
+  generate_schema 2
+  match_type 2
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal._generate_schema.py:
+  __file__ 2
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal._mock_val_ser.py:
+  __file__ 3
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal._model_construction.ModelMetaclass:
+  __new__ 2
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal._model_construction:
+  complete_model_class 1
+home-claude-benchmark-v2-repos-pydantic-pydantic._internal._validate_call.ValidateCallWrapper:
+  __call__ 2
+  __init__ 2
+  _create_validators 1
+home-claude-benchmark-v2-repos-pydantic-pydantic.dataclasses.py:
+  __file__ 2
+home-claude-benchmark-v2-repos-pydantic-pydantic.dataclasses:
+  rebuild_dataclass 2
+home-claude-benchmark-v2-repos-pydantic-pydantic.deprecated.copy_internals:
+  _copy_and_set_values 3
+home-claude-benchmark-v2-repos-pydantic-pydantic.experimental.arguments_schema:
+  generate_arguments_schema 2
+home-claude-benchmark-v2-repos-pydantic-pydantic.main.BaseModel:
+  __class_getitem__ 3
+  __copy__ 3
+  __deepcopy__ 3
+  model_construct 3
+  model_rebuild 2
+  update_forward_refs 3
+home-claude-benchmark-v2-repos-pydantic-pydantic.root_model.RootModel:
+  __copy__ 3
+  __deepcopy__ 3
+home-claude-benchmark-v2-repos-pydantic-pydantic.type_adapter.TypeAdapter:
+  __init__ 2
+  _init_core_attrs 1
+  rebuild 2
+

@@ -1,0 +1,4 @@
+Graph: graphify-out/graph.json (4108 nodes) | Traversal: BFS depth=2 | Start: ['Child', 'Add'] | Context: call (heuristic) | 2 nodes found
+
+NODE Child [src= loc= community=6]
+NODE Add [src= loc= community=45]

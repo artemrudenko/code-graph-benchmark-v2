@@ -1,0 +1,8 @@
+Graph: graphify-out/graph.json (3663 nodes) | Traversal: BFS depth=2 | Start: ['Calls', 'MockingProgress'] | Context: call (heuristic) | 4 nodes found
+
+NODE Calls [src=org/mockito/internal/verification/Calls.java loc=L20 community=35]
+NODE MockingProgress [src=org/mockito/internal/progress/MockingProgress.java loc=L16 community=32]
+NODE .calls() [src=org/mockito/internal/verification/VerificationModeFactory.java loc=L27 community=3]
+NODE .calls() [src=org/mockito/Mockito.java loc=L3802 community=3]
+EDGE .calls() --calls [EXTRACTED context=call]--> Calls at=org/mockito/internal/verification/VerificationModeFactory.java:L28
+EDGE .calls() --calls [EXTRACTED context=call]--> .calls() at=org/mockito/Mockito.java:L3803

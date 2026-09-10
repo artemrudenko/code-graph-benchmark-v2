@@ -1,0 +1,192 @@
+Graph: graphify-out/graph.json (3902 nodes) | Traversal: BFS depth=2 | Start: ['CallSchema', 'schema()', 'GenerateSchema', '.generate()'] | Context: call (heuristic) | 85 nodes found
+
+[i] Complete answer over budget: all 85 nodes and 103 edges shown (~5694 tokens vs the requested ~2000-token budget). Edges are never dropped once every node fits, so this is already the full answer — raising --budget further will not shrink it. Narrow with context_filter=['call'] or use get_node for a specific symbol to reduce size instead.
+
+NODE CallSchema [src= loc= community=60]
+NODE schema() [src=v1/schema.py loc=L109 community=5]
+NODE GenerateSchema [src=_internal/_generate_schema.py loc=L324 community=8]
+NODE .generate() [src=json_schema.py loc=L399 community=45]
+NODE PydanticUserError [src=errors.py loc=L100 community=4]
+NODE .generate_inner() [src=json_schema.py loc=L448 community=32]
+NODE complete_model_class() [src=_internal/_model_construction.py loc=L561 community=62]
+NODE complete_dataclass() [src=_internal/_dataclasses.py loc=L85 community=62]
+NODE model_process_schema() [src=v1/schema.py loc=L551 community=5]
+NODE ._create_validators() [src=_internal/_validate_call.py loc=L92 community=104]
+NODE get_model_name_map() [src=v1/schema.py loc=L322 community=5]
+NODE ._build_definitions_remapping() [src=json_schema.py loc=L2655 community=45]
+NODE .get_schema_from_definitions() [src=json_schema.py loc=L2488 community=45]
+NODE .sort() [src=json_schema.py loc=L588 community=45]
+NODE ._garbage_collect_definitions() [src=json_schema.py loc=L2666 community=45]
+NODE get_flat_models_from_models() [src=v1/schema.py loc=L416 community=5]
+NODE get_model() [src=v1/utils.py loc=L301 community=5]
+NODE .get_json_ref_counts() [src=json_schema.py loc=L2589 community=45]
+NODE field_singleton_schema() [src=v1/schema.py loc=L826 community=5]
+NODE lenient_issubclass() [src=v1/utils.py loc=L181 community=5]
+NODE .__new__() [src=_internal/_model_construction.py loc=L89 community=17]
+NODE .from_name_error() [src=errors.py loc=L117 community=26]
+NODE signature_no_eval() [src=_internal/_typing_extra.py loc=L447 community=4]
+NODE get_standard_typevars_map() [src=_internal/_generics.py loc=L222 community=26]
+NODE ._named_required_fields_schema() [src=json_schema.py loc=L1630 community=50]
+NODE create_schema_validator() [src=plugin/_schema_validator.py loc=L22 community=105]
+NODE .typed_dict_schema() [src=json_schema.py loc=L1571 community=50]
+NODE rebuild_model_fields() [src=_internal/_fields.py loc=L583 community=7]
+NODE .model_fields_schema() [src=json_schema.py loc=L1842 community=50]
+NODE JsonRef [src= loc= community=45]
+NODE model_schema() [src=v1/schema.py loc=L162 community=5]
+NODE .__init__() [src=_internal/_validate_call.py loc=L66 community=104]
+NODE .default_schema() [src=json_schema.py loc=L1281 community=68]
+NODE .kw_arguments_schema() [src=json_schema.py loc=L2037 community=71]
+NODE .p_arguments_schema() [src=json_schema.py loc=L2075 community=71]
+NODE rebuild_dataclass() [src=dataclasses.py loc=L308 community=1]
+NODE set_dataclass_mocks() [src=_internal/_mock_val_ser.py loc=L192 community=1]
+NODE set_model_mocks() [src=_internal/_mock_val_ser.py loc=L151 community=17]
+NODE ._common_dict_schema() [src=json_schema.py loc=L1186 community=141]
+NODE ._common_set_schema() [src=json_schema.py loc=L1144 community=144]
+NODE .generate_definitions() [src=json_schema.py loc=L350 community=45]
+NODE .resolve_ref_schema() [src=json_schema.py loc=L1822 community=45]
+NODE .tagged_union_schema() [src=json_schema.py loc=L1434 community=68]
+NODE .tuple_schema() [src=json_schema.py loc=L1087 community=57]
+NODE enum_process_schema() [src=v1/schema.py loc=L655 community=5]
+NODE get_flat_models_from_model() [src=v1/schema.py loc=L349 community=5]
+NODE CoreRef [src= loc= community=101]
+NODE set_dataclass_fields() [src=_internal/_dataclasses.py loc=L65 community=62]
+NODE get_model_typevars_map() [src=_internal/_generics.py loc=L239 community=58]
+NODE set_deprecated_descriptors() [src=_internal/_model_construction.py loc=L686 community=62]
+NODE .arguments_v3_schema() [src=json_schema.py loc=L2136 community=71]
+NODE .definitions_schema() [src=json_schema.py loc=L2252 community=101]
+NODE .handle_ref_overrides() [src=json_schema.py loc=L2461 community=45]
+NODE .named_tuple_schema() [src=json_schema.py loc=L1963 community=71]
+NODE .union_schema() [src=json_schema.py loc=L1376 community=28]
+NODE LazyClassAttribute() [src=_internal/_utils.py loc=L307 community=22]
+NODE .dataclass_schema() [src=json_schema.py loc=L1932 community=57]
+NODE .deque_schema() [src=json_schema.py loc=L1051 community=65]
+NODE .function_plain_schema() [src=json_schema.py loc=L1251 community=28]
+NODE .generator_schema() [src=json_schema.py loc=L1150 community=65]
+NODE .list_schema() [src=json_schema.py loc=L1037 community=65]
+NODE .model_schema() [src=json_schema.py loc=L1720 community=57]
+NODE .nullable_schema() [src=json_schema.py loc=L1359 community=28]
+NODE .ser_schema() [src=json_schema.py loc=L2283 community=77]
+NODE _get_all_json_refs() [src=json_schema.py loc=L3102 community=45]
+NODE model_type_schema() [src=v1/schema.py loc=L601 community=5]
+NODE .__call__() [src=_internal/_validate_call.py loc=L133 community=104]
+NODE .call_schema() [src=json_schema.py loc=L2175 community=32]
+NODE .chain_schema() [src=json_schema.py loc=L1522 community=32]
+NODE .computed_field_schema() [src=json_schema.py loc=L1709 community=50]
+NODE .custom_error_schema() [src=json_schema.py loc=L2186 community=32]
+NODE .dataclass_field_schema() [src=json_schema.py loc=L1687 community=50]
+NODE .function_after_schema() [src=json_schema.py loc=L1240 community=32]
+NODE .function_before_schema() [src=json_schema.py loc=L1226 community=32]
+NODE .function_wrap_schema() [src=json_schema.py loc=L1267 community=32]
+NODE .json_or_python_schema() [src=json_schema.py loc=L1556 community=32]
+NODE .json_schema() [src=json_schema.py loc=L2197 community=32]
+NODE .lax_or_strict_schema() [src=json_schema.py loc=L1537 community=32]
+NODE .missing_sentinel_schema() [src=json_schema.py loc=L934 community=32]
+NODE .model_field_schema() [src=json_schema.py loc=L1698 community=32]
+NODE .named_tuple_field_schema() [src=json_schema.py loc=L1952 community=32]
+NODE ._sort_recursive() [src=json_schema.py loc=L602 community=57]
+NODE .typed_dict_field_schema() [src=json_schema.py loc=L1676 community=50]
+NODE get_long_model_name() [src=v1/schema.py loc=L428 community=5]
+NODE normalize_name() [src=v1/schema.py loc=L1150 community=5]
+EDGE .generate() --calls [EXTRACTED context=call]--> PydanticUserError at=json_schema.py:L414
+EDGE .generate() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L420
+EDGE .generate() --calls [EXTRACTED context=call]--> ._build_definitions_remapping() at=json_schema.py:L434
+EDGE .generate() --calls [EXTRACTED context=call]--> ._garbage_collect_definitions() at=json_schema.py:L433
+EDGE .generate() --calls [EXTRACTED context=call]--> .get_json_ref_counts() at=json_schema.py:L421
+EDGE .generate() --calls [EXTRACTED context=call]--> .get_schema_from_definitions() at=json_schema.py:L425
+EDGE .generate() --calls [EXTRACTED context=call]--> .sort() at=json_schema.py:L446
+EDGE schema() --calls [EXTRACTED context=call]--> get_flat_models_from_models() at=v1/schema.py:L138
+EDGE schema() --calls [EXTRACTED context=call]--> get_model_name_map() at=v1/schema.py:L139
+EDGE schema() --calls [EXTRACTED context=call]--> model_process_schema() at=v1/schema.py:L147
+EDGE schema() --calls [INFERRED context=call]--> get_model() at=v1/schema.py:L137
+EDGE complete_dataclass() --calls [EXTRACTED context=call]--> GenerateSchema at=_internal/_dataclasses.py:L141
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> GenerateSchema at=_internal/_model_construction.py:L621
+EDGE ._create_validators() --calls [EXTRACTED context=call]--> GenerateSchema at=_internal/_validate_call.py:L93
+EDGE get_model_name_map() --calls [EXTRACTED context=call]--> get_long_model_name() at=v1/schema.py:L337
+EDGE get_model_name_map() --calls [EXTRACTED context=call]--> normalize_name() at=v1/schema.py:L335
+EDGE model_schema() --calls [EXTRACTED context=call]--> get_model_name_map() at=v1/schema.py:L186
+EDGE .handle_ref_overrides() --calls [EXTRACTED context=call]--> .get_schema_from_definitions() at=json_schema.py:L2474
+EDGE .resolve_ref_schema() --calls [EXTRACTED context=call]--> .get_schema_from_definitions() at=json_schema.py:L1836
+EDGE .generate_definitions() --calls [EXTRACTED context=call]--> .sort() at=json_schema.py:L397
+EDGE .sort() --calls [EXTRACTED context=call]--> ._sort_recursive() at=json_schema.py:L599
+EDGE ._build_definitions_remapping() --calls [EXTRACTED context=call]--> JsonRef at=json_schema.py:L2659
+EDGE .generate_definitions() --calls [EXTRACTED context=call]--> ._build_definitions_remapping() at=json_schema.py:L386
+EDGE ._garbage_collect_definitions() --calls [EXTRACTED context=call]--> _get_all_json_refs() at=json_schema.py:L2668
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> LazyClassAttribute() at=_internal/_model_construction.py:L666
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> create_schema_validator() at=_internal/_model_construction.py:L651
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> set_model_mocks() at=_internal/_model_construction.py:L611
+EDGE .__new__() --calls [EXTRACTED context=call]--> complete_model_class() at=_internal/_model_construction.py:L253
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> .from_name_error() at=_internal/_model_construction.py:L610
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> get_model_typevars_map() at=_internal/_model_construction.py:L593
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> rebuild_model_fields() at=_internal/_model_construction.py:L603
+EDGE complete_model_class() --calls [EXTRACTED context=call]--> set_deprecated_descriptors() at=_internal/_model_construction.py:L647
+EDGE .__call__() --calls [EXTRACTED context=call]--> ._create_validators() at=_internal/_validate_call.py:L135
+EDGE ._create_validators() --calls [EXTRACTED context=call]--> signature_no_eval() at=_internal/_validate_call.py:L107
+EDGE ._create_validators() --calls [EXTRACTED context=call]--> create_schema_validator() at=_internal/_validate_call.py:L97
+EDGE .__init__() --calls [EXTRACTED context=call]--> ._create_validators() at=_internal/_validate_call.py:L88
+EDGE model_process_schema() --calls [EXTRACTED context=call]--> enum_process_schema() at=v1/schema.py:L573
+EDGE field_singleton_schema() --calls [EXTRACTED context=call]--> model_process_schema() at=v1/schema.py:L894
+EDGE model_process_schema() --calls [EXTRACTED context=call]--> model_type_schema() at=v1/schema.py:L581
+EDGE model_schema() --calls [EXTRACTED context=call]--> model_process_schema() at=v1/schema.py:L188
+EDGE model_process_schema() --calls [INFERRED context=call]--> lenient_issubclass() at=v1/schema.py:L571
+EDGE complete_dataclass() --calls [EXTRACTED context=call]--> LazyClassAttribute() at=_internal/_dataclasses.py:L150
+EDGE rebuild_dataclass() --calls [EXTRACTED context=call]--> complete_dataclass() at=dataclasses.py:L360
+EDGE complete_dataclass() --calls [EXTRACTED context=call]--> set_dataclass_mocks() at=_internal/_dataclasses.py:L131
+EDGE complete_dataclass() --calls [EXTRACTED context=call]--> create_schema_validator() at=_internal/_dataclasses.py:L186
+EDGE complete_dataclass() --calls [EXTRACTED context=call]--> get_standard_typevars_map() at=_internal/_dataclasses.py:L140
+EDGE complete_dataclass() --calls [EXTRACTED context=call]--> set_dataclass_fields() at=_internal/_dataclasses.py:L128
+EDGE get_flat_models_from_models() --calls [EXTRACTED context=call]--> get_flat_models_from_model() at=v1/schema.py:L424
+EDGE model_schema() --calls [INFERRED context=call]--> get_model() at=v1/schema.py:L184
+EDGE .definitions_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2263
+EDGE ._common_dict_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1189
+EDGE ._common_set_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1145
+EDGE .function_plain_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1261
+EDGE .nullable_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1369
+EDGE .union_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1389
+EDGE .call_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2184
+EDGE .chain_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1535
+EDGE .custom_error_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2195
+EDGE .function_after_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1249
+EDGE .function_before_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1236
+EDGE .function_wrap_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1277
+EDGE .arguments_v3_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2151
+EDGE .computed_field_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1718
+EDGE .dataclass_field_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1696
+EDGE .dataclass_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1946
+EDGE .default_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1290
+EDGE .deque_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1060
+EDGE .generate_definitions() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L384
+EDGE .generate_inner() --calls [EXTRACTED context=call]--> CoreRef at=json_schema.py:L465
+EDGE .generator_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1159
+EDGE .json_or_python_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1569
+EDGE .json_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2207
+EDGE .kw_arguments_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2052
+EDGE .lax_or_strict_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1552
+EDGE .list_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1046
+EDGE .missing_sentinel_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L946
+EDGE .model_field_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1707
+EDGE .model_fields_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1862
+EDGE .model_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1735
+EDGE ._named_required_fields_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1639
+EDGE .named_tuple_field_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1961
+EDGE .named_tuple_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1982
+EDGE .p_arguments_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2092
+EDGE .ser_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L2299
+EDGE .tagged_union_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1458
+EDGE .tuple_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1103
+EDGE .typed_dict_field_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1685
+EDGE .typed_dict_schema() --calls [EXTRACTED context=call]--> .generate_inner() at=json_schema.py:L1600
+EDGE .definitions_schema() --calls [EXTRACTED context=call]--> CoreRef at=json_schema.py:L2265
+EDGE set_dataclass_mocks() --calls [EXTRACTED context=call]--> rebuild_dataclass() at=_internal/_mock_val_ser.py:L210
+EDGE .generate_definitions() --calls [EXTRACTED context=call]--> PydanticUserError at=json_schema.py:L376
+EDGE set_dataclass_fields() --calls [EXTRACTED context=call]--> get_standard_typevars_map() at=_internal/_dataclasses.py:L77
+EDGE .__new__() --calls [EXTRACTED context=call]--> set_model_mocks() at=_internal/_model_construction.py:L249
+EDGE .handle_ref_overrides() --calls [EXTRACTED context=call]--> JsonRef at=json_schema.py:L2474
+EDGE ._named_required_fields_schema() --calls [EXTRACTED context=call]--> .handle_ref_overrides() at=json_schema.py:L1645
+EDGE .model_fields_schema() --calls [EXTRACTED context=call]--> .resolve_ref_schema() at=json_schema.py:L1861
+EDGE .model_fields_schema() --calls [EXTRACTED context=call]--> ._named_required_fields_schema() at=json_schema.py:L1858
+EDGE .typed_dict_schema() --calls [EXTRACTED context=call]--> ._named_required_fields_schema() at=json_schema.py:L1591
+EDGE .resolve_ref_schema() --calls [EXTRACTED context=call]--> JsonRef at=json_schema.py:L1836
+EDGE _get_all_json_refs() --calls [EXTRACTED context=call]--> JsonRef at=json_schema.py:L3119
+EDGE field_singleton_schema() --calls [EXTRACTED context=call]--> enum_process_schema() at=v1/schema.py:L892
+EDGE field_singleton_schema() --calls [INFERRED context=call]--> lenient_issubclass() at=v1/schema.py:L850
+EDGE model_schema() --calls [EXTRACTED context=call]--> get_flat_models_from_model() at=v1/schema.py:L185

@@ -1,0 +1,6 @@
+=== Q7: callers_of reflectTemplate (canary) ===
+{
+  "status": "not_found",
+  "summary": "No node found matching 'reflectTemplate'.",
+  "confidence": "target not indexed: no node matching 'reflectTemplate', so this 0 is not evidence that none exist"
+}

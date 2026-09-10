@@ -1,0 +1,181 @@
+{
+  "status": "ok",
+  "pattern": "importers_of",
+  "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+  "description": "Find all files that import a given file or module",
+  "summary": "Found 12 result(s) for importers_of('rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java')",
+  "result_count": 12,
+  "results_omitted": 0,
+  "results": [
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/RestAssured.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/RestAssured.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/builder/RequestSpecBuilder.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/builder/RequestSpecBuilder.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseBuilder.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseBuilder.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseSpecBuilder.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseSpecBuilder.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredHttpBuilder.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredHttpBuilder.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredResponseOptionsImpl.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredResponseOptionsImpl.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseImpl.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseImpl.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseOptionsImpl.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseOptionsImpl.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcher.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcher.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcherGroup.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcherGroup.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/specification/QueryableRequestSpecification.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/specification/QueryableRequestSpecification.java"
+    },
+    {
+      "importer": "rest-assured/rest-assured/src/main/java/io/restassured/specification/RequestSpecification.java",
+      "file": "rest-assured/rest-assured/src/main/java/io/restassured/specification/RequestSpecification.java"
+    }
+  ],
+  "edges": [
+    {
+      "id": 39,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/RestAssured.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/RestAssured.java",
+      "line": 23,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 629,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/builder/RequestSpecBuilder.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/builder/RequestSpecBuilder.java",
+      "line": 22,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 823,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseBuilder.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseBuilder.java",
+      "line": 19,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 935,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseSpecBuilder.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/builder/ResponseSpecBuilder.java",
+      "line": 21,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 3006,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredHttpBuilder.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredHttpBuilder.java",
+      "line": 21,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 3152,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredResponseOptionsImpl.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/internal/RestAssuredResponseOptionsImpl.java",
+      "line": 21,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 3340,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseImpl.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseImpl.java",
+      "line": 19,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 3352,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseOptionsImpl.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/internal/ValidatableResponseOptionsImpl.java",
+      "line": 21,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 3556,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcher.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcher.java",
+      "line": 4,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 3670,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcherGroup.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/internal/assertion/BodyMatcherGroup.java",
+      "line": 3,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 5754,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/specification/QueryableRequestSpecification.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/specification/QueryableRequestSpecification.java",
+      "line": 20,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    },
+    {
+      "id": 5849,
+      "kind": "IMPORTS_FROM",
+      "source": "rest-assured/rest-assured/src/main/java/io/restassured/specification/RequestSpecification.java",
+      "target": "rest-assured/rest-assured/src/main/java/io/restassured/config/RestAssuredConfig.java",
+      "file_path": "rest-assured/rest-assured/src/main/java/io/restassured/specification/RequestSpecification.java",
+      "line": 19,
+      "confidence": 1.0,
+      "confidence_tier": "EXTRACTED"
+    }
+  ]
+}

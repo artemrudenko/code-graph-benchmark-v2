@@ -1,0 +1,52 @@
+{
+  "status": "ok",
+  "query": "solve_dependencies",
+  "search_mode": "fts",
+  "summary": "Found 2 node(s) matching 'solve_dependencies'",
+  "results": [
+    {
+      "name": "_solve_dependencies",
+      "qualified_name": "fastapi/fastapi/routing.py::_FrontendRouteGroup._solve_dependencies",
+      "kind": "Function",
+      "file_path": "fastapi/fastapi/routing.py",
+      "line_start": 2216,
+      "line_end": 2252,
+      "language": "python",
+      "params": "(\n        self,\n        scope: Scope,\n        receive: Receive,\n        send: Send,\n        *,\n        dependant: Dependant,\n        dependency_overrides_provider: Any | None,\n        embed_body_fields: bool,\n    )",
+      "return_type": "AsyncIterator[SolvedDependency]",
+      "signature": "def _solve_dependencies((\n        self,\n        scope: Scope,\n        receive: Receive,\n        send: Send,\n        *,\n        dependant: Dependant,\n        dependency_overrides_provider: Any | None,\n        embed_body_fields: bool,\n    )) -> AsyncIterator[SolvedDependency]",
+      "score": 0.04918
+    },
+    {
+      "name": "solve_dependencies",
+      "qualified_name": "fastapi/fastapi/dependencies/utils.py::solve_dependencies",
+      "kind": "Function",
+      "file_path": "fastapi/fastapi/dependencies/utils.py",
+      "line_start": 586,
+      "line_end": 731,
+      "language": "python",
+      "params": "(\n    *,\n    request: Request | WebSocket,\n    dependant: Dependant,\n    body: dict[str, Any] | FormData | bytes | None = None,\n    background_tasks: StarletteBackgroundTasks | None = None,\n    response: Response | None = None,\n    dependency_overrides_provider: Any | None = None,\n    dependency_cache: dict[DependencyCacheKey, Any] | None = None,\n    # TODO: remove this parameter later, no longer used, not removing it yet as some\n    # people might be monkey patching this function (although that's not supported)\n    async_exit_stack: AsyncExitStack,\n    embed_body_fields: bool,\n    _uses_scopes_cache: _UsesScopesCache | None = None,\n)",
+      "return_type": "SolvedDependency",
+      "signature": "def solve_dependencies((\n    *,\n    request: Request | WebSocket,\n    dependant: Dependant,\n    body: dict[str, Any] | FormData | bytes | None = None,\n    background_tasks: StarletteBackgroundTasks | None = None,\n    response: Response | None = None,\n    dependency_overrides_provider: Any | None = None,\n    dependency_cache: dict[DependencyCacheKey, Any] | None = None,\n    # TODO: remove this parameter later, no longer used, not removing it yet as some\n    # people might be monkey patching this function (al",
+      "score": 0.048387
+    }
+  ],
+  "_hints": {
+    "next_steps": [
+      {
+        "tool": "query_graph",
+        "suggestion": "Inspect callers/callees of a search result"
+      },
+      {
+        "tool": "get_flow",
+        "suggestion": "See the execution flow through a matched node"
+      },
+      {
+        "tool": "get_impact_radius",
+        "suggestion": "Check the blast radius from matched nodes"
+      }
+    ],
+    "related": [],
+    "warnings": []
+  }
+}
