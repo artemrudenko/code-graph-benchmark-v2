@@ -78,8 +78,16 @@ The current archive verifies four narrow retrieval checks. They establish why th
 
 The full claims, raw output references, and independent source checks are in the [evidence index](evidence-index.md).
 
-## Status of the earlier scorecard
+## How to read the older scorecard
 
-An earlier exploratory scorecard mixed response-token counts with a model-produced quality judgment and used them to name overall leaders. It helped identify useful question types, but it is not retained as a current result because the tool classes, setup costs, response formats, and evidence completeness were not comparable enough for a single ranking. Its numerical winners and stack recommendations should not be cited.
+An earlier exploratory scorecard used a Sonnet LLM judge. It read a tool response and gave it a quality score against a plain file-reading answer. This was useful for finding questions that deserved more investigation. It was not a source check and it was not ground truth.
 
-The revised work keeps the question taxonomy, preserves source-checked observations, and treats full agent-task performance as a separate study that still needs to be run.
+A judge can prefer an answer that is concise or well written. It can miss that the answer points to the wrong function. It can also repeat an error in the comparison answer it was given. The scorecard also mixed tools that do different jobs, and it did not compare their setup cost, rebuild cost, or full agent-task outcome in one controlled study. The current archive does not include the files needed to audit every historical quality score.
+
+For these reasons, the numerical winners, combined quality-and-token score, and tool-stack recommendations from that earlier scorecard are withdrawn. They should not be cited as current results.
+
+## Why the current claims are stronger, but still narrow
+
+Each of the four current observations has a fixed repository and commit, saved raw tool output, a recorded query and index scope, and a separate source check in a fresh clone. This is enough to support the narrow claim written for each case.
+
+It is not enough to prove a universal ranking, total token savings, or better final patches from coding agents. Those claims need the final pilot step: the same change task, the same project configuration, independent source checks, test results, and recorded retries for every candidate.
