@@ -1,5 +1,5 @@
 ---
-# DEV publishing: upload assets/images/cover-broken-edge.png as the cover image.
+# DEV publishing: upload assets/images/cover-broken-edge-dev.png as the cover image.
 title: "I wanted my coding agent to stop re-reading the same code"
 published: false
 tags: ai, llm, developertools, opensource

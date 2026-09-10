@@ -2,7 +2,7 @@
 
 | File | Purpose | Placement in the DEV article |
 |---|---|---|
-| images/cover-broken-edge.png | Cover image, "The Broken Edge" concept | Upload as the DEV cover. It deliberately has no text or logo. |
+| images/cover-broken-edge-dev.png | Cover image, "The Broken Edge" concept, composed for DEV's 1000×420 recommendation | Upload as the DEV cover. It deliberately has no text or logo. The earlier `cover-broken-edge.png` is retained as the source concept. |
 | diagrams/code-context-lifecycle.png | A persistent-context lifecycle: configure, query, verify, change, refresh | After the opening problem statement. |
 | diagrams/code-context-tool-jobs.png | Four code-context tool classes, grouped by the developer job they do | After the question taxonomy. |
 | diagrams/evidence-at-a-glance.png | Four independently checked numeric findings, with their own denominators | In "What the source checks found." |
