@@ -98,7 +98,7 @@ I ask four short questions:
 
 The tools also had useful successes: accurate caller lists, separate nodes for ambiguous names, and diagnostics that exposed uncertainty. The saved cases do not support choosing one tool for every repository.
 
-The evidence archive contains the reproducibility manifest, raw tool outputs, and an evidence index that re-derives the four central claims from fresh clones. It does not include third-party repository clones, generated graph databases, or a full benchmark runner. Those can be reconstructed from the manifest. grepai and Augment Context Engine were not evaluated.
+The [evidence archive](../README.md) contains the [reproducibility manifest](reproducibility-manifest.md), raw tool outputs, and an [evidence index](evidence-index.md) that re-derives the four central claims from fresh clones. It does not include third-party repository clones, generated graph databases, or a full benchmark runner. Those can be reconstructed from the manifest. grepai and Augment Context Engine were not evaluated.
 
 My conclusion is narrow: a smaller answer helps only when it keeps the connections the task needs. Token count alone cannot tell me that.
 
