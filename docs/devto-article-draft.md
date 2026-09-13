@@ -6,9 +6,9 @@ tags: ai, llm, developertools, agents
 description: "I checked code graphs and context tools against source code to learn when an AI coding agent can safely rely on their answers."
 ---
 
-A code-graph query told me that a Kotlin parser had 17 callers. The source had one.
+A reference lookup on the same FastAPI commit found 1 of 4 known references to `solve_dependencies`. I changed only the indexing root, from a nested package to the repository root. It found all 4.
 
-The other 16 calls were real, but they belonged to a public overload with the same name. The answer was short, plausible, and wrong for the function I had asked about.
+The source did not change. The symbol did not change. The configured scope did.
 
 That is why I started this work. I wanted a coding agent to stop doing a mundane thing: reopening the same files and finding the same relationships in every session. Reusable code context could mean less repeated navigation, safer plans for changes and refactors, and fewer missed relationships.
 
@@ -18,7 +18,7 @@ The question became: **can an index help an agent navigate without becoming a se
 
 My answer so far is modest. A code index can be useful as working memory. It is not authority. Before a relationship changes a plan or a patch, the agent should know the exact target, the scope it searched, the freshness of the index, and what current source says.
 
-This article shows four cases I checked against source code: an overloaded function, test calls that look like production impact, an absent symbol that received related suggestions, and an index whose coverage changed with its project scope. It ends with a small test you can run before adopting a tool in your own repository.
+This article shows four cases I checked against source code: an index rooted in the wrong folder, test calls that look like production impact, an absent symbol that received related suggestions, and an index that became old after a source change. It ends with a small test you can run before adopting a tool in your own repository.
 
 ![A code-context lifecycle: first configure scope and build a reusable index; then ask recurring questions about symbols, callers, paths, and tests; check the source before acting; after code changes, refresh the index and repeat.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
 
@@ -55,16 +55,14 @@ I kept four retrieval cases that I checked again against fixed source versions. 
 
 | Check | Tool response | Source-checked result | Rule it led to |
 |---|---|---|---|
-| Ktor name collision | code-review-graph returned 17 callers | Only 1 caller belonged to the low-level parser. The other 16 belonged to a public overload with the same name. | A name is not an identity. Resolve the definition first. |
+| FastAPI indexing scope | Serena found 1 of 4 known references from a nested package root | The same source version returned 4 of 4 when indexed from the repository root. | Project setup is part of the answer. |
 | ripgrep test boundary | code-review-graph returned 28 callers | 24 were test functions and 4 were production functions. | Split tests from production before impact analysis. |
 | Deliberately absent symbols | graphify returned related code in 3 of 12 fixed queries for symbols that do not exist | 9 answers clearly said no match. | A related suggestion is a candidate, not an exact match. |
-| FastAPI indexing scope | Serena found 1 of 4 known references from a nested package root | The same source version returned 4 of 4 when indexed from the repository root. | Project setup is part of the answer. |
+| FastAPI index freshness | A stale graph still showed 4 callers after a local source change | Current source had 5 direct callers. | Refresh or check source before a relationship-sensitive change. |
 
-![Four source-checked observations: Ktor 17 results versus 1 real caller; ripgrep 28 callers split into 24 tests and 4 production; graphify 3 substitutions out of 12 absent-symbol checks; Serena 4 of 4 references at repository root versus 1 of 4 at a nested package root.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/evidence-at-a-glance.png)
+![FastAPI project-root control: with the same pinned commit and solve_dependencies lookup, a nested fastapi package root found 1 of 4 reference sites; the repository root found all 4. Only the index root changed.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/fastapi-project-root-control.png)
 
-The Ktor case made the risk concrete. The low-level `parseHeaderValue` function has one real caller, `parseHeaders`. The graph query returned that caller plus 16 real calls to a different public `parseHeaderValue` overload. The response was short and looked plausible. It was almost entirely wrong for the function I asked about.
-
-![Ktor's low-level parser has one real incoming caller, parseHeaders. A graph query returned it plus 16 callers of a different public overload.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/ktor-caller-disambiguation.png)
+The FastAPI case made the risk concrete. `solve_dependencies` has four reference sites in the pinned source: three in `fastapi/routing.py` and one recursive call in `fastapi/dependencies/utils.py`. With a nested package as the index root, Serena returned one. With the repository root, the same lookup returned all four. The short answer looked reasonable. Its scope was incomplete.
 
 None of these cases says that graph or language tools are bad. They say that an answer needs a small trust contract: exact target, search scope, test boundary, and a clear status such as exact match, candidate, or no match.
 

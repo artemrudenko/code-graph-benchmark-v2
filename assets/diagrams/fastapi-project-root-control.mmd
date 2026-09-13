@@ -1,0 +1,13 @@
+%%{init: {"theme":"dark","flowchart":{"curve":"linear","nodeSpacing":42,"rankSpacing":48},"themeVariables":{"background":"#0b1220","primaryColor":"#162237","primaryTextColor":"#f6f7fb","primaryBorderColor":"#536987","lineColor":"#94a3b8","secondaryColor":"#163529","tertiaryColor":"#3c1f28","fontFamily":"Inter, Arial, sans-serif"}}}%%
+flowchart LR
+    A["Nested package root<br/>fastapi/"] --> B["1 of 4<br/>reference sites found"]
+    B -->|"change only the index root"| C["Repository root<br/>."]
+    C --> D["4 of 4<br/>reference sites found"]
+    D --> E["Project setup is<br/>part of the answer"]
+
+    classDef incomplete fill:#3c1f28,stroke:#f27f7f,color:#f6f7fb,stroke-width:2px;
+    classDef complete fill:#163529,stroke:#6dd8a4,color:#f6f7fb,stroke-width:2px;
+    classDef rule fill:#162237,stroke:#8aa3c7,color:#f6f7fb,stroke-width:2px;
+    class A,B incomplete;
+    class C,D complete;
+    class E rule;
