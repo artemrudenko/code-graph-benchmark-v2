@@ -3,7 +3,7 @@
 title: "My coding agent kept re-reading code. I tested code graphs."
 published: false
 tags: ai, llm, developertools, opensource
-description: "I source-checked code graphs and context tools to learn when an AI coding agent can safely rely on their answers."
+description: "I checked code graphs and context tools against source code to learn when an AI coding agent can safely rely on their answers."
 ---
 
 A code-graph query told me that a Kotlin parser had 17 callers. The source had one.
@@ -18,7 +18,7 @@ The question became: **can an index help an agent navigate without becoming a se
 
 My answer so far is modest. A code index can be useful as working memory. It is not authority. Before a relationship changes a plan or a patch, the agent should know the exact target, the scope it searched, the freshness of the index, and what current source says.
 
-This article shows four source-checked cases that changed my rules: an overloaded function, test calls that look like production impact, an absent symbol that received related suggestions, and an index whose coverage changed with its project scope. It ends with a small test you can run before adopting a tool in your own repository.
+This article shows four cases I checked against source code: an overloaded function, test calls that look like production impact, an absent symbol that received related suggestions, and an index whose coverage changed with its project scope. It ends with a small test you can run before adopting a tool in your own repository.
 
 ![A code-context lifecycle: first configure scope and build a reusable index; then ask recurring questions about symbols, callers, paths, and tests; check the source before acting; after code changes, refresh the index and repeat.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
 
