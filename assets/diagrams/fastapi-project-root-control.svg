@@ -13,20 +13,20 @@
       <path d="M0,0 L15,7.5 L0,15 Z" fill="#92a4be"/>
     </marker>
     <style>
-      .title { font: 700 54px Inter, Arial, sans-serif; fill: #f7f8fb; letter-spacing: -1.2px; }
-      .subtitle { font: 400 26px Inter, Arial, sans-serif; fill: #b9c5d5; }
-      .card-title { font: 650 34px Inter, Arial, sans-serif; fill: #f7f8fb; }
-      .card-code { font: 500 28px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #d7e2f0; }
-      .card-note { font: 400 25px Inter, Arial, sans-serif; fill: #bdc9d8; }
-      .number { font: 750 82px Inter, Arial, sans-serif; fill: #f7f8fb; letter-spacing: -3px; }
-      .number-note { font: 500 26px Inter, Arial, sans-serif; fill: #d7e2f0; }
-      .arrow-label { font: 600 23px Inter, Arial, sans-serif; fill: #c7d2e1; }
-      .footer { font: 650 34px Inter, Arial, sans-serif; fill: #f7f8fb; }
-      .footer-note { font: 400 24px Inter, Arial, sans-serif; fill: #b9c5d5; }
+      .title { font-family: Inter, Arial, sans-serif; font-size: 54px; font-weight: 700; fill: #f7f8fb; letter-spacing: -1.2px; }
+      .subtitle { font-family: Inter, Arial, sans-serif; font-size: 26px; font-weight: 400; fill: #b9c5d5; }
+      .card-title { font-family: Inter, Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #f7f8fb; }
+      .card-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 28px; font-weight: 500; fill: #d7e2f0; }
+      .card-note { font-family: Inter, Arial, sans-serif; font-size: 25px; font-weight: 400; fill: #bdc9d8; }
+      .number { font-family: Inter, Arial, sans-serif; font-size: 82px; font-weight: 700; fill: #f7f8fb; letter-spacing: -3px; }
+      .number-note { font-family: Inter, Arial, sans-serif; font-size: 26px; font-weight: 500; fill: #d7e2f0; }
+      .arrow-label { font-family: Inter, Arial, sans-serif; font-size: 23px; font-weight: 600; fill: #c7d2e1; }
+      .footer { font-family: Inter, Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #f7f8fb; }
+      .footer-note { font-family: Inter, Arial, sans-serif; font-size: 24px; font-weight: 400; fill: #b9c5d5; }
     </style>
   </defs>
   <rect width="1200" height="675" fill="url(#bg)" rx="32"/>
-  <text class="title" x="600" y="75" text-anchor="middle">FastAPI: index scope changed the reference answer</text>
+  <text class="title" x="600" y="75" text-anchor="middle">FastAPI: index root changed the answer</text>
   <text class="subtitle" x="600" y="114" text-anchor="middle">Same pinned commit · same symbol: solve_dependencies · only the project root changed</text>
 
   <g filter="url(#shadow)">
@@ -48,7 +48,7 @@
 
   <path d="M528 354 H672" stroke="#92a4be" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
   <rect x="518" y="288" width="164" height="44" rx="22" fill="#17253a" stroke="#536987" stroke-width="2"/>
-  <text class="arrow-label" x="600" y="316" text-anchor="middle">only root changed</text>
+  <text class="arrow-label" x="600" y="316" text-anchor="middle">change root</text>
 
   <rect x="146" y="525" width="908" height="90" rx="24" fill="#162237" stroke="#536987" stroke-width="3"/>
   <text class="footer" x="600" y="566" text-anchor="middle">Rule: project setup is part of the answer.</text>
