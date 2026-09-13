@@ -3,6 +3,8 @@
 | File | Purpose | Placement in the DEV article |
 |---|---|---|
 | images/cover-broken-edge-dev.png | Cover image, "The Broken Edge" concept, composed for DEV's 1000×420 recommendation | Upload as the DEV cover. It deliberately has no text or logo. The earlier `cover-broken-edge.png` is retained as the source concept. |
+| images/cover-index-scope-dev-v2.png | New DEV cover: the same relationship map is incomplete on the left and complete on the right | Upload as the DEV cover. Its central composition is safe for a DEV page and a link-preview crop. |
+| images/cover-index-scope-linkedin.png | Standalone LinkedIn visual, with the editorial hook “One index. Two answers.” | Use for an image-first post. For a URL-first announcement, use the DEV link preview instead. |
 | diagrams/code-context-lifecycle.png | A persistent-context lifecycle: configure, query, verify, change, refresh | After the opening problem statement. |
 | diagrams/code-context-tool-jobs.png | Four code-context tool classes, grouped by the developer job they do | Retained in the evidence archive; no longer used by the article. |
 | diagrams/evidence-at-a-glance.png | Four independently checked numeric findings, with their own denominators | Retained in the evidence archive; no longer used by the article. |

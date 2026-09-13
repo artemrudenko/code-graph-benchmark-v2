@@ -2,6 +2,8 @@
 
 **Status:** Prepare now. Publish only after the DEV article is public and replace the link placeholder below.
 
+**Visual:** This is the URL-first version, so let the DEV article render its preview image. For an image-first version, use `assets/images/cover-index-scope-linkedin.png` and place the DEV link in the first comment.
+
 I wanted a coding agent to stop opening the same files every time it worked on a repository.
 
 It sounded simple: give the agent a saved map of the codebase.
