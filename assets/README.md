@@ -4,12 +4,12 @@
 |---|---|---|
 | images/cover-broken-edge-dev.png | Cover image, "The Broken Edge" concept, composed for DEV's 1000×420 recommendation | Upload as the DEV cover. It deliberately has no text or logo. The earlier `cover-broken-edge.png` is retained as the source concept. |
 | diagrams/code-context-lifecycle.png | A persistent-context lifecycle: configure, query, verify, change, refresh | After the opening problem statement. |
-| diagrams/code-context-tool-jobs.png | Four code-context tool classes, grouped by the developer job they do | After the question taxonomy. |
+| diagrams/code-context-tool-jobs.png | Four code-context tool classes, grouped by the developer job they do | Retained in the evidence archive; no longer used by the article. |
 | diagrams/evidence-at-a-glance.png | Four independently checked numeric findings, with their own denominators | Retained in the evidence archive; no longer used by the article. |
 | diagrams/ktor-caller-disambiguation.png | Ktor: one true caller and 16 cross-attributed results | Retained as a benchmark artifact; no longer used by the article. |
-| diagrams/fastapi-project-root-control.png | FastAPI control: a nested package root finds 1 of 4 references; the repository root finds 4 of 4 for the same commit and symbol | In "Four checks that changed how I use code graphs." |
-| diagrams/retrieval-trust-checks.png | Four checks before acting on compact code context | In the selection-pilot section. |
-| diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "An index can be correct and still be old." |
+| diagrams/fastapi-project-root-control.png | FastAPI control: a nested package root finds 1 of 4 references; the repository root finds 4 of 4 for the same commit and symbol | In "First check: did the index see the whole repository?" |
+| diagrams/retrieval-trust-checks.png | Four checks before acting on compact code context | In "A small tutorial: test a code index in your repository." |
+| diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "A map can become old." |
 | diagrams/code-context-lifecycle-dark.png | Dark source version of the persistent-context lifecycle | Retained with its Mermaid and Excalidraw sources. |
 | diagrams/code-context-lifecycle-article-dark.png | First large-type editorial iteration of the persistent-context lifecycle | Kept for provenance. |
 | diagrams/code-context-lifecycle-article-large-dark.png | Mobile-readable editorial version of the persistent-context lifecycle | Used in the DEV article after the opening problem statement. |
