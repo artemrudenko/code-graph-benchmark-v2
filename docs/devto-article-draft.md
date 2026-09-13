@@ -60,7 +60,7 @@ I kept four retrieval cases that I checked again against fixed source versions. 
 | Deliberately absent symbols | graphify returned related code in 3 of 12 fixed queries for symbols that do not exist | 9 answers clearly said no match. | A related suggestion is a candidate, not an exact match. |
 | FastAPI index freshness | A stale graph still showed 4 callers after a local source change | Current source had 5 direct callers. | Refresh or check source before a relationship-sensitive change. |
 
-![FastAPI project-root control: with the same pinned commit and solve_dependencies lookup, a nested fastapi package root found 1 of 4 reference sites; the repository root found all 4. Only the index root changed.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/fastapi-project-root-control.png)
+![FastAPI project-root control: with the same pinned commit and solve_dependencies lookup, a nested fastapi package root found 1 of 4 reference sites; the repository root found all 4. Only the index root changed.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/7408b5fac5f27fa7496a7d5e35cc1fded1336aba/assets/diagrams/fastapi-project-root-control.png)
 
 The FastAPI case made the risk concrete. `solve_dependencies` has four reference sites in the pinned source: three in `fastapi/routing.py` and one recursive call in `fastapi/dependencies/utils.py`. With a nested package as the index root, Serena returned one. With the repository root, the same lookup returned all four. The short answer looked reasonable. Its scope was incomplete.
 
