@@ -1,0 +1,19 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","clusterBkg":"#0D202D","clusterBorder":"#35596A","edgeLabelBackground":"#08131E","fontFamily":"Arial"}}}%%
+flowchart LR
+    A[Index built<br/>4 direct callers] --> B[Source changes<br/>5 direct callers]
+    A --> C[Old graph misses<br/>new caller]
+    B --> D{Revision and scope<br/>still match?}
+    C --> D
+    D -- No or unknown --> E[Verify current source<br/>complete caller set]
+    E --> F[Refresh index<br/>update manifest]
+    D -- Yes --> G[Use index to navigate<br/>verify change-sensitive edges]
+    F --> G
+
+    classDef index fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:1.8px;
+    classDef change fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:1.8px;
+    classDef risk fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:1.8px;
+    classDef verify fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:1.8px;
+    class A index;
+    class B,D change;
+    class C risk;
+    class E,F,G verify;

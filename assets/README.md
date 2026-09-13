@@ -9,8 +9,15 @@
 | diagrams/ktor-caller-disambiguation.png | Ktor: one true caller and 16 cross-attributed results | After the Ktor explanation. |
 | diagrams/retrieval-trust-checks.png | Four checks before acting on compact code context | In the selection-pilot section. |
 | diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "An index can be correct and still be old." |
+| diagrams/code-context-lifecycle-dark.png | Dark version of the persistent-context lifecycle | Used in the DEV article after the opening problem statement. |
+| diagrams/code-context-tool-jobs-dark.png | Dark version of the tool-job map | Available as the matching dark alternative. |
+| diagrams/stale-index-control-dark.png | Dark version of the stale-index control | Used in the DEV article in "An index can be correct and still be old." |
 
 The Mermaid files and Excalidraw files are editable structural sources. The SVG and PNG are the publication figures; PNG is the upload-ready form for DEV. The article uses raw GitHub URLs for diagrams so the current unpublished DEV draft can display them. The cover must be uploaded through DEV.
+
+The original light figures remain available. The article uses the dark variants
+where a light diagram was previously embedded, so the evidence figures share a
+single dark editorial palette.
 
 ## Standard for future diagrams
 

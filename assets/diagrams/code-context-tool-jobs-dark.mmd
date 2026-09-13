@@ -1,0 +1,18 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","clusterBkg":"#0D202D","clusterBorder":"#35596A","edgeLabelBackground":"#08131E","fontFamily":"Arial"}}}%%
+flowchart TB
+    A[Work question] --> B{What do I need?}
+    B -- Read a module --> C[Context packager]
+    B -- Find definition<br/>or references --> D[LSP navigation]
+    B -- Trace callers<br/>or change impact --> E[AST or graph index]
+    B -- Find or change<br/>a code pattern --> F[Structural patterns]
+    C --> G[Verify in source]
+    D --> G
+    E --> G
+    F --> G
+
+    classDef question fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:1.8px;
+    classDef option fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:1.8px;
+    classDef verify fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:1.8px;
+    class A,B question;
+    class C,D,E,F option;
+    class G verify;

@@ -1,0 +1,19 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","clusterBkg":"#0D202D","clusterBorder":"#35596A","edgeLabelBackground":"#08131E","fontFamily":"Arial"}}}%%
+flowchart LR
+    A[Set project root<br/>and build options] --> B[Build or refresh<br/>code context]
+    B --> C[Ask repeated questions<br/>symbols, callers, tests]
+    C --> D{Exact target<br/>and right scope?}
+    D -- Yes --> E[Check source<br/>then act]
+    D -- No --> F[Read source or<br/>fix setup]
+    E --> G[Code changes]
+    F --> G
+    G --> B
+
+    classDef setup fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:1.8px;
+    classDef query fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:1.8px;
+    classDef verify fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:1.8px;
+    classDef fallback fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:1.8px;
+    class A,B,G setup;
+    class C,D query;
+    class E verify;
+    class F fallback;
