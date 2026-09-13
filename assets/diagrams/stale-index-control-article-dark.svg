@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960" role="img" aria-labelledby="title desc">
+  <title id="title">A graph can be right and still be old</title>
+  <desc id="desc">An index built when there were four callers becomes stale after a fifth caller is added. Check revision and scope, verify source when uncertain, then refresh the index.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#A9DDE7"/></marker>
+    <style>
+      .title{font:700 54px Arial,sans-serif;fill:#F0EDE4}.subtitle{font:400 27px Arial,sans-serif;fill:#B7C8D2}.box{stroke-width:3}.label{font:700 31px Arial,sans-serif;fill:#F0EDE4;text-anchor:middle}.edge{fill:none;stroke:#A9DDE7;stroke-width:4;marker-end:url(#arrow)}.edge-label{font:700 24px Arial,sans-serif;fill:#B7C8D2}
+    </style>
+  </defs>
+  <rect width="1600" height="960" fill="#08131E"/>
+  <text x="800" y="78" text-anchor="middle" class="title">A graph can be right and still be old</text>
+  <text x="800" y="122" text-anchor="middle" class="subtitle">The source changed from four direct callers to five.</text>
+
+  <path d="M480 270 H605" class="edge"/><path d="M995 270 H1115" class="edge"/>
+  <rect x="90" y="195" width="390" height="150" rx="18" fill="#102D3A" stroke="#A9DDE7" class="box"/>
+  <text x="285" y="255" class="label"><tspan x="285">Index was built:</tspan><tspan x="285" dy="40">4 direct callers</tspan></text>
+  <rect x="605" y="195" width="390" height="150" rx="18" fill="#332B1D" stroke="#F3C969" class="box"/>
+  <text x="800" y="255" class="label"><tspan x="800">Source changes:</tspan><tspan x="800" dy="40">5 direct callers</tspan></text>
+  <rect x="1115" y="195" width="390" height="150" rx="18" fill="#332126" stroke="#F26B5B" class="box"/>
+  <text x="1310" y="255" class="label"><tspan x="1310">Old graph misses</tspan><tspan x="1310" dy="40">the new caller</tspan></text>
+
+  <path d="M1310 345 V410 H800 V465" class="edge"/>
+  <rect x="450" y="465" width="700" height="125" rx="62" fill="#332B1D" stroke="#F3C969" class="box"/>
+  <text x="800" y="520" class="label"><tspan x="800">Do index revision and scope</tspan><tspan x="800" dy="38">still match the repository?</tspan></text>
+
+  <path d="M610 590 V675 H395 V720" class="edge"/><path d="M990 590 V675 H1205 V720" class="edge"/>
+  <text x="410" y="666" class="edge-label">No or unknown</text><text x="1080" y="666" class="edge-label">Yes</text>
+  <rect x="120" y="720" width="550" height="125" rx="18" fill="#153329" stroke="#62D2C3" class="box"/>
+  <text x="395" y="775" class="label"><tspan x="395">Check current source,</tspan><tspan x="395" dy="40">then refresh the index</tspan></text>
+  <rect x="930" y="720" width="550" height="125" rx="18" fill="#102D3A" stroke="#A9DDE7" class="box"/>
+  <text x="1205" y="775" class="label"><tspan x="1205">Use the index to navigate;</tspan><tspan x="1205" dy="40">verify sensitive edges</tspan></text>
+</svg>
