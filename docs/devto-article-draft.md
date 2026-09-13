@@ -2,7 +2,7 @@
 # DEV publishing: upload assets/images/cover-broken-edge-dev.png as the cover image.
 title: "My coding agent kept re-reading code. I tested code graphs."
 published: false
-tags: ai, llm, developertools, opensource
+tags: ai, llm, developertools, agents
 description: "I checked code graphs and context tools against source code to learn when an AI coding agent can safely rely on their answers."
 ---
 
