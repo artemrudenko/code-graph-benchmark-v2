@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "tool": {
+    "name": "replace-with-tool-name",
+    "version": "replace-with-version"
+  },
+  "repository": {
+    "root": "replace-with-local-project-root",
+    "head": "replace-with-commit-or-revision",
+    "working_tree": "clean"
+  },
+  "build": {
+    "completed_at_utc": "YYYY-MM-DDTHH:MM:SSZ",
+    "command": "replace-with-the-command-that-built-or-updated-the-index",
+    "configuration": "replace-with-config-file-or-relevant-settings",
+    "build_flags": [],
+    "exclusions": [],
+    "outcome": "success"
+  },
+  "coverage_signal": {
+    "tool_status": "optional-tool-specific-status",
+    "completeness": "complete | partial | truncated | unknown",
+    "verification_query": "a relationship query checked in current source",
+    "checked_at_utc": "YYYY-MM-DDTHH:MM:SSZ"
+  }
+}

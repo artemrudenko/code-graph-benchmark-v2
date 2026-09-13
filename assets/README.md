@@ -8,6 +8,7 @@
 | diagrams/evidence-at-a-glance.png | Four independently checked numeric findings, with their own denominators | In "What the source checks found." |
 | diagrams/ktor-caller-disambiguation.png | Ktor: one true caller and 16 cross-attributed results | After the Ktor explanation. |
 | diagrams/retrieval-trust-checks.png | Four checks before acting on compact code context | In the selection-pilot section. |
+| diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "An index can be correct and still be old." |
 
 The Mermaid files and Excalidraw files are editable structural sources. The SVG and PNG are the publication figures; PNG is the upload-ready form for DEV. The article uses raw GitHub URLs for diagrams so the current unpublished DEV draft can display them. The cover must be uploaded through DEV.
 

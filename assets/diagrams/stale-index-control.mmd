@@ -1,0 +1,18 @@
+flowchart LR
+    A[Index built<br/>4 direct callers] --> B[Source changes<br/>5 direct callers]
+    A --> C[Old graph misses<br/>new caller]
+    B --> D{Revision and scope<br/>still match?}
+    C --> D
+    D -- No or unknown --> E[Verify current source<br/>complete caller set]
+    E --> F[Refresh index<br/>update manifest]
+    D -- Yes --> G[Use index to navigate<br/>verify change-sensitive edges]
+    F --> G
+
+    classDef index fill:#E6F0FF,stroke:#2D5B9C,color:#102A43,stroke-width:1.5px;
+    classDef change fill:#FFF3D6,stroke:#A15C00,color:#4C2A00,stroke-width:1.5px;
+    classDef risk fill:#FCE5E5,stroke:#B43C3C,color:#591313,stroke-width:1.5px;
+    classDef verify fill:#DDF4E4,stroke:#2E7D4F,color:#103D25,stroke-width:1.5px;
+    class A index;
+    class B,D change;
+    class C risk;
+    class E,F,G verify;

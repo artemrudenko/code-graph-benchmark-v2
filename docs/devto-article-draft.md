@@ -8,6 +8,8 @@ description: "I was looking for a reusable map of a codebase, not a leaderboard.
 
 An AI coding agent can trace a function today, then reopen the same files and find the same relationships again tomorrow.
 
+In a controlled FastAPI check, I built a code-context index when a helper had four direct callers. I then added a fifth caller in a local source revision. The old indexes still showed yesterday's relationships until their update path ran. That changed the question I was trying to answer: an index is useful only if the agent knows when to trust it and when to look back at source.
+
 At first I saw this as a token problem. It is also a navigation and memory problem. The agent keeps asking: “What calls this?”, “What breaks if I change it?”, and “Which tests cover it?” Repeating that work makes changes slower and harder to check.
 
 **My goal was simple:** find a dependable way to give an agent reusable context about a codebase. I want less repeated searching, safer plans for changes and refactors, and a clear rule for when an index is worth keeping fresh.
@@ -54,7 +56,7 @@ These tools are not all direct competitors. I tried several because each builds 
 
 A graph index may connect code by name. A language server resolves symbols inside a project configuration. A natural-language graph query may offer related code when it has no exact match. Each answer can look short and convincing while meaning something different.
 
-The public archive contains a broader exploration. This article keeps only four cases that I checked again against a fixed version of the source code. They explain the limits that matter when an agent uses compact context to plan a change.
+The public archive contains a broader exploration. This article keeps four retrieval cases that I checked again against a fixed version of the source code. They explain the limits that matter when an agent uses compact context to plan a change. I also ran one later, controlled stale-index check; it tests a workflow rule rather than adding a winner to a scorecard.
 
 ## What the source checks found
 
@@ -75,26 +77,44 @@ The Ktor case made the problem concrete. The low-level `parseHeaderValue` functi
 
 This does not mean graph or LSP tools are a bad idea. It means an answer needs a trust contract: the exact target, the right search scope, a clear test boundary, and a label that says whether the result is an exact match, a possible match, or no match.
 
+## An index can be correct and still be old
+
+The next question was more practical: what happens after code changes? In the FastAPI control, source changed from four direct callers of `solve_dependencies` to five. Each tool had built its index before that change.
+
+| Tool behaviour on the changed source | What an agent should do |
+|---|---|
+| code-review-graph still returned four edges and gave no automatic warning | Compare the saved index revision with the repository, then refresh or verify source. |
+| codebase-memory-mcp reported `metadata_changed` through its coverage check | Treat that as a rebuild request, even if its general index status says ready. |
+| graphify retained its old incoming-edge view with no code-revision signal | Rebuild or use source search for the complete caller set. |
+
+The exact graph counts differ by tool: one omits a recursive self-call and another groups callers. The important source fact was simple: there were five direct callers after the change, not four.
+
+![A stale-index control: build an index when source has four callers; source changes to five callers; the old graph misses the new relationship; compare freshness, check current source, then refresh the index before relying on it again.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/stale-index-control.png)
+
+I then gave the same small rename task to three fresh agent sessions: a baseline with no index, Graphify with the old graph, and Graphify rebuilt on the changed source. Each passed the same deterministic evaluator once. In the stale-graph run, the graph omitted the fifth caller, but the agent searched current source and updated all five.
+
+That is a useful workflow result, not a performance result. The control was intentionally easy to inspect, each condition ran once, and the baseline also passed. It does **not** show that a stale index is harmless, that Graphify improves an agent, or that any approach saves tokens. It supports one practical rule: a graph can find a starting point; source verification must decide a relationship-sensitive change. The [normalized control record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/stale-index-control.md) gives the precise boundary.
+
 ## What I trust in these results
 
 I used an LLM judge in an earlier experiment. A Sonnet model read each tool answer and gave it a quality score against a plain file-reading answer. That helped me find questions worth testing. It did not prove that an answer was correct.
 
 An LLM judge can prefer an answer that is short or well written. It can miss that the answer names the wrong function. It can also repeat a mistake in the comparison answer it received. The older scorecard also mixed different tool types, setup costs, and response formats in one ranking. The files needed to recheck every old quality score are not all part of this public evidence pack. I no longer use those scores or its winners as evidence.
 
-For this article, I use a stricter rule. Every number above has:
+For the four retrieval observations, I use a stricter rule. Every number has:
 
 - a fixed repository and code version;
 - saved raw tool output;
 - a separate source check in a fresh clone of the repository; and
 - the exact query and indexed scope written down.
 
-This is why I trust these four observations. It is not enough to say which tool is best in every repository, how many total tokens an agent saves, or whether it will finish a change correctly.
+This is why I trust these four observations. The stale-index control uses a fixed task and deterministic evaluator, but its raw records remain private because they contain local-path metadata. It strengthens the workflow rule above; it is not evidence for a general tool ranking. Neither set of evidence can say which tool is best in every repository, how many total tokens an agent saves, or whether it will finish an arbitrary change correctly.
 
 ## The cost that matters is a lifecycle
 
 A persistent index has a cost before the first question: installation, project configuration, scope choice, and a build. It has another cost after code changes: refresh or rebuild. Its value appears only if it saves repeated work after that.
 
-The next step is not another headline score. It is a fixed end-to-end change task with the same project configuration, source checks, test results, and a record of retries. Only that can show whether a maintained index saves time or total context in daily work.
+I turned the two rules from these checks into small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context) and [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index). The first requires an exact target, a source check, and a test boundary before the agent acts. The second records how the index was built and marks it stale or unknown when repository state no longer matches. They do not make a graph correct; they make uncertainty visible.
 
 ## How I would choose a tool for a real codebase
 
@@ -103,9 +123,9 @@ I would run a small pilot in the repository where the tool will live.
 1. Pick three recurring tasks from active work. Include one ordinary lookup and one hard target: an overload, a build-tagged implementation, generated code, or a test-heavy API.
 2. Write the expected answer from source before running a tool. Decide whether tests count and whether “caller” means a call location or a distinct calling function.
 3. Record the project root, dependencies, exclusions, build flags, index time, and errors. This makes the setup repeatable.
-4. Keep every raw answer and check it in source before an agent uses it to plan a change.
+4. Keep every raw answer and check it in source before an agent uses it to plan a change. Record whether the agent actually called the context tool and whether its response was capped, partial, or degraded.
 5. Repeat the questions while the index is warm. Then make a small code change, refresh the index, and check one affected relationship again.
-6. Only then let an agent complete one fixed change task. Compare total context, time, retries, tests, and patch correctness.
+6. Only then let an agent complete one fixed change task. Treat patch correctness and tests as primary evidence. Record context, time, and retries as secondary measures; do not call a smaller answer a saving if the patch is wrong.
 
 The outcome should be a capability profile: which tool earns trust for which recurring question in this codebase, what it needs to stay fresh, and when the agent should fall back to reading source. It may be one tool. It may be a small stack.
 
@@ -115,6 +135,6 @@ The outcome should be a capability profile: which tool earns trust for which rec
 
 Persistent code context is worth testing as working memory for an agent. It can reduce repeated investigation and make relationship questions easier to ask. But it must be configured, checked, refreshed, and chosen for the work the agent will actually do.
 
-The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) contains the [source-checked cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), and the full [selection and pilot framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md). It does not claim a universal winner or a measured token saving.
+The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) contains the [source-checked cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [two companion skills](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills), and the full [selection and pilot framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md). It does not claim a universal winner or a measured token saving.
 
 What question does your coding agent keep re-investigating in the same repository?
