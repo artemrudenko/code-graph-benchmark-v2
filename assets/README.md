@@ -10,10 +10,12 @@
 | diagrams/retrieval-trust-checks.png | Four checks before acting on compact code context | In the selection-pilot section. |
 | diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "An index can be correct and still be old." |
 | diagrams/code-context-lifecycle-dark.png | Dark source version of the persistent-context lifecycle | Retained with its Mermaid and Excalidraw sources. |
-| diagrams/code-context-lifecycle-article-dark.png | Large-type editorial version of the persistent-context lifecycle | Used in the DEV article after the opening problem statement. |
+| diagrams/code-context-lifecycle-article-dark.png | First large-type editorial iteration of the persistent-context lifecycle | Kept for provenance. |
+| diagrams/code-context-lifecycle-article-large-dark.png | Mobile-readable editorial version of the persistent-context lifecycle | Used in the DEV article after the opening problem statement. |
 | diagrams/code-context-tool-jobs-dark.png | Dark version of the tool-job map | Available as the matching dark alternative. |
 | diagrams/stale-index-control-dark.png | Dark source version of the stale-index control | Retained with its Mermaid and Excalidraw sources. |
-| diagrams/stale-index-control-article-dark.png | Large-type editorial version of the stale-index control | Used in the DEV article in "An index can be correct and still be old." |
+| diagrams/stale-index-control-article-dark.png | First large-type editorial iteration of the stale-index control | Kept for provenance. |
+| diagrams/stale-index-control-article-large-dark.png | Mobile-readable editorial version of the stale-index control | Used in the DEV article in "An index can be correct and still be old." |
 
 The Mermaid files and Excalidraw files are editable structural sources. The SVG and PNG are the publication figures; PNG is the upload-ready form for DEV. The article uses raw GitHub URLs for diagrams so the current unpublished DEV draft can display them. The cover must be uploaded through DEV.
 

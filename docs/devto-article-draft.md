@@ -16,7 +16,7 @@ The question became: **can an index help an agent navigate without becoming a se
 
 My answer so far is modest. A code index can be useful as working memory. It is not authority. Before a relationship changes a plan or a patch, the agent should know the exact target, the scope it searched, the freshness of the index, and what current source says.
 
-![A code-context lifecycle: first configure scope and build a reusable index; then ask recurring questions about symbols, callers, paths, and tests; check the source before acting; after code changes, refresh the index and repeat.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-dark.png)
+![A code-context lifecycle: first configure scope and build a reusable index; then ask recurring questions about symbols, callers, paths, and tests; check the source before acting; after code changes, refresh the index and repeat.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
 
 ## The work I was trying to improve
 
@@ -76,7 +76,7 @@ Then I tested the part that matters after the first query. I built indexes while
 
 The graph counts differ by tool because one omits a recursive self-call and another groups callers. The source fact did not: after the change, there were five direct callers.
 
-![A stale-index control: build an index when source has four callers; source changes to five callers; the old graph misses the new relationship; compare freshness, check current source, then refresh the index before relying on it again.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/stale-index-control-article-dark.png)
+![A stale-index control: build an index when source has four callers; source changes to five callers; the old graph misses the new relationship; compare freshness, check current source, then refresh the index before relying on it again.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/stale-index-control-article-large-dark.png)
 
 I also ran one small rename task in three fresh sessions: no index, Graphify with the old graph, and Graphify rebuilt on the changed source. Each passed the deterministic evaluator once. In the stale-graph session, the graph missed the fifth caller, but the agent checked current source and updated all five.
 
