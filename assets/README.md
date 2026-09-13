@@ -17,3 +17,6 @@ The Mermaid files and Excalidraw files are editable structural sources. The SVG 
 Use the installed `diagram` skill for a flow, architecture map, or evidence diagram. Its normal deliverable is Mermaid source, an editable Excalidraw scene for flowcharts, and rendered SVG and PNG. For a data-sensitive article figure, use that structure and finish typography in the SVG if needed. Inspect the PNG before publication, and keep labels short enough to fit their nodes.
 
 Use image generation only for the cover and editorial illustrations, never for diagrams that state evidence. The evidence figures use exact research wording and values; keep their source wording synchronized with `docs/evidence-index.md`.
+
+The reader-run testbench is text and tables rather than another diagram. Its
+prompts, answer contract, and record sheet live in `docs/reader-run-testbench.md`.
