@@ -1,24 +1,28 @@
 ---
 # DEV publishing: upload assets/images/cover-broken-edge-dev.png as the cover image.
-title: "I wanted my coding agent to stop re-reading the same code"
+title: "My coding agent kept re-reading code. I tested code graphs."
 published: false
 tags: ai, llm, developertools, opensource
-description: "A practical way to test whether an agent's reusable code context is useful, current, and safe to act on."
+description: "I source-checked code graphs and context tools to learn when an AI coding agent can safely rely on their answers."
 ---
 
-An AI coding agent can trace a function today, then reopen the same files and find the same relationships again tomorrow.
+A code-graph query told me that a Kotlin parser had 17 callers. The source had one.
 
-That repeat work is easy to miss. The agent still has an answer, but it spends time and context finding it again. More importantly, it can change the wrong place if it does not know which function is the real target, which callers are tests, or whether its map of the code is already old.
+The other 16 calls were real, but they belonged to a public overload with the same name. The answer was short, plausible, and wrong for the function I had asked about.
 
-I wanted reusable code context for a simple reason: less repeated navigation, safer plans for changes and refactors, and fewer missed relationships. I did not start with a goal of saving tokens. A short answer is useful only when it is still correct enough to act on. Saving context by omitting the caller that must change is not a saving.
+That is why I started this work. I wanted a coding agent to stop doing a mundane thing: reopening the same files and finding the same relationships in every session. Reusable code context could mean less repeated navigation, safer plans for changes and refactors, and fewer missed relationships.
+
+I did not start with a goal of saving tokens. A short answer is useful only when it is correct enough to act on. Saving context by omitting the caller that must change is not a saving.
 
 The question became: **can an index help an agent navigate without becoming a second source of mistakes?**
 
 My answer so far is modest. A code index can be useful as working memory. It is not authority. Before a relationship changes a plan or a patch, the agent should know the exact target, the scope it searched, the freshness of the index, and what current source says.
 
+This article shows four source-checked cases that changed my rules: an overloaded function, test calls that look like production impact, an absent symbol that received related suggestions, and an index whose coverage changed with its project scope. It ends with a small test you can run before adopting a tool in your own repository.
+
 ![A code-context lifecycle: first configure scope and build a reusable index; then ask recurring questions about symbols, callers, paths, and tests; check the source before acting; after code changes, refresh the index and repeat.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
 
-## The work I was trying to improve
+## What an agent needs before it changes code
 
 The problem is not one kind of tool. It is a repeated set of questions in normal coding work:
 
@@ -45,7 +49,7 @@ An AST, or abstract syntax tree, is the parsed structure of code: functions, cal
 
 I did not treat these tools as direct competitors. A packer, a language server, and a graph index can work together. The useful choice may be one tool plus source search when the tool is uncertain.
 
-## Four checks that changed my rules
+## Four checks that changed how I use code graphs
 
 I kept four retrieval cases that I checked again against fixed source versions. They are observations, not a leaderboard.
 
@@ -64,7 +68,7 @@ The Ktor case made the risk concrete. The low-level `parseHeaderValue` function 
 
 None of these cases says that graph or language tools are bad. They say that an answer needs a small trust contract: exact target, search scope, test boundary, and a clear status such as exact match, candidate, or no match.
 
-## An index can be correct and still be old
+## A correct index can still be old
 
 Then I tested the part that matters after the first query. I built indexes while a FastAPI helper had four direct callers. I added a fifth caller in a local source revision and asked the same question before refresh.
 
@@ -82,7 +86,7 @@ I also ran one small rename task in three fresh sessions: no index, Graphify wit
 
 This was an intentionally small control. It does not show that a stale index is harmless, that Graphify improves an agent, or that any setup saves tokens. It supports one working rule: a graph can help find a starting point; current source must decide a relationship-sensitive change. The [normalized control record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/stale-index-control.md) states the exact boundary.
 
-## A small test you can run in your own repository
+## Three checks to run in your own repository
 
 You do not need to trust my cases or set up a large benchmark. A fresh clone, three fixed questions, and a separate source check can tell you whether a candidate tool is useful for your work.
 
@@ -100,7 +104,7 @@ The [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-
 
 ![Before acting on compact code context, check the exact symbol, indexed scope, test boundary, and whether the response is an exact match, a candidate, or no match.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks.png)
 
-## Why I trust some results and not others
+## Why I did not use an LLM judge as proof
 
 An earlier experiment used an LLM judge. A Sonnet model compared each tool answer with a plain file-reading answer and gave it a quality score. That was useful for finding questions worth checking. It was not proof that an answer was correct.
 
@@ -117,3 +121,5 @@ I turned those rules into two small, tool-neutral companion skills: [verify-code
 The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes the [source-checked cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), and the full [selection framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md).
 
 More people can run this kind of check now. That makes a healthy form of skepticism practical: use the tool, write down what it claims, and verify the relationship that would change your decision.
+
+If you use a code index with an agent, I would be interested in one thing: does the tool tell you which revision it knows and what it left out?
