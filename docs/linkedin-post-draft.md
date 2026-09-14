@@ -2,24 +2,26 @@
 
 **Status:** Prepare now. Publish only after the DEV article is public and replace the link placeholder below.
 
-**Visual:** This is the URL-first version, so let the DEV article render its preview image. For an image-first version, use `assets/images/cover-index-scope-linkedin.png` and place the DEV link in the first comment.
+**Visual:** This is the URL-first version, so let the DEV article render its preview image. The standalone `assets/images/cover-index-scope-linkedin.png` records the scope-control lesson, but it should not be used as the main article promotion. The article's practical question starts after correct setup: can an agent safely use a current index to navigate a change?
 
-I wanted a coding agent to stop opening the same files every time it worked on a repository.
+I was testing code indexes for coding agents, and one early FastAPI result looked bad.
 
-It sounded simple: give the agent a saved map of the codebase.
+A lookup found one of four known references.
 
-Then I checked one case in FastAPI.
+It was not a Serena failure. I had started the index inside a nested package while asking a repository-wide question. With the actual repository root, the same tool found all four.
 
-The same lookup found one of four known references. I changed only one setting: the folder where the index started.
+That changed my benchmark.
 
-It found all four.
+A good installer should discover the project root and record it. A wrongly scoped run is a setup failure, not a tool score.
 
-The code did not change. The index setup did.
+The useful questions begin after that setup is correct:
 
-The lesson for me: a code index can save repeated searching, but its answer is useful only when its scope is correct and the index is current.
+- Is this the exact symbol, or only a related suggestion?
+- Are tests mixed with production callers?
+- Does the index still describe the current source?
 
-Before I let an agent plan a change, I now check three things: the exact target, what the index covered, and whether it is fresh.
+Those checks matter more than a smaller answer or a claim of token savings. If the agent saves context but makes a wrong change, it has not saved anything useful.
 
-I wrote the longer story, with source-checked cases and a small testbench: **[replace with public DEV URL]**
+I wrote a short guide with source-checked examples, a testbench, and two small skills that make the setup and verification explicit: **[replace with public DEV URL]**
 
-What would you want an agent to show before trusting its map of a codebase?
+What would you want an agent to show before you trusted its map of a codebase?

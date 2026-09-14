@@ -58,9 +58,10 @@ Run the pilot on the codebase where the tool will be used, at a pinned commit an
 
 1. Select three recurring tasks from current work. Include one ordinary lookup and one hard target, such as an overload, build-tagged implementation, generated code boundary, test-heavy API, or cross-package import.
 2. Write the expected source-grounded answer before invoking any candidate. For caller questions, define whether tests count and whether the unit is call sites or distinct calling functions.
-3. Record the setup: project root, language server or index version, exclusions, build flags, index command, completion time, and errors.
-4. Run the fixed queries against each candidate and retain the raw outputs. Check each answer against source before the agent acts.
-5. Repeat the same work after the index is warm. Then make a small representative code change, refresh or rebuild the index, and repeat one affected query.
+3. Resolve the repository root before building an index for a repository-wide question. A package root is valid only for an explicitly package-scoped task. Treat a wrongly scoped build as a setup failure, rebuild it, and do not include it in a comparison.
+4. Record the valid setup: project root, language server or index version, exclusions, build flags, index command, completion time, and errors.
+5. Run the fixed queries against each candidate and retain the raw outputs. Check each answer against source before the agent acts.
+6. Repeat the same work after the index is warm. Then make a small representative code change, refresh or rebuild the index, and repeat one affected query.
 6. For a final decision, let an agent complete one fixed change task with each promising setup. Record total context, elapsed time, source checks, tests, retries, and whether the patch is correct. This is the first point where a claim about total token or time savings is justified.
 
 Use a capability profile and decision note, not a winner column. A candidate can be acceptable for a narrow task even when another is better for a different language or refactor shape.
@@ -74,7 +75,7 @@ The current archive verifies four narrow retrieval checks. They establish why th
 | Ktor name collision | CRG returned 17 callers for a low-level `parseHeaderValue`; 1 was the real CIO caller and 16 belonged to a public overload | A name is not a stable identity; inspect the resolved definition |
 | ripgrep test boundary | CRG returned 28 callers of `Ignore::add_child`: 24 test functions and 4 production functions | Preserve the test flag or split the answer before using it for impact analysis |
 | Exact absence | graphify substituted related real nodes in 3 of 12 deliberately absent-symbol queries; 9 returned a clear no-match response | Treat fuzzy suggestions and exact matches as separate result types |
-| FastAPI project root | Serena found 4 of 4 known `solve_dependencies` references at repository root and 1 of 4 from a nested package root | Project scope is part of the result and must be recorded |
+| FastAPI project root control | Serena found 4 of 4 known `solve_dependencies` references at repository root and 1 of 4 from a nested package root | The nested-root run was an invalid setup for a repository-wide question, not a tool result. The project root must be discovered and recorded. |
 
 The full claims, raw output references, and independent source checks are in the [evidence index](evidence-index.md).
 
@@ -88,6 +89,6 @@ For these reasons, the numerical winners, combined quality-and-token score, and 
 
 ## Why the current claims are stronger, but still narrow
 
-Each of the four current observations has a fixed repository and commit, saved raw tool output, a recorded query and index scope, and a separate source check in a fresh clone. This is enough to support the narrow claim written for each case.
+The three retrieval observations and the separate FastAPI setup control have fixed repository and commit, saved raw tool output, a recorded query and index scope, and a separate source check in a fresh clone. The setup control is excluded from tool-level interpretation because its original nested root was invalid for the repository-wide question. This is enough to support the narrow claim written for each retrieval case.
 
 It is not enough to prove a universal ranking, total token savings, or better final patches from coding agents. A first controlled stale-index task is now recorded in [the derived control summary](stale-index-control.md): its baseline, stale-Graphify, and fresh-Graphify sessions each passed once only because the workflow required current-source verification. That supports the source-first safety rule, not a ranking or a gain claim. Broader claims still need repeated fixed tasks, the same project configuration, independent source checks, test results, and recorded retries for every candidate.

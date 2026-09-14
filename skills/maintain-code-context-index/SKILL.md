@@ -8,6 +8,21 @@ description: Build, record, check, and refresh a persistent code-context index s
 An index is reusable navigation memory. Its successful build does not prove
 that it is fresh, complete, or safe to treat as the source of truth.
 
+## Choose the project root before building
+
+For a repository-wide question, the index root must be the repository root.
+Find it before invoking the candidate: use the version-control top level when
+available, then check the repository workspace or build configuration. Do not
+guess from the directory where an agent happened to start.
+
+A package root is valid only when the question is explicitly limited to that
+package and it has its own independent project configuration. Record that
+smaller scope in the manifest. A package-level index must not answer a
+repository-wide caller or impact question as if it were complete.
+
+Treat a build at the wrong root as a setup failure. Fix the root and rebuild
+before comparing the tool with another candidate or relying on its answer.
+
 ## Record the build context
 
 When creating or refreshing an index, save a small manifest next to the

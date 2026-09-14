@@ -1,5 +1,5 @@
+# DEV publishing: upload assets/images/cover-index-scope-dev-v2.png as the cover image.
 ---
-# DEV publishing: upload assets/images/cover-broken-edge-dev.png as the cover image.
 title: "My coding agent kept re-reading code. I tested code indexes."
 published: false
 tags: ai, llm, developertools, agents
@@ -8,17 +8,19 @@ description: "A plain-language guide to testing a code index before an AI coding
 
 I wanted a coding agent to stop rediscovering the same code on every task.
 
-A persistent code index seemed like an answer. It is a saved map of a codebase: where definitions live, who calls them, and which files are connected. An agent can start from that map instead of opening the same files again.
+A persistent code index seemed like an answer. It is a saved map of a codebase: where definitions live, who calls them, and which files are connected. An agent can use that map as a starting point instead of opening the same files again.
 
-Then I ran a small FastAPI check. On the same source version, one lookup found only 1 of 4 known references to a dependency helper. I changed only where the index started: from a nested package to the repository root. It found all 4.
+But a saved map is useful only when it describes the project the agent is actually changing.
 
-Nothing in the code changed. The index setup did.
+One early FastAPI result taught me this in an embarrassing but useful way. I asked a repository-wide question while I had started the index inside the nested `fastapi/` package. The lookup found 1 of 4 known references. With the same source version and the actual repository root, it found all 4.
 
-That became the question for this article: **can an index help an agent navigate a codebase without becoming a second source of mistakes?**
+That was **my setup mistake, not a Serena failure under a correct setup**. A normal installer or maintenance skill should find the repository root and record it before it builds an index. I keep the control in the public archive because it explains why scope must be visible. I do not use it as a tool score or as a reason to choose one tool over another.
 
-My answer is modest. A code index can work as reusable memory. It does not replace current source. Before an agent uses an answer to plan or edit code, it still needs the exact target, the scope of the index, its freshness, and a source check.
+The more useful question starts after the setup is correct: **can an agent use an index to navigate without turning a compact answer into a mistaken change?**
 
-I use four source-checked cases as a short tutorial: an index rooted in the wrong folder, callers mixed with tests, an absent symbol that received related suggestions, and an index that became old after a source change. They are observations, not a ranking.
+My answer is modest. A code index can work as reusable navigation memory. It does not replace current source. Before an agent uses an answer to plan or edit code, it still needs the exact target, the index scope, its freshness, and a source check.
+
+This article is a small tutorial built from three source-checked retrieval cases: callers mixed with tests, an absent symbol that received related suggestions, and an index that became old after a source change. They are observations, not a ranking.
 
 ## The problem: repeated questions, repeated searching
 
@@ -32,28 +34,26 @@ Most code changes start with a few ordinary questions:
 
 A parser can turn code into an abstract syntax tree (AST): a structured view of functions, imports, and calls. A code index saves some of those relationships for later queries. That can save navigation time. It cannot prove that a result is complete, current, or about the definition you meant.
 
-The safe loop is simple: configure the index, use it to find a starting point, check the source before acting, then refresh after code changes.
+The safe loop is simple: build the index for the right scope, use it to find a starting point, check the source before acting, then refresh after code changes.
 
-![A code-context lifecycle: configure scope and build an index; ask about symbols, callers, paths, and tests; check source before acting; refresh after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
+![A code-context lifecycle: set the project scope and build an index; ask about symbols, callers, paths, and tests; check source before acting; refresh after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
 
-## First check: did the index see the whole repository?
+## First, make the setup boring and correct
 
-The FastAPI control made this question concrete. `solve_dependencies` has four reference sites in the pinned source: three in `fastapi/routing.py` and one recursive call in `fastapi/dependencies/utils.py`.
+For a repository-wide question, start at the repository root. A package-level root is valid only when the question is explicitly about that package and its configuration is independent.
 
-I indexed the same pinned commit twice. The symbol and query stayed the same. Only the project root changed.
+The FastAPI control was a check of this rule. `solve_dependencies` has four reference sites in the pinned source: three in `fastapi/routing.py` and one recursive call in `fastapi/dependencies/utils.py`.
 
-| Index root | Source-checked result |
-|---|---|
-| Nested `fastapi/` package | Serena found 1 of 4 reference sites. |
-| Repository root `.` | Serena found all 4 reference sites. |
+| Setup for the same query | Source-checked result | What it means |
+|---|---|---|
+| I started Serena in nested `fastapi/` package | 1 of 4 sites | Invalid setup for a repository-wide question. |
+| I started Serena at repository root `.` | All 4 sites | Correct project scope for this query. |
 
-![FastAPI project-root control: with the same pinned commit and solve_dependencies lookup, a nested fastapi package root found 1 of 4 reference sites; the repository root found all 4. Only the index root changed.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/7408b5fac5f27fa7496a7d5e35cc1fded1336aba/assets/diagrams/fastapi-project-root-control.png)
+The first row is not a benchmark result. It is a preflight failure that the installation should prevent. The index needs to show its root, revision, configuration, and excluded paths. Without that context, a confident answer such as “all callers” has no useful meaning.
 
-The incomplete answer looked reasonable. Its scope was incomplete. The lesson is simple: **project setup is part of the answer.** Before trusting a reference count, check that the tool started at the repository root and knows your language configuration.
+## Three checks that still matter after correct setup
 
-## Three more checks before an agent acts
-
-The FastAPI result was one kind of problem. I kept three more checks because they answer common questions an agent will meet during a refactor.
+Once the index has the right scope, these are the questions an agent will meet during a refactor.
 
 | Question to test | What I observed in a fixed source version | Rule it led to |
 |---|---|---|
@@ -61,7 +61,7 @@ The FastAPI result was one kind of problem. I kept three more checks because the
 | Does a related result mean an exact result? | In 3 of 12 deliberate absent-symbol checks, graphify returned unrelated but plausible code instead of `not found`. The other 9 answers clearly said no match. | A related item is a candidate, not a found symbol. |
 | Does the index notice a source change? | After a local change added a fifth direct caller in FastAPI, old graphs missed the new relationship. | Refresh the index or check current source before a change that depends on callers. |
 
-Each case points to the same four checks: exact target, search scope, test boundary, and a clear status such as **verified**, **candidate**, **not found**, or **stale**.
+These are not dramatic failures. They are normal ways a short answer can lose information that matters. The same four checks keep appearing: exact target, search scope, test boundary, and a clear status such as **verified**, **candidate**, **not found**, or **stale**.
 
 ## A map can become old
 
@@ -83,21 +83,21 @@ An earlier experiment used an LLM judge. A Sonnet model compared tool answers wi
 
 For this article, the LLM helped screen questions. Source code decided the result. Each public number above has a fixed repository and revision, saved raw tool output, a separate source check in a fresh clone, and the recorded query and index scope.
 
-The stale-index control has a fixed task and deterministic evaluator, but its raw records remain private because they contain local-path metadata. The article does not claim token savings or better final agent quality.
+The FastAPI nested-root run is deliberately outside those retrieval findings. It is a configuration control: it showed that the original setup was invalid for the question. The stale-index control has a fixed task and deterministic evaluator, but its raw records remain private because they contain local-path metadata. The article does not claim token savings or better final agent quality.
 
 ## A small tutorial: test a code index in your repository
 
 You do not need a large benchmark. A clean clone, a few fixed questions, and a separate source check can tell you whether a candidate tool helps in your repository.
 
-1. Start with the source answer. Pick a pinned revision and one small question you can inspect by hand. Record the repository root, tool version, build command, exclusions, and the answer you expect from source.
+1. **Start with the right project root.** Use the repository root for a repository-wide question. Let the installer discover it from version control or the project workspace. Record the root, pinned revision, tool version, build command, exclusions, and the source answer you expect. Do not count a wrongly scoped run as a result for the tool.
 
-2. Test identity. Choose an overload or another same-name symbol. Ask the tool for the qualified name, file, and signature. A safe result is the exact definition or an explicit list of candidates. A bare name is not enough.
+2. **Test identity.** Choose an overload or another same-name symbol. Ask the tool for the qualified name, file, and signature. A safe result is the exact definition or an explicit list of candidates. A bare name is not enough.
 
-3. Test callers. Ask for direct callers of that qualified target. Require the tool to separate production code from tests and say whether it lists call sites or calling functions. Check every relationship that would change your plan.
+3. **Test callers.** Ask for direct callers of that qualified target. Require the tool to separate production code from tests and say whether it lists call sites or calling functions. Check every relationship that would change your plan.
 
-4. Test freshness. Build the index, then add one small relationship in a temporary branch, such as a direct caller. Before refresh, ask the tool for its index revision, repository root, configuration, and current repository revision. If it cannot compare them, the result is stale or unknown until source is checked.
+4. **Test freshness.** Build the index, then add one small relationship in a temporary branch, such as a direct caller. Before refresh, ask the tool for its index revision, repository root, configuration, and current repository revision. If it cannot compare them, the result is stale or unknown until source is checked.
 
-5. Test an absent symbol. Ask for an exact symbol that you know does not exist. A safe tool says `NOT FOUND` in the stated scope. It may suggest related code, but it must label that code as a candidate.
+5. **Test an absent symbol.** Ask for an exact symbol that you know does not exist. A safe tool says `NOT FOUND` in the stated scope. It may suggest related code, but it must label that code as a candidate.
 
 The [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md) has copyable prompts, a small record sheet, and an answer contract. It is deliberately tool-neutral. It will not choose a winner for you. It will show uncertainty, setup errors, and stale indexes before an agent turns them into a patch.
 
@@ -105,10 +105,10 @@ The [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-
 
 ## When I would use a code index
 
-I would build a persistent index when relationship questions repeat often enough to repay its setup and refresh cost. I would keep a record of how it was built. Before using it to change code, I would require the exact target, scope, freshness, completeness, and a source location such as `file:line@revision`.
+I would build a persistent index when relationship questions repeat often enough to repay its setup and refresh cost. I would let the setup find the project root and keep a record of how the index was built. Before using it to change code, I would require the exact target, scope, freshness, completeness, and a source location such as `file:line@revision`.
 
-I turned those rules into two small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context) and [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index). They do not make an index correct. They help an agent show what it knows, what it cannot prove, and what it should verify next.
+I turned those rules into two small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context) and [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index). They do not make an index correct. They make the setup explicit and help an agent show what it knows, what it cannot prove, and what it should verify next.
 
-The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes the [source-checked cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), and the full [selection framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md).
+The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes the [source-checked retrieval cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), and the full [selection framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md).
 
-If you use a code index with an agent, does the tool tell you which revision it knows and what it left out?
+If you use a code index with an agent, does the tool tell you which revision it knows, what project root it used, and what it left out?

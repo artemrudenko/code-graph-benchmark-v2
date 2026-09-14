@@ -15,11 +15,14 @@ file, enclosing type, signature, and language. If two definitions could fit,
 resolve them in source before interpreting callers or references. A name alone
 is not a stable identity.
 
-Record the repository root and the scope the tool actually searched. If the
-tool uses a project configuration, build flags, generated sources, or ignored
-paths, retain the relevant setting with the answer. Also record whether the
-agent actually called the context tool. A source-only answer is useful, but it
-is not evidence that the configured index helped.
+Record the repository root and the scope the tool actually searched. For a
+repository-wide question, a package-level index is a setup failure unless the
+question explicitly limits itself to that package. Fix the root and rebuild
+before treating its result as evidence about the tool. If the tool uses a
+project configuration, build flags, generated sources, or ignored paths,
+retain the relevant setting with the answer. Also record whether the agent
+actually called the context tool. A source-only answer is useful, but it is not
+evidence that the configured index helped.
 
 ## Ask, then verify
 

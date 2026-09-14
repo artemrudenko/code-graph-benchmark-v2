@@ -32,10 +32,15 @@ Configuration: <build flags, language-server settings, exclusions>
 Baseline: <plain source search and file reading>
 ```
 
-Write the expected result from source before asking the tool. For caller
-questions, say whether the unit is a call site or a distinct caller function,
-and whether tests count. This prevents a compact but differently scoped answer
-from looking correct by accident.
+Write the expected result from source before asking the tool. For a
+repository-wide question, resolve the repository root from version control or
+the project workspace before building an index. A package root is appropriate
+only when the question is explicitly package-scoped. If you started from the
+wrong root, fix it and rebuild; do not count that run when you compare tools.
+
+For caller questions, say whether the unit is a call site or a distinct caller
+function, and whether tests count. This prevents a compact but differently
+scoped answer from looking correct by accident.
 
 Run the same test with plain source reading and each candidate. Save every raw
 tool answer. Also record whether the agent actually called the context tool;
