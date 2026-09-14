@@ -2,10 +2,10 @@
 title: "Code-graph tools benchmark v2 — evidence index"
 type: evidence-index
 generated: 2026-09-10
-purpose: "For the four central retrieval claims and the FastAPI project-root control used in the dev.to article: claim -> raw tool response -> independent source-code verification -> status. Every source-verification command below was re-run on 2026-09-10 against a fresh clone at the pinned SHA in reproducibility-manifest.md, independently of the original benchmark session."
+purpose: "For the four central retrieval claims and a separate FastAPI project-root setup audit: claim -> raw tool response -> independent source-code verification -> status. The setup audit is excluded from tool-level retrieval findings. Every source-verification command below was re-run on 2026-09-10 against a fresh clone at the pinned SHA in reproducibility-manifest.md, independently of the original benchmark session."
 ---
 
-# Evidence index — four core retrieval claims plus a scope control
+# Evidence index — four core retrieval claims plus a setup audit
 
 ## 1. bbolt — build-specific `mmap`
 

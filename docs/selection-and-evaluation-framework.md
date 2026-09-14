@@ -38,7 +38,7 @@ A selection should start from work the agent actually repeats, not from tool nam
 | Which tests protect this behavior? | Test callers separated from production callers | It treats tests as runtime impact, or forgets to update coverage |
 | What changed in this review? | The affected relationships and a way to verify them | It reviews a diff line by line and misses a broken dependency |
 
-Before all six questions come two gates: **is this the exact target?** and **did the tool search the intended scope and build configuration?** A response must be marked as an exact match, a candidate, or no match. These are properties of an answer, not separate user workflows.
+Before all six questions comes a validity gate: the tool must have a stated project scope, build configuration, and usable index. Repair an invalid setup before comparing tools. Then ask: **is this the exact target?** A response must be marked as an exact match, a candidate, or no match. These are properties of an answer, not separate user workflows.
 
 ## The research model: readiness, answer trust, and payoff
 
@@ -62,22 +62,20 @@ Run the pilot on the codebase where the tool will be used, at a pinned commit an
 4. Record the valid setup: project root, language server or index version, exclusions, build flags, index command, completion time, and errors.
 5. Run the fixed queries against each candidate and retain the raw outputs. Check each answer against source before the agent acts.
 6. Repeat the same work after the index is warm. Then make a small representative code change, refresh or rebuild the index, and repeat one affected query.
-6. For a final decision, let an agent complete one fixed change task with each promising setup. Record total context, elapsed time, source checks, tests, retries, and whether the patch is correct. This is the first point where a claim about total token or time savings is justified.
+7. For a final decision, let an agent complete three fixed change tasks with each promising setup. Compare an ordinary source-search baseline with an index-assisted run in fresh clones. Record total context, elapsed time, source checks, tests, retries, and whether the patch is correct. This is the first point where a claim about total token or time savings is justified.
 
 Use a capability profile and decision note, not a winner column. A candidate can be acceptable for a narrow task even when another is better for a different language or refactor shape.
 
 ## Verified observations from the current evidence pack
 
-The current archive verifies four narrow retrieval checks. They establish why the trust gates above are needed; they do not choose a tool for every codebase.
+The current archive verifies three narrow retrieval checks. They establish why the trust gates above are needed; they do not choose a tool for every codebase.
 
 | Check | Verified result | Selection implication |
 |---|---|---|
 | Ktor name collision | CRG returned 17 callers for a low-level `parseHeaderValue`; 1 was the real CIO caller and 16 belonged to a public overload | A name is not a stable identity; inspect the resolved definition |
 | ripgrep test boundary | CRG returned 28 callers of `Ignore::add_child`: 24 test functions and 4 production functions | Preserve the test flag or split the answer before using it for impact analysis |
 | Exact absence | graphify substituted related real nodes in 3 of 12 deliberately absent-symbol queries; 9 returned a clear no-match response | Treat fuzzy suggestions and exact matches as separate result types |
-| FastAPI project root control | Serena found 4 of 4 known `solve_dependencies` references at repository root and 1 of 4 from a nested package root | The nested-root run was an invalid setup for a repository-wide question, not a tool result. The project root must be discovered and recorded. |
-
-The full claims, raw output references, and independent source checks are in the [evidence index](evidence-index.md).
+The full claims, raw output references, and independent source checks are in the [evidence index](evidence-index.md). The separate FastAPI project-root control is retained there as a setup-audit record. It is excluded from the retrieval findings because its original nested-root run was not a valid repository-wide configuration.
 
 ## How to read the older scorecard
 
@@ -89,6 +87,6 @@ For these reasons, the numerical winners, combined quality-and-token score, and 
 
 ## Why the current claims are stronger, but still narrow
 
-The three retrieval observations and the separate FastAPI setup control have fixed repository and commit, saved raw tool output, a recorded query and index scope, and a separate source check in a fresh clone. The setup control is excluded from tool-level interpretation because its original nested root was invalid for the repository-wide question. This is enough to support the narrow claim written for each retrieval case.
+The three retrieval observations have a fixed repository and commit, saved raw tool output, a recorded query and index scope, and a separate source check in a fresh clone. This is enough to support the narrow claim written for each retrieval case. The separate FastAPI setup control remains in the archive as an audit record, not as retrieval evidence.
 
 It is not enough to prove a universal ranking, total token savings, or better final patches from coding agents. A first controlled stale-index task is now recorded in [the derived control summary](stale-index-control.md): its baseline, stale-Graphify, and fresh-Graphify sessions each passed once only because the workflow required current-source verification. That supports the source-first safety rule, not a ranking or a gain claim. Broader claims still need repeated fixed tasks, the same project configuration, independent source checks, test results, and recorded retries for every candidate.

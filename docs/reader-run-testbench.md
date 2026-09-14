@@ -121,6 +121,24 @@ match.
 This test checks whether a natural-language query turns a helpful suggestion
 into a misleading answer.
 
+## Optional Stage 2: test one real change
+
+The checks above establish whether a tool can supply safe navigation context.
+They do not show that it helps an agent complete work. Before claiming saved
+time or context, choose one small change with a fixed brief, expected affected
+files, and a deterministic evaluator.
+
+Run it in fresh clones twice: once with normal source reading and search, and
+once with the same agent plus the candidate index. Keep the revision, prompt,
+model, permissions, and evaluator the same. In both runs, require the agent to
+check current source before a relationship changes the patch. Record whether
+the patch passes, whether the index was actually used, the source checks,
+retries, elapsed time, and context. A smaller run that produces a wrong patch
+is not a saving.
+
+For a three-task version of this experiment, use [the next benchmark
+design](benchmark-next-step.md).
+
 ## Record the answer in one small contract
 
 Use this record for every result that will affect a plan, a patch, or a review:

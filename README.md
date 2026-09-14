@@ -7,7 +7,8 @@ The question is whether compact retrieval preserves the code relationships an AI
 ## Start here
 
 - [Standalone article draft](docs/devto-article-draft.md)
-- [Selection and evaluation framework](docs/selection-and-evaluation-framework.md) — research objective, tool classes, question taxonomy, and the boundary between a workflow control and a lifecycle-payoff claim
+- [Selection and evaluation framework](docs/selection-and-evaluation-framework.md) — research objective, tool classes, question taxonomy, and the boundary between safe navigation evidence and workflow-payoff claims
+- [Next benchmark design](docs/benchmark-next-step.md) — a small two-stage plan: valid setup gate, source-checked retrieval, then fixed change tasks in fresh clones
 - [Controlled stale-index observation](docs/stale-index-control.md) — a normalized summary of the private FastAPI control: an old index missed one new caller until refresh, while source verification recovered the complete change set
 - [Companion skills](skills/README.md) — `verify-code-context` and `maintain-code-context-index` make the article's identity, source-check, and freshness rules reusable in agent work
 - [Reproducibility manifest](docs/reproducibility-manifest.md) — exact URL, full 40-char SHA, scope/exclusions, tool version, command, and query text for every (repo × tool × query) cell in the benchmark

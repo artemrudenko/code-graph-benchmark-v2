@@ -3,13 +3,13 @@
 | File | Purpose | Placement in the DEV article |
 |---|---|---|
 | images/cover-broken-edge-dev.png | Cover image, "The Broken Edge" concept, composed for DEV's 1000×420 recommendation | Upload as the DEV cover. It deliberately has no text or logo. The earlier `cover-broken-edge.png` is retained as the source concept. |
-| images/cover-index-scope-dev-v2.png | New DEV cover: the same relationship map is incomplete on the left and complete on the right | Upload as the DEV cover. Its central composition is safe for a DEV page and a link-preview crop. |
-| images/cover-index-scope-linkedin.png | Standalone LinkedIn visual, with the editorial hook “One index. Two answers.” | Use for an image-first post. For a URL-first announcement, use the DEV link preview instead. |
+| images/cover-index-scope-dev-v2.png | DEV cover: an incomplete relationship map becomes a verified connected map | Upload as the DEV cover. It supports the article's question about whether compact context is safe to use, and its central composition is safe for a DEV page and a link-preview crop. |
+| images/cover-index-scope-linkedin.png | Earlier standalone LinkedIn visual about a scope-control audit | Retained as an archive asset. Do not use it to promote the current article. |
 | diagrams/code-context-lifecycle.png | A persistent-context lifecycle: configure, query, verify, change, refresh | After the opening problem statement. |
 | diagrams/code-context-tool-jobs.png | Four code-context tool classes, grouped by the developer job they do | Retained in the evidence archive; no longer used by the article. |
 | diagrams/evidence-at-a-glance.png | Four independently checked numeric findings, with their own denominators | Retained in the evidence archive; no longer used by the article. |
 | diagrams/ktor-caller-disambiguation.png | Ktor: one true caller and 16 cross-attributed results | Retained as a benchmark artifact; no longer used by the article. |
-| diagrams/fastapi-project-root-control.png | FastAPI control: a nested package root finds 1 of 4 references; the repository root finds 4 of 4 for the same commit and symbol | In "First check: did the index see the whole repository?" |
+| diagrams/fastapi-project-root-control.png | FastAPI setup audit: a nested package root finds 1 of 4 references; the repository root finds 4 of 4 for the same commit and symbol | Retained in the evidence archive; no longer used by the article. |
 | diagrams/retrieval-trust-checks.png | Four checks before acting on compact code context | In "A small tutorial: test a code index in your repository." |
 | diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "A map can become old." |
 | diagrams/code-context-lifecycle-dark.png | Dark source version of the persistent-context lifecycle | Retained with its Mermaid and Excalidraw sources. |

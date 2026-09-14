@@ -2,26 +2,20 @@
 
 **Status:** Prepare now. Publish only after the DEV article is public and replace the link placeholder below.
 
-**Visual:** This is the URL-first version, so let the DEV article render its preview image. The standalone `assets/images/cover-index-scope-linkedin.png` records the scope-control lesson, but it should not be used as the main article promotion. The article's practical question starts after correct setup: can an agent safely use a current index to navigate a change?
+**Visual:** This is the URL-first version, so let the DEV article render its preview image. Do not use the older `assets/images/cover-index-scope-linkedin.png`: it illustrates a setup-control that is no longer part of the article's main story.
 
-I was testing code indexes for coding agents, and one early FastAPI result looked bad.
+I wanted a coding agent to stop opening the same files every time it worked on a repository.
 
-A lookup found one of four known references.
+A saved code index looked promising. But a smaller answer is useful only when it still contains the relationship needed to make the change.
 
-It was not a Serena failure. I had started the index inside a nested package while asking a repository-wide question. With the actual repository root, the same tool found all four.
-
-That changed my benchmark.
-
-A good installer should discover the project root and record it. A wrongly scoped run is a setup failure, not a tool score.
-
-The useful questions begin after that setup is correct:
+Three questions changed how I evaluate these tools:
 
 - Is this the exact symbol, or only a related suggestion?
 - Are tests mixed with production callers?
 - Does the index still describe the current source?
 
-Those checks matter more than a smaller answer or a claim of token savings. If the agent saves context but makes a wrong change, it has not saved anything useful.
+Those checks matter more than a claim of token savings. If the agent saves context but makes a wrong change, it has not saved anything useful.
 
-I wrote a short guide with source-checked examples, a testbench, and two small skills that make the setup and verification explicit: **[replace with public DEV URL]**
+I wrote a short guide with source-checked examples, a small testbench, and two skills that make an agent state what it knows and what it still needs to verify: **[replace with public DEV URL]**
 
 What would you want an agent to show before you trusted its map of a codebase?
