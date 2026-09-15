@@ -11,6 +11,7 @@ environment, then invoke the relevant skill when the task needs it:
 | --- | --- |
 | [`verify-code-context`](verify-code-context/) | An answer about callers, references, execution path, test coverage, or change radius will affect a plan, patch, or review. |
 | [`maintain-code-context-index`](maintain-code-context-index/) | An index is being built, reused in a later session, or checked after source or configuration changes. |
+| [`run-code-context-change-task`](run-code-context-change-task/) | You need to compare source navigation with context tools on a bounded real change, using controls and a mutation. |
 
 The skills deliberately make three known failure modes visible: a same-named
 but different symbol, test callers mixed with production callers, and a graph

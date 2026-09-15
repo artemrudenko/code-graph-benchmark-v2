@@ -64,6 +64,22 @@ I also ran one small rename task in three fresh sessions: no index, Graphify wit
 
 This is a narrow control. It does not show that stale indexes are safe, that a tool improves an agent, or that a setup saves tokens. It supports one rule: **use a graph to find a starting point; use current source to decide a change.** The [normalized control record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/stale-index-control.md) describes the exact boundary.
 
+## One real change task
+
+The retrieval cases show whether a short answer is safe to use. I also wanted to know whether reusable context could help an agent complete a real change.
+
+I used one historical Next.js change. The Pages Router needed to expose selected trace metadata in the HTML head. The agent had to move a shared filter out of the App Router, carry the configured allow-list through the Pages rendering path, and add a test that failed when the filter was removed.
+
+| Condition | Fresh runs | Correct patch under the same checks |
+|---|---:|---:|
+| Ordinary source navigation | 2 | 2/2 |
+| Code Review Graph, with verified graph calls | 2 | 2/2 |
+| Serena, with verified language-tool calls | 2 | 2/2 |
+
+A patch counted only when source inspection showed the route, its focused TypeScript test passed, that test failed against an unfiltered mutation, and the diff stayed within the expected boundary. The known-good patch passed. A clean checkout and a patch that added only the filter failed.
+
+The result did not choose a winner. On this task, all three paths reached a correct patch. What mattered was the final safety loop: use context to navigate, read the current source, run a test, then try to break the behavior. The [full task record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/nextjs-pages-router-change-task.md) has the method and limits. It does not measure token saving, time, cost, full browser E2E behavior, or general agent quality.
+
 ## How I checked the answers
 
 An earlier experiment used an LLM judge. A Sonnet model compared tool answers with plain file-reading answers and gave them quality scores. That helped me find questions worth checking. It did not prove that an answer was correct.
@@ -96,7 +112,7 @@ The [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-
 
 I would build a persistent index when relationship questions repeat often enough to repay its setup and refresh cost. Before using it to change code, I would require the exact target, scope, freshness, completeness, and a source location such as `file:line@revision`.
 
-I turned those rules into two small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context) and [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index). They do not make an index correct. They help an agent show what it knows, what it cannot prove, and what it should verify next.
+I turned those rules into three small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context), [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index), and [run-code-context-change-task](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/run-code-context-change-task). They do not make an index correct. They help an agent show what it knows, what it cannot prove, and what it should verify next.
 
 The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes the [source-checked retrieval cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), a [catalog of common developer questions](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/agent-code-question-catalog.md), and a [next-step benchmark design](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/benchmark-next-step.md) for testing whether a setup helps complete real changes.
 

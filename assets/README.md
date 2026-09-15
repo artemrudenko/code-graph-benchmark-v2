@@ -3,6 +3,7 @@
 | File | Purpose | Placement in the DEV article |
 |---|---|---|
 | images/cover-broken-edge-dev.png | Cover image, "The Broken Edge" concept, composed for DEV's 1000×420 recommendation | Upload as the DEV cover. It deliberately has no text or logo. The earlier `cover-broken-edge.png` is retained as the source concept. |
+| images/cover-context-to-verified-change-linkedin.png | LinkedIn attachment: a code map leading to a verified change | Attach to the LinkedIn post. It has no factual labels; the post supplies the claim. |
 | images/cover-index-scope-dev-v2.png | DEV cover: an incomplete relationship map becomes a verified connected map | Upload as the DEV cover. It supports the article's question about whether compact context is safe to use, and its central composition is safe for a DEV page and a link-preview crop. |
 | images/cover-index-scope-linkedin.png | Earlier standalone LinkedIn visual about a scope-control audit | Retained as an archive asset. Do not use it to promote the current article. |
 | diagrams/code-context-lifecycle.png | A persistent-context lifecycle: configure, query, verify, change, refresh | After the opening problem statement. |

@@ -11,7 +11,8 @@ The question is whether compact retrieval preserves the code relationships an AI
 - [Common agent questions](docs/agent-code-question-catalog.md) — refactor radius, duplicate code, regression and test decisions, with the evidence each one needs
 - [Next benchmark design](docs/benchmark-next-step.md) — a small two-stage plan: valid setup gate, source-checked retrieval, then fixed change tasks in fresh clones
 - [Controlled stale-index observation](docs/stale-index-control.md) — a normalized summary of the private FastAPI control: an old index missed one new caller until refresh, while source verification recovered the complete change set
-- [Companion skills](skills/README.md) — `verify-code-context` and `maintain-code-context-index` make the article's identity, source-check, and freshness rules reusable in agent work
+- [Repeated Next.js change task](docs/nextjs-pages-router-change-task.md) — two accepted runs in each of three conditions under one source/test/mutation evaluator; no ranking claim
+- [Companion skills](skills/README.md) — `verify-code-context`, `maintain-code-context-index`, and `run-code-context-change-task` make the article's rules reusable in agent work
 - [Reproducibility manifest](docs/reproducibility-manifest.md) — exact URL, full 40-char SHA, scope/exclusions, tool version, command, and query text for every (repo × tool × query) cell in the benchmark
 - [Evidence index](docs/evidence-index.md) — the four central claims (bbolt/mmap, ktor/parseHeaderValue, ripgrep's 28-result split, all 12 graphify canary queries), each traced from raw tool output to an independently re-verified source-code check
 - [Editorial audit and evidence gaps, in Russian](docs/editorial-review-ru.md) — the review that identified the gaps closed by the two files above

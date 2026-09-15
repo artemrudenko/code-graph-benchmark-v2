@@ -128,15 +128,19 @@ They do not show that it helps an agent complete work. Before claiming saved
 time or context, choose one small change with a fixed brief, expected affected
 files, and a deterministic evaluator.
 
-Run it in fresh clones twice: once with normal source reading and search, and
-once with the same agent plus the candidate index. Keep the revision, prompt,
-model, permissions, and evaluator the same. In both runs, require the agent to
-check current source before a relationship changes the patch. Record whether
-the patch passes, whether the index was actually used, the source checks,
-retries, elapsed time, and context. A smaller run that produces a wrong patch
-is not a saving.
+Run it in fresh clones at least twice per condition: once with normal source
+reading and search, and once with the same agent plus the candidate index. Keep
+the revision, prompt, model, permissions, and evaluator the same. Require a
+known-good control, a pristine control, and an incomplete-patch control before
+comparing agents. In both runs, require current-source inspection, a runnable
+candidate test, and a mutation that the test must fail. Record whether the
+index was actually called, as well as the patch result, source checks, retries,
+elapsed time, and context. A smaller run that produces a wrong patch is not a
+saving.
 
-For a three-task version of this experiment, use [the next benchmark
+For a ready-to-use task protocol, start with the
+[change-task skill](../skills/run-code-context-change-task/SKILL.md). For a
+three-task version of this experiment, use [the next benchmark
 design](benchmark-next-step.md) and its [catalog of common developer
 questions](agent-code-question-catalog.md). It separates graph questions from
 duplicate detection and test-coverage questions, which need different evidence.
