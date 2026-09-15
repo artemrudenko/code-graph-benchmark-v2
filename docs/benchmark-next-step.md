@@ -52,13 +52,27 @@ with its target, scope, and source check.
 An LLM judge may help find unclear queries, but it is not ground truth. Source
 checks decide Stage 1.
 
+## Choose tasks by the developer question
+
+Do not expect a code graph to answer every codebase question. Use the [agent
+code-question catalog](agent-code-question-catalog.md) to select the right
+source of evidence:
+
+- language tooling or a graph for exact symbols and static refactor radius;
+- structural pattern or clone detection for duplicate code; and
+- the test runner and coverage data for regression and test decisions.
+
+A good agent can say that a graph is insufficient and move to the appropriate
+fallback. That is a useful result, not a failure to hide.
+
 ## Stage 2: does the setup help complete a real change?
 
-This is the missing evidence if we want to discuss token or time savings. Use
-three small, representative change tasks from the intended codebase. Each task
-must have a fixed brief, a clean starting revision, a known expected change
-radius, and a deterministic evaluator such as project tests plus a narrow
-diff/source check.
+This is the missing evidence if we want to discuss token or time savings. Start
+with three small, representative change tasks: API refactor radius, regression
+and test decision, and a structural duplicate decision. Each task must have a
+fixed brief, a clean starting revision, a known expected change radius, and a
+deterministic evaluator such as project tests plus a narrow diff/source check.
+The [task catalog](agent-code-question-catalog.md) defines the pass boundary.
 
 For each promising setup, run the same task in fresh clones:
 
@@ -77,7 +91,8 @@ Record these facts for each run:
 |---|---|
 | Was the patch correct? | Tests, required source/diff checks, and a short human review of the changed relationship. |
 | Did the agent use the index? | Tool-call trace and the exact context returned. |
-| Did it preserve safety? | Source verification, target identity, test boundary, and index freshness. |
+| Did it preserve safety? | Source verification, target identity, test boundary, coverage or test decision, and index freshness. |
+| Did it choose the right fallback? | A trace showing when graph context was insufficient and a structural, coverage, or source tool was used instead. |
 | What did it cost? | Elapsed time, model context, retries, and rebuild or refresh time. |
 
 Patch correctness is a gate. Do not call a lower context total a saving when

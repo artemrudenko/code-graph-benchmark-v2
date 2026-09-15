@@ -26,9 +26,13 @@ Most code changes start with a few ordinary questions:
 - Who uses this exact definition?
 - Which callers are tests, and which are production code?
 - What will a change affect?
+- Is there already a comparable piece of code?
+- Which tests should change or be added?
 - Is the information still current?
 
 A parser can turn code into an abstract syntax tree (AST): a structured view of functions, imports, and calls. A code index saves some of those relationships for later queries. That can save navigation time. It cannot prove that a result is complete, current, or about the definition you meant.
+
+Not every question needs a graph. A structural duplicate needs a pattern or clone check. A decision about test coverage needs the test runner and coverage data. The useful setup gives an agent the right starting point, then makes it clear what it still must verify.
 
 The safe loop is simple: build the index for the project, use it to find a starting point, check the source before acting, then refresh after code changes.
 
@@ -82,6 +86,8 @@ You do not need a large benchmark. A clean clone, a few fixed questions, and a s
 
 5. **Test an absent symbol.** Ask for an exact symbol that you know does not exist. A safe tool says `NOT FOUND` in the stated scope. It may suggest related code, but it must label that code as a candidate.
 
+6. **Use the right evidence.** For duplicates, record a structural candidate and check whether its behavior is truly comparable. For regression and test coverage, use the project test runner and coverage data. A graph can help find relevant files; it cannot prove either conclusion alone.
+
 The [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md) has copyable prompts, a small record sheet, and an answer contract. It is deliberately tool-neutral. It will not choose a winner for you. It will show uncertainty and stale indexes before an agent turns them into a patch.
 
 ![Before acting on compact code context, check the exact symbol, indexed scope, test boundary, and whether the response is verified, a candidate, not found, or stale.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks.png)
@@ -92,6 +98,6 @@ I would build a persistent index when relationship questions repeat often enough
 
 I turned those rules into two small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context) and [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index). They do not make an index correct. They help an agent show what it knows, what it cannot prove, and what it should verify next.
 
-The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes the [source-checked retrieval cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), and a [next-step benchmark design](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/benchmark-next-step.md) for testing whether a setup helps complete real changes.
+The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes the [source-checked retrieval cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), a [catalog of common developer questions](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/agent-code-question-catalog.md), and a [next-step benchmark design](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/benchmark-next-step.md) for testing whether a setup helps complete real changes.
 
 If you use a code index with an agent, what would it need to show before you trusted an answer enough to change code?

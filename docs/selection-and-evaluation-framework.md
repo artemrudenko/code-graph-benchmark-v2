@@ -23,7 +23,7 @@ This is **not** a contest to name a universal winner. The useful result may be o
 | Find or change a syntax shape | Match code structure and apply a constrained transformation | Structural pattern tool | ast-grep | Runtime flow, dynamic dispatch, or all callers of a symbol |
 | Resolve uncertainty | Read the source and run its own checks | Ordinary search, file reading, tests | repository tools | A reusable map without repeated investigation |
 
-The classes overlap in a real workflow, but they do not answer the same question. A single score that ranks a packer, an LSP bridge, and a graph query as though they did the same job hides that difference.
+The classes overlap in a real workflow, but they do not answer the same question. A single score that ranks a packer, an LSP bridge, a graph query, and a coverage report as though they did the same job hides that difference. See the [task catalog](agent-code-question-catalog.md) for the evidence each developer question needs.
 
 ## The questions that recur in agent work
 
@@ -35,7 +35,8 @@ A selection should start from work the agent actually repeats, not from tool nam
 | Who uses it? | Direct callers or references, with a stable identity | It changes a supposedly isolated API and misses a consumer |
 | What is the change radius? | Relevant downstream modules, interfaces, and entry points | It underestimates a refactor or reads unrelated files |
 | How does execution reach it? | A path through handlers, adapters, and boundaries | It fixes a local symptom without seeing the route into it |
-| Which tests protect this behavior? | Test callers separated from production callers | It treats tests as runtime impact, or forgets to update coverage |
+| Is this logic already duplicated? | Candidate structures, searched scope, and a source check of whether the code is comparable | It mistakes similar syntax for equivalent behavior, or misses a duplication pattern entirely |
+| Which tests protect this behavior? | Test callers, a changed-behavior decision, and coverage where available | It treats tests as runtime impact, or forgets to update coverage |
 | What changed in this review? | The affected relationships and a way to verify them | It reviews a diff line by line and misses a broken dependency |
 
 Before all six questions comes a validity gate: the tool must have a stated project scope, build configuration, and usable index. Repair an invalid setup before comparing tools. Then ask: **is this the exact target?** A response must be marked as an exact match, a candidate, or no match. These are properties of an answer, not separate user workflows.

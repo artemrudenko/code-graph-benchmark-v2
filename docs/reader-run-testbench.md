@@ -137,7 +137,9 @@ retries, elapsed time, and context. A smaller run that produces a wrong patch
 is not a saving.
 
 For a three-task version of this experiment, use [the next benchmark
-design](benchmark-next-step.md).
+design](benchmark-next-step.md) and its [catalog of common developer
+questions](agent-code-question-catalog.md). It separates graph questions from
+duplicate detection and test-coverage questions, which need different evidence.
 
 ## Record the answer in one small contract
 
