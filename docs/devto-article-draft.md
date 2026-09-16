@@ -1,119 +1,215 @@
-# DEV publishing: upload assets/images/cover-index-scope-dev-v2.png as the cover image.
 ---
-title: "My coding agent kept re-reading code. I tested code indexes."
+# DEV publishing: upload assets/images/cover-broken-edge-dev.png as the cover image.
+title: "I wanted my coding agent to remember the codebase"
 published: false
-tags: ai, llm, developertools, agents
-description: "A plain-language guide to testing a code index before an AI coding agent uses it to plan a change."
+tags: ai, llm, developertools, opensource
+description: "Can persistent code context reduce repeated agent work without making product changes less safe? I tested the question instead of trusting the tool demo."
 ---
 
-I wanted a coding agent to stop rediscovering the same code on every task.
+An AI coding agent can look fast on its first task. The expensive part often
+appears on the fifth.
 
-A persistent code index seemed like an answer. It is a saved map of a codebase: where definitions live, who calls them, and which files are connected. An agent can use that map as a starting point instead of opening the same files again.
+It opens the same files again. It traces the same call chain. It rediscovers
+where a value is assembled, and it can still miss one screen or one boundary
+that needs to change. The cost is not only tokens. A change takes longer, and
+the reviewer has more places where an incomplete patch can hide.
 
-But a shorter answer is useful only when it still contains the relationship needed to make the change. If an agent saves context and then changes the wrong symbol or misses a caller, it has not saved anything useful.
+I wanted to give the agent a useful kind of working memory: a reusable map of
+the codebase that makes repeated investigation cheaper **without making the
+next product change less safe**.
 
-That became the question for this article: **can an index help an agent navigate a codebase without becoming a second source of mistakes?**
+That last condition changed the whole experiment. A short answer is a saving
+only when the resulting patch is correct. If an index helps the agent find four
+files quickly but it misses the fifth file that carries the contract, the saved
+tokens simply become rework.
 
-My answer is modest. A code index can work as reusable navigation memory. It does not replace current source. Before an agent uses an answer to plan or edit code, it still needs the exact target, its current source, and a clear boundary around what the answer includes.
+This article is about how I tested that idea. It is not a leaderboard for code
+graph tools. My aim was more practical: learn when a saved code map earns a
+place in day-to-day product work, and when current source and tests must take
+over.
 
-This article is a small tutorial built from three source-checked retrieval cases: callers mixed with tests, an absent symbol that received related suggestions, and an index that became old after a source change. They are observations, not a ranking.
+![A code-context lifecycle: configure scope and build a reusable index; ask recurring questions about symbols, callers, paths, and tests; check the source before acting; refresh the index after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
 
-## The problem: repeated questions, repeated searching
+## The problem I was actually trying to solve
 
-Most code changes start with a few ordinary questions:
+An agent repeatedly needs answers to a small set of questions:
 
-- What does this function or class do?
-- Who uses this exact definition?
-- Which callers are tests, and which are production code?
-- What will a change affect?
-- Is there already a comparable piece of code?
-- Which tests should change or be added?
-- Is the information still current?
+| Question before a change | Why the answer matters |
+|---|---|
+| What is the exact function, class, or endpoint? | A familiar name can point to the wrong implementation. |
+| Where else does this value or decision travel? | The visible UI is often only the last step of a longer path. |
+| What could break if I change it? | This defines the change radius and review plan. |
+| Which tests protect the behaviour? | A passing local check does not prove the intended behaviour. |
+| Is the saved map still current? | A correct index from yesterday can be incomplete today. |
 
-A parser can turn code into an abstract syntax tree (AST): a structured view of functions, imports, and calls. A code index saves some of those relationships for later queries. That can save navigation time. It cannot prove that a result is complete, current, or about the definition you meant.
+Tools answer these questions in different ways. Some ask the same language
+services used by an IDE. Others keep a parsed map of symbols, imports, calls,
+and tests. I call that map an *index* in this article. It is saved navigation,
+not a replacement for the source of truth.
 
-Not every question needs a graph. A structural duplicate needs a pattern or clone check. A decision about test coverage needs the test runner and coverage data. The useful setup gives an agent the right starting point, then makes it clear what it still must verify.
+The promise is attractive. The agent should spend less time reopening code and
+more time making a useful change. But the promise only matters if quality stays
+level or improves.
 
-The safe loop is simple: build the index for the project, use it to find a starting point, check the source before acting, then refresh after code changes.
+## The rule I refused to break
 
-![A code-context lifecycle: set the project scope and build an index; ask about symbols, callers, paths, and tests; check source before acting; refresh after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
+I did not count a small response, a convincing explanation, or a passing
+frontend check as success. A patch had to satisfy a source-derived behaviour
+contract. Its focused test had to pass. Then the same test had to fail again
+after I deliberately reintroduced a relevant defect.
 
-## Three checks before an agent acts
+That last step matters. It checks that the test is able to catch the mistake we
+care about, such as a wrong calculation or an update missing from the mobile
+layout. A green test that does not fail when the defect returns gives false
+confidence.
 
-These are questions an agent will meet during a refactor.
+I used an LLM as a judge in an earlier exploration to help decide which
+questions were worth investigating. I do not use an LLM score to decide whether
+a patch is correct. A model can prefer a short, plausible answer that names the
+wrong function. For the change tasks below, source checks and deliberate
+mutations are the final gate.
 
-| Question to test | What I observed in a fixed source version | Rule it led to |
-|---|---|---|
-| Does a caller list separate tests from production? | In the ripgrep repository, code-review-graph returned 28 calling functions for `Ignore::add_child`: 24 test functions and 4 production functions. | Split tests from production before impact analysis. |
-| Does a related result mean an exact result? | In 3 of 12 deliberate absent-symbol checks, graphify returned unrelated but plausible code instead of `not found`. The other 9 answers clearly said no match. | A related item is a candidate, not a found symbol. |
-| Does the index notice a source change? | After a local change added a fifth direct caller in FastAPI, old graphs missed the new relationship. | Refresh the index or check current source before a change that depends on callers. |
+## The result that changed my mind
 
-These are not dramatic failures. They are normal ways a short answer can lose information that matters. The same four checks keep appearing: exact target, search scope, test boundary, and a clear status such as **verified**, **candidate**, **not found**, or **stale**.
+I ran three fixed change tasks in one private Python and TypeScript product.
+Each condition used five fresh agent sessions. I compared ordinary source
+navigation with Code Review Graph and Serena, two tools that give an agent
+structured help finding code relationships.
 
-## A map can become old
+Before each batch, I froze the task and an independent evaluator. A known-good
+patch had to pass. An untouched fixture and an incomplete patch had to fail.
+Only then did I count fresh agent runs.
 
-An index can be correct when it is built and wrong after the source changes.
+| Product change | Ordinary source navigation | Code Review Graph | Serena | What it tells me |
+|---|---:|---:|---:|---|
+| Stop an inactive signed-in user from resolving a department through a shared SQL helper | 5/5 | 5/5 | 5/5 | Direct source navigation was enough. The indexes preserved quality, but showed no correctness advantage. |
+| Show an honest delivery count in the existing desktop row and mobile card | 5/5 | 5/5 | 5/5 | A small change across two layouts was also reliable without an index. |
+| Carry a machine category through SQL, pagination, TypeScript contracts, and two reader surfaces | 1/5 | 1/5 | 0/5 | A navigation index did not make a difficult cross-layer contract reliable. |
 
-For a small control, I built indexes while the FastAPI helper had four direct callers. Then I added a fifth caller in a local test change and asked the same question before refresh. The old graph did not include the new relationship. After the documented refresh path, the tools found it. This local change is not presented as FastAPI history.
+The last row was the useful surprise. I expected a structured map to help most
+on the hard task. Instead, many patches looked plausible but were incomplete:
+a paginated field was absent, a closed vocabulary was changed incorrectly, or
+an uncertain state was left unprotected.
 
-The graph counts differ by tool: one omits the recursive self-call and another groups callers. The source result was consistent: after the change, there were five direct callers.
+This does not mean that one condition is better than another. Five out of five
+still has a wide exact 95% interval, from 47.8% to 100%. These are small,
+task-specific observations. They do show something important for tool choice:
+an index can give an agent a faster starting point, but it does not supply a
+missing product contract or prove that every layer was changed.
 
-![A stale-index control: build an index when source has four callers; source changes to five callers; the old graph misses the new relationship; compare freshness, check current source, then refresh the index before relying on it.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/stale-index-control-article-large-dark.png)
+I also threw away an early UI batch. Its fixture accidentally left an inverse
+historical patch visible in Git, so an agent could reconstruct the solution
+instead of understanding the current code. I rebuilt a clean one-commit
+fixture, reran the controls, and counted only the 15 fresh runs. The mistake
+was uncomfortable, but it is part of the lesson: a benchmark must not quietly
+provide its own answer.
 
-I also ran one small rename task in three fresh sessions: no index, Graphify with the old graph, and Graphify rebuilt on the changed source. Each session passed the same deterministic evaluator once. In the stale-graph session, the graph missed the fifth caller, but the agent checked current source and updated all five.
+The [quality-gate summary](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-quality-gate-summary.md)
+and [redacted UI task record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-source-delivery-summary.md)
+describe the method and its limits. They do not measure token saving, elapsed
+time, index build cost, refresh cost, full browser behaviour, or general agent
+quality.
 
-This is a narrow control. It does not show that stale indexes are safe, that a tool improves an agent, or that a setup saves tokens. It supports one rule: **use a graph to find a starting point; use current source to decide a change.** The [normalized control record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/stale-index-control.md) describes the exact boundary.
+## A map must also be trustworthy
 
-## One real change task
+The change tasks tell me whether the final patch survives a quality gate. I
+also checked four smaller retrieval questions against fixed source versions.
+This matters because an agent can act on a compact answer long before a test
+has a chance to correct it.
 
-The retrieval cases show whether a short answer is safe to use. I also wanted to know whether reusable context could help an agent complete a real change.
+| Check | Tool response | Source-checked result | Practical lesson |
+|---|---|---|---|
+| Ktor function name collision | Code Review Graph returned 17 callers | 1 caller belonged to the requested low-level parser; 16 belonged to another public overload with the same name | A name is not an identity. Check the exact definition before estimating refactor impact. |
+| ripgrep test boundary | Code Review Graph returned 28 callers | 24 were tests; 4 were production functions | “All callers” needs a visible test and production boundary. |
+| Deliberately absent symbols | graphify returned related code in 3 of 12 fixed queries | 9 returned a clear no-match response | A related suggestion must not look like an exact match. |
+| FastAPI indexing scope | Serena found 1 of 4 known references from a nested package root | The same version returned 4 of 4 when indexed from repository root | Scope is part of the answer, not a detail to hide in setup. |
 
-I used one historical Next.js change. The Pages Router needed to expose selected trace metadata in the HTML head. The agent had to move a shared filter out of the App Router, carry the configured allow-list through the Pages rendering path, and add a test that failed when the filter was removed.
+![Four source-checked observations: Ktor 17 results versus 1 real caller; ripgrep 28 callers split into 24 tests and 4 production; graphify 3 substitutions out of 12 absent-symbol checks; Serena 4 of 4 references at repository root versus 1 of 4 at a nested package root.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/evidence-at-a-glance.png)
 
-| Condition | Fresh runs | Correct patch under the same checks |
-|---|---:|---:|
-| Ordinary source navigation | 2 | 2/2 |
-| Code Review Graph, with verified graph calls | 2 | 2/2 |
-| Serena, with verified language-tool calls | 2 | 2/2 |
+The Ktor result is a good example of why a small answer can be dangerous. The
+low-level `parseHeaderValue` function has one direct caller, `parseHeaders`.
+The tool also returned 16 callers of a different public function with the same
+name. The response was compact, but almost all of it was wrong for the target
+I asked about.
 
-A patch counted only when source inspection showed the route, its focused TypeScript test passed, that test failed against an unfiltered mutation, and the diff stayed within the expected boundary. The known-good patch passed. A clean checkout and a patch that added only the filter failed.
+![Ktor's low-level parser has one real incoming caller, parseHeaders. A graph query returned it plus 16 callers of a different public overload.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/ktor-caller-disambiguation.png)
 
-The result did not choose a winner. On this task, all three paths reached a correct patch. What mattered was the final safety loop: use context to navigate, read the current source, run a test, then try to break the behavior. The [full task record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/nextjs-pages-router-change-task.md) has the method and limits. It does not measure token saving, time, cost, full browser E2E behavior, or general agent quality.
+This is not an argument against a graph or language tool. It is a reason to
+give the answer a trust contract: the exact target, the indexed scope, a clear
+test boundary, and a label for exact match, possible match, or no match.
 
-## How I checked the answers
+## Memory that does not refresh is old memory
 
-An earlier experiment used an LLM judge. A Sonnet model compared tool answers with plain file-reading answers and gave them quality scores. That helped me find questions worth checking. It did not prove that an answer was correct.
+I then checked what happened after source changed. In a controlled FastAPI
+case, an index was built when the helper `solve_dependencies` had four direct
+callers. I added a fifth caller in a local source revision. The existing
+indexes still reported yesterday’s relationships until their refresh path ran.
 
-For this article, the LLM helped screen questions. Source code decided the result. Every retrieval case above uses a fixed repository and revision, saved raw tool output, a separate source check in a fresh clone, and a recorded query and index scope. Runs with an invalid scope or incomplete build were repaired or excluded before interpreting a tool result.
+| Behaviour on changed source | Safe response from an agent |
+|---|---|
+| Code Review Graph still returned four edges and gave no automatic warning | Compare the saved revision with the repository; refresh or check source. |
+| codebase-memory-mcp reported `metadata_changed` through its coverage check | Treat this as a rebuild request, even if general status says ready. |
+| graphify retained its old incoming-edge view without a code-revision signal | Rebuild or use source search before treating the caller set as complete. |
 
-The stale-index control has a fixed task and deterministic evaluator, but its raw records remain private because they contain local-path metadata. The article does not claim token savings or better final agent quality.
+![A stale-index control: build an index when source has four callers; source changes to five callers; the old graph misses the new relationship; compare freshness, check current source, then refresh before relying on it again.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/stale-index-control-article-large-dark.png)
 
-## A small tutorial: test a code index in your repository
+I ran one small rename task with ordinary source navigation, Graphify with the
+old graph, and Graphify rebuilt after the change. Each condition passed the
+same deterministic evaluator once. The stale-graph run still succeeded because
+the agent searched current source before editing all five callers.
 
-You do not need a large benchmark. A clean clone, a few fixed questions, and a separate source check can tell you whether a candidate tool helps in your repository.
+That is a workflow observation, not a performance result. The control was
+small, each condition ran once, and the baseline passed too. It supports one
+rule only: use a saved map to start the search, then verify a
+relationship-sensitive change against current source. The [normalized control
+record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/stale-index-control.md)
+has the precise boundary.
 
-1. **Create a valid run.** Use the repository root for a repository-wide question. Record the root, pinned revision, tool version, build command, exclusions, and the source answer you expect. Fix a failed or wrongly scoped setup before you compare tools.
+## How I would test a tool in my own repository
 
-2. **Test identity.** Choose an overload or another same-name symbol. Ask the tool for the qualified name, file, and signature. A safe result is the exact definition or an explicit list of candidates. A bare name is not enough.
+Vendor demonstrations are useful for discovering possibilities. They cannot
+tell us whether a tool fits a particular architecture, build, codebase age, or
+team workflow. The test can be small and still be much more useful than a
+generic ranking.
 
-3. **Test callers.** Ask for direct callers of that qualified target. Require the tool to separate production code from tests and say whether it lists call sites or calling functions. Check every relationship that would change your plan.
+1. Pick two or three questions that genuinely repeat in current work. Include one ordinary lookup and one hard case: an overload, generated code, a build-specific implementation, or a test-heavy API.
+2. Write the expected answer from source before running the tool. Decide whether tests count and what “caller” means in this case.
+3. Record the project root, exclusions, dependencies, build flags, index time, and any errors. A wrong root can make a correct tool appear broken.
+4. Save every raw answer. Check it against source before using it to plan a change. State whether the answer is exact, a candidate, or no match.
+5. Make a small source change, refresh the index, and repeat one affected relationship question.
+6. Give the agent one fixed change task. Require the patch, a focused test, and a failed mutation before measuring time, tool calls, context, or tokens.
 
-4. **Test freshness.** Build the index, then add one small relationship in a temporary branch, such as a direct caller. Before refresh, ask the tool for its index revision, repository root, configuration, and current repository revision. If it cannot compare them, the result is stale or unknown until source is checked.
+I turned this into three small, tool-neutral companion skills:
+[verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context),
+[maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index),
+and [run-code-context-change-task](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/run-code-context-change-task).
+They do not make an index correct. They make its scope, freshness, and
+uncertainty visible before the agent acts.
 
-5. **Test an absent symbol.** Ask for an exact symbol that you know does not exist. A safe tool says `NOT FOUND` in the stated scope. It may suggest related code, but it must label that code as a candidate.
+![Before acting on compact code context, check the exact symbol, indexed scope, test boundary, and whether the response is an exact match, a candidate, or no match.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks.png)
 
-6. **Use the right evidence.** For duplicates, record a structural candidate and check whether its behavior is truly comparable. For regression and test coverage, use the project test runner and coverage data. A graph can help find relevant files; it cannot prove either conclusion alone.
+## What I would measure next
 
-The [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md) has copyable prompts, a small record sheet, and an answer contract. It is deliberately tool-neutral. It will not choose a winner for you. It will show uncertainty and stale indexes before an agent turns them into a patch.
+The real value of persistent context will not appear in a single answer. It
+will appear, if it appears at all, across a sequence of independent tickets:
+the agent asks fewer repeated questions, reuses safe navigation, and still
+delivers patches that meet the same quality gate.
 
-![Before acting on compact code context, check the exact symbol, indexed scope, test boundary, and whether the response is verified, a candidate, not found, or stale.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks.png)
+That next experiment needs a baseline and an indexed condition on comparable
+tickets. It should measure the whole lifecycle: setup, index build, refresh,
+tool calls, retries, context, elapsed time, and patch quality. Quality comes
+first. Only after it stays level can lower overhead become a useful result.
 
-## When I would use a code index
+My conclusion is deliberately modest. Persistent code context is worth trying
+as working memory for an agent. It can make repeated navigation easier. It does
+not make the agent understand a product automatically, and it cannot replace a
+clear behaviour contract, current source, or tests that can expose a regression.
 
-I would build a persistent index when relationship questions repeat often enough to repay its setup and refresh cost. Before using it to change code, I would require the exact target, scope, freshness, completeness, and a source location such as `file:line@revision`.
+The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2)
+contains the [source-checked cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md),
+[reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md),
+the [three companion skills](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills),
+the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md),
+and the [redacted quality-gate summaries](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-quality-gate-summary.md).
 
-I turned those rules into three small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context), [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index), and [run-code-context-change-task](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/run-code-context-change-task). They do not make an index correct. They help an agent show what it knows, what it cannot prove, and what it should verify next.
-
-The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes the [source-checked retrieval cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), a [catalog of common developer questions](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/agent-code-question-catalog.md), and a [next-step benchmark design](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/benchmark-next-step.md) for testing whether a setup helps complete real changes.
-
-If you use a code index with an agent, what would it need to show before you trusted an answer enough to change code?
+What does your coding agent keep re-investigating in the same repository?

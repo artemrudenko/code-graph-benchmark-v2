@@ -7,12 +7,11 @@ The question is whether compact retrieval preserves the code relationships an AI
 ## Start here
 
 - [Standalone article draft](docs/devto-article-draft.md)
-- [Selection and evaluation framework](docs/selection-and-evaluation-framework.md) — research objective, tool classes, question taxonomy, and the boundary between safe navigation evidence and workflow-payoff claims
-- [Common agent questions](docs/agent-code-question-catalog.md) — refactor radius, duplicate code, regression and test decisions, with the evidence each one needs
-- [Next benchmark design](docs/benchmark-next-step.md) — a small two-stage plan: valid setup gate, source-checked retrieval, then fixed change tasks in fresh clones
+- [Selection and evaluation framework](docs/selection-and-evaluation-framework.md) — research objective, tool classes, question taxonomy, and the boundary between a workflow control and a lifecycle-payoff claim
+- [Info Radar quality-gate observations](docs/info-radar-quality-gate-summary.md) — three frozen task-specific results: a shared access boundary, a small two-layout UI change, and a cross-layer delivery path
+- [Recent-delivery UI task](docs/info-radar-source-delivery-summary.md) — a redacted task record showing the clean-fixture controls and the limits behind its 5/5 observations
 - [Controlled stale-index observation](docs/stale-index-control.md) — a normalized summary of the private FastAPI control: an old index missed one new caller until refresh, while source verification recovered the complete change set
-- [Repeated Next.js change task](docs/nextjs-pages-router-change-task.md) — two accepted runs in each of three conditions under one source/test/mutation evaluator; no ranking claim
-- [Companion skills](skills/README.md) — `verify-code-context`, `maintain-code-context-index`, and `run-code-context-change-task` make the article's rules reusable in agent work
+- [Companion skills](skills/README.md) — `verify-code-context` and `maintain-code-context-index` make the article's identity, source-check, and freshness rules reusable in agent work
 - [Reproducibility manifest](docs/reproducibility-manifest.md) — exact URL, full 40-char SHA, scope/exclusions, tool version, command, and query text for every (repo × tool × query) cell in the benchmark
 - [Evidence index](docs/evidence-index.md) — the four central claims (bbolt/mmap, ktor/parseHeaderValue, ripgrep's 28-result split, all 12 graphify canary queries), each traced from raw tool output to an independently re-verified source-code check
 - [Editorial audit and evidence gaps, in Russian](docs/editorial-review-ru.md) — the review that identified the gaps closed by the two files above
@@ -34,7 +33,7 @@ The question is whether compact retrieval preserves the code relationships an AI
 
 ## Not included here
 
-The actual cloned repositories (~1.9GB total) were not copied into this folder — they're third-party code, not benchmark output, and fully reproducible via the SHAs in `docs/reproducibility-manifest.md`. Generated `node_modules/`, graph databases, and other ephemeral build artifacts were likewise excluded.
+The actual cloned repositories (~1.9GB total) were not copied into this folder — they're third-party code, not benchmark output, and fully reproducible via the SHAs in `docs/reproducibility-manifest.md`. Generated `node_modules/`, graph databases, and other ephemeral build artifacts are likewise excluded. Local experiment runs, workspaces, indexes, raw traces, and task patches are also ignored because they may contain private source copies or generated agent data. Only a reviewed, redacted experiment summary may be added to this public archive.
 
 ## Licensing
 

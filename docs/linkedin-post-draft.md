@@ -1,21 +1,54 @@
 # LinkedIn post draft
 
-**Status:** Add the published DEV article URL before posting.
+AI coding agents often look fast on the first task.
 
-**Suggested attachment:** `assets/images/cover-context-to-verified-change-linkedin.png`. It works as a quiet visual anchor; the post itself carries the argument.
+The slower part appears later. The agent reopens the same files, rediscovers
+the same relationships, and can still miss one place where a change must be
+made.
 
-My coding agent could trace a relationship today, then reopen the same files and rediscover it in the next task.
+That costs more than tokens. It slows the route from an idea to a working
+product, and it gives code review more ways to find an incomplete patch.
 
-At first I called that a token problem. It is also a navigation and working-memory problem. The questions repeat: who calls this code, what else changes with it, and which tests should I check?
+I wanted to know whether persistent code context could work as an agent’s
+memory: less repeated navigation, with the same or better patch quality.
 
-I started testing persistent code context. The goal was not to name a winning tool. I wanted to know what an agent can safely reuse when it plans a change or a refactor.
+So I stopped asking “which code graph is best?” and tried a narrower question.
+Could ordinary source navigation, Code Review Graph, or Serena complete real
+product changes without losing behaviour?
 
-The source checks were useful, but they were only half of the story. A short answer can still point to the wrong overload, include mostly test code, or come from an index that is already old.
+I ran three fixed tasks in a Python and TypeScript product. Every condition had
+five fresh agent sessions. A patch counted only when it met a source-derived
+behaviour contract, its focused test passed, and that test failed again after I
+deliberately reintroduced the defect.
 
-So I added one small, repeatable change task in Next.js. I ran it twice with ordinary source navigation, twice with Code Review Graph, and twice with Serena. All six patches passed the same source check, focused test, mutation check, and diff boundary. There was no winner.
+The result did not produce a winner:
 
-The useful rule was simpler: context can help an agent find the route. Current source and a test decide whether the change is safe. Token savings matter only after the patch is correct.
+• On a shared access-rule fix and a small two-layout UI change, every condition
+  passed 5 out of 5 times.
+• On a harder change that had to carry one value through SQL, pagination,
+  TypeScript, and two reader surfaces, ordinary source navigation passed 1 out
+  of 5, Code Review Graph passed 1 out of 5, and Serena passed 0 out of 5.
 
-I wrote the method, examples, and a small testbench here: **[replace with published DEV URL]**
+For me, that is more useful than a ranking.
 
-What question does your coding agent keep re-investigating in the same repository?
+Structured context can give an agent a better starting point. It does not turn
+an incomplete product contract into a safe change. A smaller answer helps only
+when the patch still holds up under source checks and tests.
+
+I also discarded an early batch when I found that its Git history accidentally
+exposed the old solution. The benchmark was feeding the agent its own answer.
+Fixing that mistake was part of the work, and part of the conclusion: claims
+about agent memory need the same checks as claims about the code it changes.
+
+The next question is the one I care about most: can a prepared index preserve
+quality across a sequence of real tickets and then reduce the *total* repeated
+work after setup and refresh costs?
+
+I wrote up the method, evidence, limits, and a small testbench here:
+**[replace with published DEV URL]**
+
+What does your coding agent keep re-investigating in the same repository?
+
+---
+
+Editorial note: use `assets/images/cover-context-to-verified-change-linkedin.png` as the attachment. Add the final DEV URL before publishing. Keep this note out of the post.
