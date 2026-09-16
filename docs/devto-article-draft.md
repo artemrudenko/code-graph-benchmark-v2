@@ -93,7 +93,7 @@ The change tasks tell me whether the final patch survives a quality gate. I also
 | Deliberately absent symbols | graphify returned related code in 3 of 12 fixed queries | 9 returned a clear no-match response | A related suggestion must not look like an exact match. |
 | FastAPI indexing scope | Serena found 1 of 4 known references from a nested package root | The same version returned 4 of 4 when indexed from repository root | Scope is part of the answer, not a detail to hide in setup. |
 
-Ktor is an open-source server framework written in Kotlin. Its result is a good example of why a small answer can be dangerous. The low-level `parseHeaderValue` function has one direct caller, `parseHeaders`. The tool also returned 16 callers of a different public function with the same name. The response was compact, but almost all of it was wrong for the target I asked about.
+[Ktor](https://ktor.io/docs/server-create-a-new-project.html) is an open-source Kotlin framework for building server applications. Its result is a good example of why a small answer can be dangerous. The low-level `parseHeaderValue` function has one direct caller, `parseHeaders`. The tool also returned 16 callers of a different public function with the same name. The response was compact, but almost all of it was wrong for the target I asked about.
 
 ![Ktor's low-level CIO parseHeaderValue has one direct caller, parseHeaders. Code Review Graph returned 17 results labelled as the CIO target: one correct caller and 16 callers of a public overload or its tests.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/ktor-caller-disambiguation-article-large-dark.png?v=compact-20260916)
 
