@@ -1,13 +1,19 @@
 # code-graph-benchmark-v2
 
-Research archive for choosing persistent code context for AI coding agents. The September 9–10, 2026 evidence pack covers source-checked retrieval cases from code-review-graph (CRG), codebase-memory-mcp (CBM), Serena, and graphify across 12 repositories and eight languages. A thirteenth repository, Cobra, was downloaded during selection but not benchmarked.
+Research archive for choosing persistent code context for AI coding agents. The September 9–10, 2026 evidence pack began with source-checked retrieval cases from code-review-graph (CRG), codebase-memory-mcp (CBM), Serena, and graphify across 12 repositories and eight languages. A thirteenth repository, Cobra, was downloaded during selection but not benchmarked.
 
-The question is whether compact retrieval preserves the code relationships an AI agent needs while reducing repeated navigation over time. The archive documents individual successes, omissions, ambiguous results, and a selection pilot. It does not measure end-to-end agent quality, total token savings, or establish a general winner.
+The project has three evidence layers:
+
+1. **Readiness and navigation trust.** Can a configured tool return the exact symbol, a usable caller boundary, an honest absence, and a current result?
+2. **Completed-change quality.** On three frozen product tasks, does an added index preserve the quality of a source-checked, mutation-sensitive patch?
+3. **Lifecycle payoff.** Does a prepared index reduce total repeated work across a sequence of tickets after setup and refresh costs? This is the next experiment, not a current claim.
+
+The archive documents individual successes, omissions, ambiguous results, and a selection pilot. It does not establish a general winner or measure total token savings.
 
 ## Start here
 
 - [Standalone article draft](docs/devto-article-draft.md)
-- [Selection and evaluation framework](docs/selection-and-evaluation-framework.md) — research objective, tool classes, question taxonomy, and the boundary between a workflow control and a lifecycle-payoff claim
+- [Selection and evaluation framework](docs/selection-and-evaluation-framework.md) — research objective, tool classes, question taxonomy, and how the corpus and task evidence fit together
 - [Info Radar quality-gate observations](docs/info-radar-quality-gate-summary.md) — three frozen task-specific results: a shared access boundary, a small two-layout UI change, and a cross-layer delivery path
 - [Recent-delivery UI task](docs/info-radar-source-delivery-summary.md) — a redacted task record showing the clean-fixture controls and the limits behind its 5/5 observations
 - [Controlled stale-index observation](docs/stale-index-control.md) — a normalized summary of the private FastAPI control: an old index missed one new caller until refresh, while source verification recovered the complete change set

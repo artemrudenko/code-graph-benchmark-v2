@@ -1,6 +1,6 @@
 # Code-context companion skills
 
-These two folders are reusable operating rules for an agent working with a
+These three folders are reusable operating rules for an agent working with a
 code graph, language server, or ordinary source search. They do not install or
 select a particular provider.
 

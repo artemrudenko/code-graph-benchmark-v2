@@ -28,6 +28,34 @@ graph tools. My aim was more practical: learn when a saved code map earns a
 place in day-to-day product work, and when current source and tests must take
 over.
 
+## How the investigation became more specific
+
+This did not start with two tools and three tasks. I began by looking for
+practical ways an agent could keep code context between questions. The original
+selection protocol lists eight candidates, including ordinary source search,
+context packers, language-service bridges, graph indexes, and semantic search.
+They do different jobs, so they should not share one headline score.
+
+The work then narrowed in three stages:
+
+| Stage | Scope | Question it could answer |
+|---|---|---|
+| Find candidates and failure modes | 12 public repositories, 8 languages, and 4 candidates with source-checkable records | Can a compact answer safely help an agent navigate a particular codebase? |
+| Make navigation answers trustworthy | Exact identity, test boundaries, absence, scope, and freshness checks | When should an answer be treated as a lead, rather than as evidence for a patch? |
+| Test the delivered change | 3 fixed product tasks × 3 conditions × 5 fresh agent sessions | Does adding persistent context preserve the quality of a completed change? |
+
+The broad first stage gives examples of failure modes. The narrow third stage
+checks a real outcome. Neither is a universal ranking or a token-saving claim.
+Together they support a more useful decision: which recurring question a tool
+can help with in *this* repository, what must still be verified, and whether it
+ever lowers the total work without lowering patch quality.
+
+The full candidate history, pinned revisions, and raw records are in the
+[selection framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md)
+and [reproducibility manifest](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md).
+I keep that detail in the archive so the article can explain the decision
+without asking every reader to audit a tool catalogue first.
+
 ![A code-context lifecycle: configure scope and build a reusable index; ask recurring questions about symbols, callers, paths, and tests; check the source before acting; refresh the index after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
 
 ## The problem I was actually trying to solve
@@ -109,6 +137,11 @@ and [redacted UI task record](https://github.com/artemrudenko/code-graph-benchma
 describe the method and its limits. They do not measure token saving, elapsed
 time, index build cost, refresh cost, full browser behaviour, or general agent
 quality.
+
+The product source is private, so these task records are deliberately redacted.
+They let a reader inspect the behaviour contract, controls, and evaluator
+boundary, but they are not a package that an outside reader can rerun exactly.
+That limits their weight, and is one reason I do not use them to claim a winner.
 
 ## A map must also be trustworthy
 

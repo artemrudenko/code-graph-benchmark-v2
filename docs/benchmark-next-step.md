@@ -67,12 +67,18 @@ fallback. That is a useful result, not a failure to hide.
 
 ## Stage 2: does the setup help complete a real change?
 
-This is the missing evidence if we want to discuss token or time savings. Start
-with three small, representative change tasks: API refactor radius, regression
-and test decision, and a structural duplicate decision. Each task must have a
-fixed brief, a clean starting revision, a known expected change radius, and a
-deterministic evaluator such as project tests plus a narrow diff/source check.
-The [task catalog](agent-code-question-catalog.md) defines the pass boundary.
+The first three task-specific observations are now complete. They compare
+ordinary source navigation, Code Review Graph, and Serena across five fresh
+agent sessions per condition. See the [quality-gate summary](info-radar-quality-gate-summary.md)
+for the results, controls, and limits. They establish the quality gate; they
+do not establish lower total cost.
+
+The next run should keep the same gate and add representative tasks such as an
+API refactor radius, a regression and test decision, and a structural duplicate
+decision. Each task must have a fixed brief, a clean starting revision, a known
+expected change radius, and a deterministic evaluator such as project tests
+plus a narrow diff/source check. The [task catalog](agent-code-question-catalog.md)
+defines the pass boundary.
 
 For each promising setup, run the same task in fresh clones:
 
@@ -115,11 +121,10 @@ manifest that detects stale or incomplete indexes.
 ## What the current archive proves and does not prove
 
 The current evidence pack supports narrow Stage 1 observations about identity,
-test boundaries, exact absence, and stale indexes. It also has one
-source-verified stale-index task in which each condition passed once because
-the agent checked source.
+test boundaries, exact absence, and stale indexes. It also contains three
+task-specific Stage 2 quality observations and one source-verified stale-index
+task in which each condition passed once because the agent checked source.
 
-It does not yet support a claim that any candidate improves final agent work,
-saves total tokens, or wins across repositories. The three-task Stage 2 pilot
-above is the smallest next experiment that could support a local, useful
-choice.
+It does not support a claim that any candidate improves total agent work,
+saves total tokens, or wins across repositories. A sequential-ticket lifecycle
+run is the smallest next experiment that could support a local, useful choice.
