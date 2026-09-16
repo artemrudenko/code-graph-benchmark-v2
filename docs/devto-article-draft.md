@@ -16,24 +16,6 @@ That last condition changed the whole experiment. A short answer is a saving onl
 
 This article is about how I tested that idea. It is not a leaderboard for code graph tools. My aim was more practical: learn when a saved code map earns a place in day-to-day product work, and when current source and tests must take over.
 
-## How the investigation became more specific
-
-This did not start with two tools and three tasks. I began by looking for practical ways an agent could keep code context between questions. The original selection protocol lists eight candidates, including ordinary source search, context packers, language-service bridges, graph indexes, and semantic search. They do different jobs, so they should not share one headline score.
-
-The work then narrowed in three stages:
-
-| Stage | Scope | Question it could answer |
-|---|---|---|
-| Find candidates and failure modes | 12 public repositories, 8 languages, and 4 candidates with source-checkable records | Can a compact answer safely help an agent navigate a particular codebase? |
-| Make navigation answers trustworthy | Exact identity, test boundaries, absence, scope, and freshness checks | When should an answer be treated as a lead, rather than as evidence for a patch? |
-| Test the delivered change | 3 fixed product tasks × 3 conditions × 5 fresh agent sessions | Does adding persistent context preserve the quality of a completed change? |
-
-The broad first stage gives examples of failure modes. The narrow third stage checks a real outcome. Neither is a universal ranking or a token-saving claim. Together they support a more useful decision: which recurring question a tool can help with in *this* repository, what must still be verified, and whether it ever lowers the total work without lowering patch quality.
-
-The full candidate history, pinned revisions, and raw records are in the [selection framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md) and [reproducibility manifest](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md). I keep that detail in the archive so the article can explain the decision without asking every reader to audit a tool catalogue first.
-
-![A code-context lifecycle: configure scope and build a reusable index; ask recurring questions about symbols, callers, paths, and tests; check the source before acting; refresh the index after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png?v=compact-20260916)
-
 ## The problem I was actually trying to solve
 
 An agent repeatedly needs answers to a small set of questions:
@@ -58,6 +40,24 @@ That last step matters. It checks that the test is able to catch the mistake we 
 
 I used an LLM as a judge in an earlier exploration to help decide which questions were worth investigating. I do not use an LLM score to decide whether a patch is correct. A model can prefer a short, plausible answer that names the wrong function. For the change tasks below, source checks and deliberate mutations are the final gate.
 
+## How I made the question testable
+
+I did not start by ranking tools. I first looked at different ways an agent might keep code context between questions: ordinary source search, context packers, language-service bridges, graph indexes, and semantic search. They do different jobs, so one headline score would hide more than it explains.
+
+The work then narrowed in three stages:
+
+| Stage | Scope | Question it could answer |
+|---|---|---|
+| Find candidates and failure modes | 12 public repositories, 8 languages, and 4 candidates with source-checkable records | Can a compact answer safely help an agent navigate a particular codebase? |
+| Make navigation answers trustworthy | Exact identity, test boundaries, absence, scope, and freshness checks | When should an answer be treated as a lead, rather than as evidence for a patch? |
+| Test the delivered change | 3 fixed product tasks × 3 conditions × 5 fresh agent sessions | Does adding persistent context preserve the quality of a completed change? |
+
+The broad first stage gives examples of failure modes. The narrow third stage checks a real outcome. Neither is a universal ranking or a token-saving claim. Together they answer a practical question: which recurring question can a tool help with in *this* repository? What must I still verify? Does it lower total work without lowering patch quality?
+
+The [selection framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md) keeps the candidate history. The [reproducibility manifest](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md) has pinned revisions and raw records. I keep that detail in the archive so the article can explain the decision without asking every reader to audit a tool catalogue first.
+
+![A code-context lifecycle: configure scope and build a reusable index; ask recurring questions about symbols, callers, paths, and tests; check the source before acting; refresh the index after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png?v=compact-20260916)
+
 ## The result that changed my mind
 
 I ran three fixed change tasks in one private Python and TypeScript product. Each condition used five fresh agent sessions. I compared ordinary source navigation with Code Review Graph and Serena, two tools that give an agent structured help finding code relationships.
@@ -76,9 +76,9 @@ The last row was the useful surprise. I expected a structured map to help most o
 
 This does not mean that one condition is better than another. Five out of five still has a wide exact 95% interval, from 47.8% to 100%. These are small, task-specific observations. They do show something important for tool choice: an index can give an agent a faster starting point, but it does not supply a missing product contract or prove that every layer was changed.
 
-I also threw away an early UI batch. Its fixture accidentally left an inverse historical patch visible in Git, so an agent could reconstruct the solution instead of understanding the current code. I rebuilt a clean one-commit fixture, reran the controls, and counted only the 15 fresh runs. The mistake was uncomfortable, but it is part of the lesson: a benchmark must not quietly provide its own answer.
+I discarded an early UI batch. An old inverse patch was still visible in Git, so it could have given an agent the solution without requiring it to understand the current code. I rebuilt a clean one-commit fixture, reran the controls, and counted only the 15 fresh runs. The lesson is simple: a benchmark must not quietly provide its own answer.
 
-The [quality-gate summary](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-quality-gate-summary.md) and [redacted UI task record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-source-delivery-summary.md) describe the method and its limits. They do not measure token saving, elapsed time, index build cost, refresh cost, full browser behaviour, or general agent quality.
+The [quality-gate summary](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-quality-gate-summary.md) and [redacted UI task record](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-source-delivery-summary.md) explain the method and its limits. They do not measure token saving, elapsed time, index build cost, refresh cost, full browser behaviour, or general agent quality.
 
 The product source is private, so these task records are deliberately redacted. They let a reader inspect the behaviour contract, controls, and evaluator boundary, but they are not a package that an outside reader can rerun exactly. That limits their weight, and is one reason I do not use them to claim a winner.
 
@@ -93,7 +93,7 @@ The change tasks tell me whether the final patch survives a quality gate. I also
 | Deliberately absent symbols | graphify returned related code in 3 of 12 fixed queries | 9 returned a clear no-match response | A related suggestion must not look like an exact match. |
 | FastAPI indexing scope | Serena found 1 of 4 known references from a nested package root | The same version returned 4 of 4 when indexed from repository root | Scope is part of the answer, not a detail to hide in setup. |
 
-[Ktor](https://ktor.io/docs/server-create-a-new-project.html) is an open-source Kotlin framework for building server applications. Its result is a good example of why a small answer can be dangerous. The low-level `parseHeaderValue` function has one direct caller, `parseHeaders`. The tool also returned 16 callers of a different public function with the same name. The response was compact, but almost all of it was wrong for the target I asked about.
+[Ktor](https://ktor.io/docs/server-create-a-new-project.html) is an open-source Kotlin framework for building server applications. This case shows why a small answer can be dangerous. The low-level `parseHeaderValue` function has one direct caller, `parseHeaders`. The tool also returned 16 callers of a different public function with the same name. The response was compact, but almost all of it was wrong for the target I asked about.
 
 ![Ktor's low-level CIO parseHeaderValue has one direct caller, parseHeaders. Code Review Graph returned 17 results labelled as the CIO target: one correct caller and 16 callers of a public overload or its tests.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/ktor-caller-disambiguation-article-large-dark.png?v=compact-20260916)
 
@@ -126,7 +126,13 @@ Vendor demonstrations are useful for discovering possibilities. They cannot tell
 5. Make a small source change, refresh the index, and repeat one affected relationship question.
 6. Give the agent one fixed change task. Require the patch, a focused test, and a failed mutation before measuring time, tool calls, context, or tokens.
 
-I turned this into three small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context), [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index), and [run-code-context-change-task](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/run-code-context-change-task). They do not make an index correct. They make its scope, freshness, and uncertainty visible before the agent acts.
+I turned the method into three small, tool-neutral companion skills:
+
+- [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context)
+- [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index)
+- [run-code-context-change-task](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/run-code-context-change-task)
+
+They do not make an index correct. They make its scope, freshness, and uncertainty visible before the agent acts.
 
 ![Five checks before a compact answer guides a code change: exact target, scope and build, test boundary, match type, and freshness. If any answer is unclear, verify current source before acting.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks-article-large-dark.png?v=compact-contrast-20260916)
 
@@ -138,6 +144,12 @@ That next experiment needs a baseline and an indexed condition on comparable tic
 
 My conclusion is deliberately modest. Persistent code context is worth trying as working memory for an agent. It can make repeated navigation easier. It does not make the agent understand a product automatically, and it cannot replace a clear behaviour contract, current source, or tests that can expose a regression.
 
-The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) contains the [source-checked cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md), [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md), the [three companion skills](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills), the [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md), and the [redacted quality-gate summaries](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-quality-gate-summary.md).
+The [public evidence archive](https://github.com/artemrudenko/code-graph-benchmark-v2) includes:
+
+- [source-checked cases](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/evidence-index.md)
+- [reproduction details](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md)
+- the [three companion skills](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills)
+- a [reader-run testbench](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reader-run-testbench.md)
+- [redacted quality-gate summaries](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/info-radar-quality-gate-summary.md)
 
 What does your coding agent keep re-investigating in the same repository?
