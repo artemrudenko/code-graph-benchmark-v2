@@ -11,7 +11,7 @@
       .metric { font-family: Arial, Helvetica, sans-serif; font-size: 68px; font-weight: 700; fill: #F0EDE4; }
       .metric-small { font-family: Arial, Helvetica, sans-serif; font-size: 42px; font-weight: 700; fill: #F0EDE4; }
       .note { font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-weight: 700; fill: #F0EDE4; }
-      .small-note { font-family: Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 400; fill: #B7C8D2; }
+      .small-note { font-family: Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 700; fill: #08131E; }
       .box { stroke-width: 3; }
       .arrow { fill: none; stroke: #A9DDE7; stroke-width: 4; marker-end: url(#arrow); }
       .rule { stroke: #577581; stroke-width: 2; }

@@ -128,7 +128,7 @@ Vendor demonstrations are useful for discovering possibilities. They cannot tell
 
 I turned this into three small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context), [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index), and [run-code-context-change-task](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/run-code-context-change-task). They do not make an index correct. They make its scope, freshness, and uncertainty visible before the agent acts.
 
-![Five checks before a compact answer guides a code change: exact target, scope and build, test boundary, match type, and freshness. If any answer is unclear, verify current source before acting.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks-article-large-dark.png?v=compact-20260916)
+![Five checks before a compact answer guides a code change: exact target, scope and build, test boundary, match type, and freshness. If any answer is unclear, verify current source before acting.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks-article-large-dark.png?v=compact-contrast-20260916)
 
 ## What I would measure next
 
