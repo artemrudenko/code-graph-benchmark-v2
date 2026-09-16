@@ -8,8 +8,8 @@
 | images/cover-index-scope-linkedin.png | Earlier standalone LinkedIn visual about a scope-control audit | Retained as an archive asset. Do not use it to promote the current article. |
 | diagrams/code-context-lifecycle.png | A persistent-context lifecycle: configure, query, verify, change, refresh | After the opening problem statement. |
 | diagrams/code-context-tool-jobs.png | Four code-context tool classes, grouped by the developer job they do | Retained in the evidence archive; no longer used by the article. |
-| diagrams/evidence-at-a-glance.png | Four independently checked numeric findings, with their own denominators | In "A map must also be trustworthy." |
-| diagrams/ktor-caller-disambiguation.png | Ktor: one true caller and 16 cross-attributed results | In "A map must also be trustworthy," after the Ktor example. |
+| diagrams/evidence-at-a-glance.png | Four independently checked numeric findings, with their own denominators | Retained as an archive figure. The article table is clearer at narrow reading width. |
+| diagrams/ktor-caller-disambiguation.png | First wide Ktor figure: one true caller and 16 cross-attributed results | Retained as an archive figure. |
 | diagrams/fastapi-project-root-control.png | FastAPI setup audit: a nested package root finds 1 of 4 references; the repository root finds 4 of 4 for the same commit and symbol | Retained in the evidence archive; no longer used by the article. |
 | diagrams/retrieval-trust-checks.png | Four checks before acting on compact code context | In "How I would test a tool in my own repository." |
 | diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "A map can become old." |
@@ -20,6 +20,9 @@
 | diagrams/stale-index-control-dark.png | Dark source version of the stale-index control | Retained with its Mermaid and Excalidraw sources. |
 | diagrams/stale-index-control-article-dark.png | First large-type editorial iteration of the stale-index control | Kept for provenance. |
 | diagrams/stale-index-control-article-large-dark.png | Mobile-readable editorial version of the stale-index control | Used in the DEV article in "An index can be correct and still be old." |
+| diagrams/task-quality-gate-article-large-dark.png | Three fixed product changes across ordinary source navigation, Code Review Graph, and Serena: two contained tasks finish 5/5 in every condition; the hard cross-layer task finishes 1/5, 1/5, and 0/5 | Used after the change-task results table. It is task-specific evidence, not a tool ranking. |
+| diagrams/ktor-caller-disambiguation-article-large-dark.png | Mobile-readable source-checked Ktor case: one correct caller and 16 false positives from a public overload or its tests | Used in "A map must also be trustworthy," after the Ktor explanation. |
+| diagrams/retrieval-trust-checks-article-large-dark.png | Mobile-readable five-check trust contract: identity, scope and build, test boundary, match type, and freshness | Used after the companion skills in "How I would test a tool in my own repository." |
 
 The Mermaid files and Excalidraw files are editable structural sources. The SVG and PNG are the publication figures; PNG is the upload-ready form for DEV. The article uses raw GitHub URLs for diagrams so the current unpublished DEV draft can display them. The cover must be uploaded through DEV.
 

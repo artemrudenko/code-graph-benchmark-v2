@@ -1,0 +1,19 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","edgeLabelBackground":"#08131E","fontFamily":"Arial","fontSize":"19px"}}}%%
+flowchart TB
+    A[CIO parseHeaderValue] --> B[parseHeaders]
+    A --> C[CRG response:<br/>17 results labelled as CIO target]
+    C --> D[1 correct result]
+    C --> E[16 callers of a public overload<br/>or its tests]
+    D --> F[Do not use a raw caller count<br/>without checking identity]
+    E --> F
+
+    classDef source fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+    classDef answer fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:2px;
+    classDef good fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
+    classDef wrong fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
+    classDef conclusion fill:#213039,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+    class A,B source;
+    class C answer;
+    class D good;
+    class E wrong;
+    class F conclusion;

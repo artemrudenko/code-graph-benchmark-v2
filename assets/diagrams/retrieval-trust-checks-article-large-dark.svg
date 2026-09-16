@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1950" height="1900" viewBox="0 0 1950 1900" role="img" aria-labelledby="title desc">
+  <title id="title">Five checks before a compact answer guides a code change</title>
+  <desc id="desc">Check the exact target, scope and build, test boundary, match type, and source freshness. If any answer is unclear, verify the current source before acting.</desc>
+  <style>
+    .title { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:66px; font-weight:700; }
+    .sub { fill:#AABCC5; font-family:Arial, Helvetica, sans-serif; font-size:32px; }
+    .num { fill:#08131E; font-family:Arial, Helvetica, sans-serif; font-size:31px; font-weight:700; text-anchor:middle; }
+    .cardtitle { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:44px; font-weight:700; }
+    .body { fill:#C7D2D9; font-family:Arial, Helvetica, sans-serif; font-size:34px; }
+    .bottomtitle { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:48px; font-weight:700; text-anchor:middle; }
+    .foot { fill:#AABCC5; font-family:Arial, Helvetica, sans-serif; font-size:28px; text-anchor:middle; }
+  </style>
+  <rect width="1950" height="1900" fill="#08131E"/>
+  <text x="120" y="115" class="title">Before a compact answer guides a code change</text>
+  <text x="120" y="172" class="sub">Five checks turn a fast starting point into evidence an agent can safely act on.</text>
+
+  <rect x="120" y="260" width="790" height="360" rx="28" fill="#102D3A" stroke="#35596A" stroke-width="3"/>
+  <circle cx="195" cy="338" r="38" fill="#A9DDE7"/><text x="195" y="349" class="num">1</text>
+  <text x="255" y="352" class="cardtitle">Exact target</text>
+  <path d="M180 414 H850" stroke="#4D6E7C" stroke-width="3"/>
+  <text x="180" y="495" class="body">Right definition</text><text x="180" y="542" class="body">or overload?</text>
+
+  <rect x="1040" y="260" width="790" height="360" rx="28" fill="#102D3A" stroke="#35596A" stroke-width="3"/>
+  <circle cx="1115" cy="338" r="38" fill="#A9DDE7"/><text x="1115" y="349" class="num">2</text>
+  <text x="1175" y="352" class="cardtitle">Scope and build</text>
+  <path d="M1100 414 H1770" stroke="#4D6E7C" stroke-width="3"/>
+  <text x="1100" y="495" class="body">Right repository, module,</text><text x="1100" y="542" class="body">and build target?</text>
+
+  <rect x="120" y="700" width="790" height="360" rx="28" fill="#102D3A" stroke="#35596A" stroke-width="3"/>
+  <circle cx="195" cy="778" r="38" fill="#A9DDE7"/><text x="195" y="789" class="num">3</text>
+  <text x="255" y="792" class="cardtitle">Test boundary</text>
+  <path d="M180 854 H850" stroke="#4D6E7C" stroke-width="3"/>
+  <text x="180" y="935" class="body">Production callers and</text><text x="180" y="982" class="body">test callers separated?</text>
+
+  <rect x="1040" y="700" width="790" height="360" rx="28" fill="#2A2029" stroke="#F26B5B" stroke-width="3"/>
+  <circle cx="1115" cy="778" r="38" fill="#F26B5B"/><text x="1115" y="789" class="num">4</text>
+  <text x="1175" y="792" class="cardtitle">Match type</text>
+  <path d="M1100 854 H1770" stroke="#754C55" stroke-width="3"/>
+  <text x="1100" y="935" class="body">Exact match, candidate,</text><text x="1100" y="982" class="body">or honest no match?</text>
+
+  <rect x="120" y="1140" width="1710" height="290" rx="28" fill="#332B1D" stroke="#F3C969" stroke-width="3"/>
+  <circle cx="195" cy="1222" r="38" fill="#F3C969"/><text x="195" y="1233" class="num">5</text>
+  <text x="255" y="1238" class="cardtitle">Freshness</text>
+  <path d="M180 1295 H1770" stroke="#806B42" stroke-width="3"/>
+  <text x="180" y="1374" class="body">Does the indexed revision still match the source you are about to change?</text>
+
+  <rect x="120" y="1525" width="1710" height="160" rx="28" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
+  <text x="975" y="1598" class="bottomtitle">If any answer is unclear, verify current source before acting.</text>
+  <text x="975" y="1648" class="foot">Use the index to navigate. Use source and tests to decide.</text>
+  <text x="975" y="1785" class="foot">A compact answer is useful only when its scope, identity, and limits stay visible.</text>
+</svg>

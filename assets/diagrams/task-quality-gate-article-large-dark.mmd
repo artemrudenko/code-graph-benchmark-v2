@@ -1,0 +1,17 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","edgeLabelBackground":"#08131E","fontFamily":"Arial","fontSize":"19px"}}}%%
+flowchart TB
+    A[Three fixed product changes] --> B[Each condition: five fresh sessions]
+    B --> C[Two contained changes:<br/>5 / 5 under every condition]
+    B --> D[One cross-layer contract:<br/>baseline 1 / 5 · CRG 1 / 5 · Serena 0 / 5]
+    C --> E[No correctness advantage]
+    D --> E
+    E --> F[Small, task-specific result:<br/>not a tool ranking]
+
+    classDef setup fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+    classDef pass fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
+    classDef risk fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
+    classDef conclusion fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:2px;
+    class A,B setup;
+    class C pass;
+    class D risk;
+    class E,F conclusion;

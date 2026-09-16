@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1950" height="1800" viewBox="0 0 1950 1800" role="img" aria-labelledby="title desc">
+  <title id="title">The hard cross-layer task stayed hard</title>
+  <desc id="desc">Across five fresh agent sessions per condition, ordinary source navigation, Code Review Graph, and Serena completed two contained tasks five times out of five. On one hard cross-layer contract, they completed one, one, and zero sessions out of five.</desc>
+  <style>
+    .title { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:68px; font-weight:700; }
+    .sub { fill:#AABCC5; font-family:Arial, Helvetica, sans-serif; font-size:32px; }
+    .eyebrow { fill:#A9DDE7; font-family:Arial, Helvetica, sans-serif; font-size:28px; font-weight:700; letter-spacing:1.4px; }
+    .column { fill:#AABCC5; font-family:Arial, Helvetica, sans-serif; font-size:29px; font-weight:700; text-anchor:middle; }
+    .row { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:700; }
+    .rowdetail { fill:#B9C7D0; font-family:Arial, Helvetica, sans-serif; font-size:29px; }
+    .score { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:70px; font-weight:700; text-anchor:middle; }
+    .scorelabel { fill:#B9C7D0; font-family:Arial, Helvetica, sans-serif; font-size:27px; text-anchor:middle; }
+    .note { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:42px; font-weight:700; text-anchor:middle; }
+    .foot { fill:#AABCC5; font-family:Arial, Helvetica, sans-serif; font-size:28px; text-anchor:middle; }
+  </style>
+  <rect width="1950" height="1800" fill="#08131E"/>
+  <text x="120" y="115" class="title">The hard cross-layer task stayed hard</text>
+  <text x="120" y="172" class="sub">A patch passed only with its behaviour contract, focused test, and a defect mutation that failed.</text>
+  <text x="120" y="222" class="sub">Three fixed product tasks. Five fresh sessions for each condition. Small, task-specific evidence.</text>
+
+  <text x="885" y="310" class="column">SOURCE NAVIGATION</text>
+  <text x="1240" y="310" class="column">CODE REVIEW GRAPH</text>
+  <text x="1595" y="310" class="column">SERENA</text>
+
+  <rect x="120" y="350" width="1710" height="300" rx="28" fill="#102D3A" stroke="#35596A" stroke-width="3"/>
+  <text x="175" y="438" class="row">Access policy</text>
+  <text x="175" y="490" class="rowdetail">Inactive user through</text>
+  <text x="175" y="532" class="rowdetail">a shared SQL helper</text>
+  <rect x="730" y="404" width="310" height="180" rx="22" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
+  <rect x="1085" y="404" width="310" height="180" rx="22" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
+  <rect x="1440" y="404" width="310" height="180" rx="22" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
+  <text x="885" y="488" class="score">5 / 5</text><text x="885" y="536" class="scorelabel">accepted sessions</text>
+  <text x="1240" y="488" class="score">5 / 5</text><text x="1240" y="536" class="scorelabel">accepted sessions</text>
+  <text x="1595" y="488" class="score">5 / 5</text><text x="1595" y="536" class="scorelabel">accepted sessions</text>
+
+  <rect x="120" y="710" width="1710" height="300" rx="28" fill="#102D3A" stroke="#35596A" stroke-width="3"/>
+  <text x="175" y="798" class="row">Delivery count</text>
+  <text x="175" y="850" class="rowdetail">Existing desktop row</text>
+  <text x="175" y="892" class="rowdetail">and mobile card</text>
+  <rect x="730" y="764" width="310" height="180" rx="22" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
+  <rect x="1085" y="764" width="310" height="180" rx="22" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
+  <rect x="1440" y="764" width="310" height="180" rx="22" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
+  <text x="885" y="848" class="score">5 / 5</text><text x="885" y="896" class="scorelabel">accepted sessions</text>
+  <text x="1240" y="848" class="score">5 / 5</text><text x="1240" y="896" class="scorelabel">accepted sessions</text>
+  <text x="1595" y="848" class="score">5 / 5</text><text x="1595" y="896" class="scorelabel">accepted sessions</text>
+
+  <rect x="120" y="1070" width="1710" height="300" rx="28" fill="#2A2029" stroke="#F26B5B" stroke-width="4"/>
+  <text x="175" y="1158" class="row">Cross-layer contract</text>
+  <text x="175" y="1210" class="rowdetail">SQL, pagination, TypeScript,</text>
+  <text x="175" y="1252" class="rowdetail">and two reader surfaces</text>
+  <rect x="730" y="1124" width="310" height="180" rx="22" fill="#332126" stroke="#F26B5B" stroke-width="3"/>
+  <rect x="1085" y="1124" width="310" height="180" rx="22" fill="#332126" stroke="#F26B5B" stroke-width="3"/>
+  <rect x="1440" y="1124" width="310" height="180" rx="22" fill="#332126" stroke="#F26B5B" stroke-width="3"/>
+  <text x="885" y="1208" class="score">1 / 5</text><text x="885" y="1256" class="scorelabel">accepted sessions</text>
+  <text x="1240" y="1208" class="score">1 / 5</text><text x="1240" y="1256" class="scorelabel">accepted sessions</text>
+  <text x="1595" y="1208" class="score">0 / 5</text><text x="1595" y="1256" class="scorelabel">accepted sessions</text>
+
+  <rect x="120" y="1450" width="1710" height="160" rx="28" fill="#332B1D" stroke="#F3C969" stroke-width="3"/>
+  <text x="975" y="1516" class="note">An index preserved the easy changes.</text>
+  <text x="975" y="1564" class="note">It did not make the hard multi-layer task reliable.</text>
+  <text x="975" y="1604" class="foot">This is evidence about these tasks, not a tool ranking or a stable success rate.</text>
+  <text x="975" y="1715" class="foot">Condition labels describe navigation support; the evaluator did not use an LLM score.</text>
+</svg>
