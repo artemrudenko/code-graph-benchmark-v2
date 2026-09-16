@@ -15,14 +15,14 @@
 | diagrams/stale-index-control.png | A controlled source change adds a fifth caller after an index was built; compare freshness, verify source, then refresh | In "A map can become old." |
 | diagrams/code-context-lifecycle-dark.png | Dark source version of the persistent-context lifecycle | Retained with its Mermaid and Excalidraw sources. |
 | diagrams/code-context-lifecycle-article-dark.png | First large-type editorial iteration of the persistent-context lifecycle | Kept for provenance. |
-| diagrams/code-context-lifecycle-article-large-dark.png | Mobile-readable editorial version of the persistent-context lifecycle | Used in the DEV article after the opening problem statement. |
+| diagrams/code-context-lifecycle-article-large-dark.png | Compact article lifecycle: scope, build, navigate, then verify and refresh | Used in the DEV article after the opening problem statement. |
 | diagrams/code-context-tool-jobs-dark.png | Dark version of the tool-job map | Available as the matching dark alternative. |
 | diagrams/stale-index-control-dark.png | Dark source version of the stale-index control | Retained with its Mermaid and Excalidraw sources. |
 | diagrams/stale-index-control-article-dark.png | First large-type editorial iteration of the stale-index control | Kept for provenance. |
-| diagrams/stale-index-control-article-large-dark.png | Mobile-readable editorial version of the stale-index control | Used in the DEV article in "An index can be correct and still be old." |
-| diagrams/task-quality-gate-article-large-dark.png | Three fixed product changes across ordinary source navigation, Code Review Graph, and Serena: two contained tasks finish 5/5 in every condition; the hard cross-layer task finishes 1/5, 1/5, and 0/5 | Used after the change-task results table. It is task-specific evidence, not a tool ranking. |
-| diagrams/ktor-caller-disambiguation-article-large-dark.png | Mobile-readable source-checked Ktor case: one correct caller and 16 false positives from a public overload or its tests | Used in "A map must also be trustworthy," after the Ktor explanation. |
-| diagrams/retrieval-trust-checks-article-large-dark.png | Mobile-readable five-check trust contract: identity, scope and build, test boundary, match type, and freshness | Used after the companion skills in "How I would test a tool in my own repository." |
+| diagrams/stale-index-control-article-large-dark.png | Compact stale-index timeline: build at four callers, source changes to five, old graph still reports four, then compare revision and refresh | Used in the DEV article in "Memory that does not refresh is old memory." |
+| diagrams/task-quality-gate-article-large-dark.png | Compact change-quality result: two contained tasks finish 5/5 in every condition; the cross-layer task finishes 1/5, 1/5, and 0/5 | Used after the change-task results table. It is task-specific evidence, not a tool ranking. |
+| diagrams/ktor-caller-disambiguation-article-large-dark.png | Compact source-checked Ktor case: one correct caller and 16 false positives from a public overload or its tests | Used in "A map must also be trustworthy," after the Ktor explanation. |
+| diagrams/retrieval-trust-checks-article-large-dark.png | Compact five-check trust contract: target, scope and build, test boundary, match type, and freshness | Used after the companion skills in "How I would test a tool in my own repository." |
 
 The Mermaid files and Excalidraw files are editable structural sources. The SVG and PNG are the publication figures; PNG is the upload-ready form for DEV. The article uses raw GitHub URLs for diagrams so the current unpublished DEV draft can display them. The cover must be uploaded through DEV.
 
@@ -34,7 +34,7 @@ single dark editorial palette.
 
 Use the installed `diagram` skill for a flow, architecture map, or evidence diagram. Its normal deliverable is Mermaid source, an editable Excalidraw scene for flowcharts, and rendered SVG and PNG. For a data-sensitive article figure, use that structure and finish typography in the SVG if needed. Inspect the PNG before publication, and keep labels short enough to fit their nodes.
 
-Use image generation only for the cover and editorial illustrations, never for diagrams that state evidence. The evidence figures use exact research wording and values; keep their source wording synchronized with `docs/evidence-index.md`.
+Use image generation only for the cover and editorial illustrations, never for diagrams that state evidence. The evidence figures use exact research wording and values; keep their source wording synchronized with `docs/evidence-index.md`. For DEV, prefer a compact horizontal figure with one conclusion; detailed explanations belong in the surrounding prose or table.
 
 The reader-run testbench is text and tables rather than another diagram. Its
 prompts, answer contract, and record sheet live in `docs/reader-run-testbench.md`.

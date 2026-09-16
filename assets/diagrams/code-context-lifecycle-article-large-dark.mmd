@@ -1,18 +1,7 @@
-%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","edgeLabelBackground":"#08131E","fontFamily":"Arial","fontSize":"19px"}}}%%
-flowchart TB
-    A[Set repository root<br/>and build options] --> B[Build or refresh<br/>the code index]
-    B --> C[Ask repeated questions<br/>symbols, callers, tests]
-    C --> D{Exact target<br/>and right scope?}
-    D -- Yes --> E[Check current source<br/>then act]
-    D -- No or unclear --> F[Read source<br/>or fix setup]
-    E --> G[After code changes:<br/>refresh the index]
-    F --> G
-
-    classDef setup fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
-    classDef query fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:2px;
-    classDef verify fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
-    classDef fallback fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
-    class A,B,G setup;
-    class C,D query;
-    class E verify;
-    class F fallback;
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","fontFamily":"Arial","fontSize":"18px"}}}%%
+flowchart LR
+  A[Set scope<br/>root + build] --> B[Build index<br/>symbols + edges] --> C[Navigate<br/>callers, paths, tests] --> D[Verify<br/>source + refresh]
+  classDef base fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+  classDef question fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:2px;
+  classDef verify fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
+  class A,B base; class C question; class D verify;

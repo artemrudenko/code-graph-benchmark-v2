@@ -1,34 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1350" viewBox="0 0 1200 1350" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="640" viewBox="0 0 1600 640" role="img" aria-labelledby="title desc">
   <title id="title">A safe loop for reusable code context</title>
-  <desc id="desc">Set repository scope, build or refresh an index, ask recurring questions, verify target and scope in source, then act or fix setup.</desc>
+  <desc id="desc">Four compact steps: set scope, build an index, navigate with it, then verify source and refresh.</desc>
   <defs>
-    <marker id="arrow" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto"><path d="M0,0 L13,6.5 L0,13 Z" fill="#A9DDE7"/></marker>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#A9DDE7"/></marker>
     <style>
-      .title{font:700 54px Arial,sans-serif;fill:#F0EDE4}.subtitle{font:400 29px Arial,sans-serif;fill:#B7C8D2}.box{stroke-width:3}.label{font:700 41px Arial,sans-serif;fill:#F0EDE4;text-anchor:middle}.edge{fill:none;stroke:#A9DDE7;stroke-width:4;marker-end:url(#arrow)}.edge-label{font:700 28px Arial,sans-serif;fill:#B7C8D2}
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 62px; font-weight: 700; fill: #F0EDE4; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 400; fill: #B7C8D2; }
+      .card-title { font-family: Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; fill: #F0EDE4; }
+      .card-body { font-family: Arial, Helvetica, sans-serif; font-size: 29px; font-weight: 400; fill: #B7C8D2; }
+      .metric { font-family: Arial, Helvetica, sans-serif; font-size: 68px; font-weight: 700; fill: #F0EDE4; }
+      .metric-small { font-family: Arial, Helvetica, sans-serif; font-size: 42px; font-weight: 700; fill: #F0EDE4; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-weight: 700; fill: #F0EDE4; }
+      .small-note { font-family: Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 400; fill: #B7C8D2; }
+      .box { stroke-width: 3; }
+      .arrow { fill: none; stroke: #A9DDE7; stroke-width: 4; marker-end: url(#arrow); }
+      .rule { stroke: #577581; stroke-width: 2; }
     </style>
   </defs>
-  <rect width="1200" height="1350" fill="#08131E"/>
-  <text x="600" y="82" text-anchor="middle" class="title">A safe loop for reusable code context</text>
-  <text x="600" y="128" text-anchor="middle" class="subtitle">Build once. Verify before a decision. Refresh after a change.</text>
-
-  <path d="M540 300 H660" class="edge"/>
-  <rect x="70" y="205" width="470" height="190" rx="20" fill="#102D3A" stroke="#A9DDE7" class="box"/>
-  <text x="305" y="285" class="label"><tspan x="305">1. Set repository root</tspan><tspan x="305" dy="50">and build options</tspan></text>
-  <rect x="660" y="205" width="470" height="190" rx="20" fill="#102D3A" stroke="#A9DDE7" class="box"/>
-  <text x="895" y="285" class="label"><tspan x="895">2. Build or refresh</tspan><tspan x="895" dy="50">the code index</tspan></text>
-
-  <path d="M895 395 V480 H600 V540" class="edge"/>
-  <rect x="180" y="540" width="840" height="165" rx="20" fill="#332B1D" stroke="#F3C969" class="box"/>
-  <text x="600" y="605" class="label"><tspan x="600">3. Ask a repeated code question</tspan><tspan x="600" dy="50">about a symbol, caller, or test</tspan></text>
-
-  <path d="M600 705 V795" class="edge"/>
-  <rect x="120" y="795" width="960" height="170" rx="85" fill="#332B1D" stroke="#F3C969" class="box"/>
-  <text x="600" y="860" class="label"><tspan x="600">Before acting: is the target exact</tspan><tspan x="600" dy="50">and is the search scope right?</tspan></text>
-
-  <path d="M400 965 V1050 H305 V1115" class="edge"/><path d="M800 965 V1050 H895 V1115" class="edge"/>
-  <text x="250" y="1038" class="edge-label">Yes</text><text x="820" y="1038" class="edge-label">No or unclear</text>
-  <rect x="70" y="1115" width="470" height="165" rx="20" fill="#153329" stroke="#62D2C3" class="box"/>
-  <text x="305" y="1178" class="label"><tspan x="305">Check source,</tspan><tspan x="305" dy="50">then act</tspan></text>
-  <rect x="660" y="1115" width="470" height="165" rx="20" fill="#332126" stroke="#F26B5B" class="box"/>
-  <text x="895" y="1178" class="label"><tspan x="895">Fix setup,</tspan><tspan x="895" dy="50">then rebuild</tspan></text>
+  <rect width="1600" height="640" fill="#08131E"/>
+  <text x="80" y="78" class="title" text-anchor="start"><tspan x="80">A safe loop for reusable code context</tspan></text>
+  <text x="80" y="122" class="subtitle" text-anchor="start"><tspan x="80">Build once. Verify before a decision. Refresh after a change.</tspan></text>
+  <rect x="80" y="220" width="320" height="190" rx="18" fill="#102D3A" stroke="#A9DDE7" class="box"/>
+  <text x="240" y="292" class="card-title" text-anchor="middle"><tspan x="240">Set scope</tspan></text>
+  <text x="240" y="340" class="card-body" text-anchor="middle"><tspan x="240">repo root + build</tspan></text>
+  <path d="M400 315 H475" class="arrow"/>
+  <rect x="475" y="220" width="320" height="190" rx="18" fill="#102D3A" stroke="#A9DDE7" class="box"/>
+  <text x="635" y="292" class="card-title" text-anchor="middle"><tspan x="635">Build index</tspan></text>
+  <text x="635" y="340" class="card-body" text-anchor="middle"><tspan x="635">symbols + edges</tspan></text>
+  <path d="M795 315 H870" class="arrow"/>
+  <rect x="870" y="220" width="320" height="190" rx="18" fill="#332B1D" stroke="#F3C969" class="box"/>
+  <text x="1030" y="292" class="card-title" text-anchor="middle"><tspan x="1030">Navigate</tspan></text>
+  <text x="1030" y="340" class="card-body" text-anchor="middle"><tspan x="1030">callers, paths, tests</tspan></text>
+  <path d="M1190 315 H1265" class="arrow"/>
+  <rect x="1265" y="220" width="255" height="190" rx="18" fill="#153329" stroke="#62D2C3" class="box"/>
+  <text x="1392" y="292" class="card-title" text-anchor="middle"><tspan x="1392">Verify</tspan></text>
+  <text x="1392" y="340" class="card-body" text-anchor="middle"><tspan x="1392">source + refresh</tspan></text>
+  <rect x="80" y="490" width="1440" height="92" rx="16" fill="#213039" stroke="#A9DDE7" class="box"/>
+  <text x="800" y="549" class="note" text-anchor="middle"><tspan x="800">Working memory shortens repeated navigation. It does not replace source.</tspan></text>
 </svg>

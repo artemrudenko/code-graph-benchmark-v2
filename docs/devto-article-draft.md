@@ -32,7 +32,7 @@ The broad first stage gives examples of failure modes. The narrow third stage ch
 
 The full candidate history, pinned revisions, and raw records are in the [selection framework](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/selection-and-evaluation-framework.md) and [reproducibility manifest](https://github.com/artemrudenko/code-graph-benchmark-v2/blob/main/docs/reproducibility-manifest.md). I keep that detail in the archive so the article can explain the decision without asking every reader to audit a tool catalogue first.
 
-![A code-context lifecycle: configure scope and build a reusable index; ask recurring questions about symbols, callers, paths, and tests; check the source before acting; refresh the index after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png)
+![A code-context lifecycle: configure scope and build a reusable index; ask recurring questions about symbols, callers, paths, and tests; check the source before acting; refresh the index after code changes.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/code-context-lifecycle-article-large-dark.png?v=compact-20260916)
 
 ## The problem I was actually trying to solve
 
@@ -70,7 +70,7 @@ Before each batch, I froze the task and an independent evaluator. A known-good p
 | Show an honest delivery count in the existing desktop row and mobile card | 5/5 | 5/5 | 5/5 | A small change across two layouts was also reliable without an index. |
 | Carry a machine category through SQL, pagination, TypeScript contracts, and two reader surfaces | 1/5 | 1/5 | 0/5 | A navigation index did not make a difficult cross-layer contract reliable. |
 
-![Three fixed product tasks, with five fresh sessions per condition. Ordinary source navigation, Code Review Graph, and Serena all achieved 5 of 5 on two contained tasks. On the hard cross-layer task, they achieved 1 of 5, 1 of 5, and 0 of 5. This is task-specific evidence, not a tool ranking.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/task-quality-gate-article-large-dark.png)
+![Three fixed product tasks, with five fresh sessions per condition. Ordinary source navigation, Code Review Graph, and Serena all achieved 5 of 5 on two contained tasks. On the hard cross-layer task, they achieved 1 of 5, 1 of 5, and 0 of 5. This is task-specific evidence, not a tool ranking.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/task-quality-gate-article-large-dark.png?v=compact-20260916)
 
 The last row was the useful surprise. I expected a structured map to help most on the hard task. Instead, many patches looked plausible but were incomplete: a paginated field was absent, a closed vocabulary was changed incorrectly, or an uncertain state was left unprotected.
 
@@ -93,9 +93,9 @@ The change tasks tell me whether the final patch survives a quality gate. I also
 | Deliberately absent symbols | graphify returned related code in 3 of 12 fixed queries | 9 returned a clear no-match response | A related suggestion must not look like an exact match. |
 | FastAPI indexing scope | Serena found 1 of 4 known references from a nested package root | The same version returned 4 of 4 when indexed from repository root | Scope is part of the answer, not a detail to hide in setup. |
 
-The Ktor result is a good example of why a small answer can be dangerous. The low-level `parseHeaderValue` function has one direct caller, `parseHeaders`. The tool also returned 16 callers of a different public function with the same name. The response was compact, but almost all of it was wrong for the target I asked about.
+Ktor is an open-source server framework written in Kotlin. Its result is a good example of why a small answer can be dangerous. The low-level `parseHeaderValue` function has one direct caller, `parseHeaders`. The tool also returned 16 callers of a different public function with the same name. The response was compact, but almost all of it was wrong for the target I asked about.
 
-![Ktor's low-level CIO parseHeaderValue has one direct caller, parseHeaders. Code Review Graph returned 17 results labelled as the CIO target: one correct caller and 16 callers of a public overload or its tests.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/ktor-caller-disambiguation-article-large-dark.png)
+![Ktor's low-level CIO parseHeaderValue has one direct caller, parseHeaders. Code Review Graph returned 17 results labelled as the CIO target: one correct caller and 16 callers of a public overload or its tests.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/ktor-caller-disambiguation-article-large-dark.png?v=compact-20260916)
 
 This is not an argument against a graph or language tool. It is a reason to give the answer a trust contract: the exact target, the indexed scope, a clear test boundary, and a label for exact match, possible match, or no match.
 
@@ -109,7 +109,7 @@ I then checked what happened after source changed. In a controlled FastAPI case,
 | codebase-memory-mcp reported `metadata_changed` through its coverage check | Treat this as a rebuild request, even if general status says ready. |
 | graphify retained its old incoming-edge view without a code-revision signal | Rebuild or use source search before treating the caller set as complete. |
 
-![A stale-index control: build an index when source has four callers; source changes to five callers; the old graph misses the new relationship; compare freshness, check current source, then refresh before relying on it again.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/stale-index-control-article-large-dark.png)
+![A stale-index control: build an index when source has four callers; source changes to five callers; the old graph misses the new relationship; compare freshness, check current source, then refresh before relying on it again.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/stale-index-control-article-large-dark.png?v=compact-20260916)
 
 I ran one small rename task with ordinary source navigation, Graphify with the old graph, and Graphify rebuilt after the change. Each condition passed the same deterministic evaluator once. The stale-graph run still succeeded because the agent searched current source before editing all five callers.
 
@@ -128,7 +128,7 @@ Vendor demonstrations are useful for discovering possibilities. They cannot tell
 
 I turned this into three small, tool-neutral companion skills: [verify-code-context](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/verify-code-context), [maintain-code-context-index](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/maintain-code-context-index), and [run-code-context-change-task](https://github.com/artemrudenko/code-graph-benchmark-v2/tree/main/skills/run-code-context-change-task). They do not make an index correct. They make its scope, freshness, and uncertainty visible before the agent acts.
 
-![Five checks before a compact answer guides a code change: exact target, scope and build, test boundary, match type, and freshness. If any answer is unclear, verify current source before acting.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks-article-large-dark.png)
+![Five checks before a compact answer guides a code change: exact target, scope and build, test boundary, match type, and freshness. If any answer is unclear, verify current source before acting.](https://raw.githubusercontent.com/artemrudenko/code-graph-benchmark-v2/main/assets/diagrams/retrieval-trust-checks-article-large-dark.png?v=compact-20260916)
 
 ## What I would measure next
 

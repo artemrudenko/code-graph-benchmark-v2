@@ -1,34 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1350" viewBox="0 0 1200 1350" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="640" viewBox="0 0 1600 640" role="img" aria-labelledby="title desc">
   <title id="title">A graph can be right and still be old</title>
-  <desc id="desc">An index built when there were four callers becomes stale after a fifth caller is added. Check revision and scope, verify source when uncertain, then refresh the index.</desc>
+  <desc id="desc">An index built when a helper had four direct callers remains at four after source changes to five callers. Compare the indexed revision to current source, then refresh before relying on it.</desc>
   <defs>
-    <marker id="arrow" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto"><path d="M0,0 L13,6.5 L0,13 Z" fill="#A9DDE7"/></marker>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#A9DDE7"/></marker>
     <style>
-      .title{font:700 54px Arial,sans-serif;fill:#F0EDE4}.subtitle{font:400 29px Arial,sans-serif;fill:#B7C8D2}.box{stroke-width:3}.label{font:700 41px Arial,sans-serif;fill:#F0EDE4;text-anchor:middle}.edge{fill:none;stroke:#A9DDE7;stroke-width:4;marker-end:url(#arrow)}.edge-label{font:700 28px Arial,sans-serif;fill:#B7C8D2}
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 62px; font-weight: 700; fill: #F0EDE4; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 400; fill: #B7C8D2; }
+      .card-title { font-family: Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; fill: #F0EDE4; }
+      .card-body { font-family: Arial, Helvetica, sans-serif; font-size: 29px; font-weight: 400; fill: #B7C8D2; }
+      .metric { font-family: Arial, Helvetica, sans-serif; font-size: 68px; font-weight: 700; fill: #F0EDE4; }
+      .metric-small { font-family: Arial, Helvetica, sans-serif; font-size: 42px; font-weight: 700; fill: #F0EDE4; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-weight: 700; fill: #F0EDE4; }
+      .small-note { font-family: Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 400; fill: #B7C8D2; }
+      .box { stroke-width: 3; }
+      .arrow { fill: none; stroke: #A9DDE7; stroke-width: 4; marker-end: url(#arrow); }
+      .rule { stroke: #577581; stroke-width: 2; }
     </style>
   </defs>
-  <rect width="1200" height="1350" fill="#08131E"/>
-  <text x="600" y="82" text-anchor="middle" class="title">A graph can be right and still be old</text>
-  <text x="600" y="128" text-anchor="middle" class="subtitle">The source changed from four direct callers to five.</text>
-
-  <path d="M540 300 H660" class="edge"/>
-  <rect x="70" y="205" width="470" height="190" rx="20" fill="#102D3A" stroke="#A9DDE7" class="box"/>
-  <text x="305" y="285" class="label"><tspan x="305">Index was built:</tspan><tspan x="305" dy="50">4 direct callers</tspan></text>
-  <rect x="660" y="205" width="470" height="190" rx="20" fill="#332B1D" stroke="#F3C969" class="box"/>
-  <text x="895" y="285" class="label"><tspan x="895">Source changes:</tspan><tspan x="895" dy="50">5 direct callers</tspan></text>
-
-  <path d="M895 395 V480 H600 V540" class="edge"/>
-  <rect x="180" y="540" width="840" height="165" rx="20" fill="#332126" stroke="#F26B5B" class="box"/>
-  <text x="600" y="605" class="label"><tspan x="600">3. The old graph misses</tspan><tspan x="600" dy="50">the new caller</tspan></text>
-
-  <path d="M600 705 V795" class="edge"/>
-  <rect x="120" y="795" width="960" height="170" rx="85" fill="#332B1D" stroke="#F3C969" class="box"/>
-  <text x="600" y="860" class="label"><tspan x="600">Do index revision and scope</tspan><tspan x="600" dy="50">still match the repository?</tspan></text>
-
-  <path d="M400 965 V1050 H305 V1115" class="edge"/><path d="M800 965 V1050 H895 V1115" class="edge"/>
-  <text x="170" y="1038" class="edge-label">No or unknown</text><text x="830" y="1038" class="edge-label">Yes</text>
-  <rect x="70" y="1115" width="470" height="165" rx="20" fill="#153329" stroke="#62D2C3" class="box"/>
-  <text x="305" y="1178" class="label"><tspan x="305">Source check,</tspan><tspan x="305" dy="50">then refresh</tspan></text>
-  <rect x="660" y="1115" width="470" height="165" rx="20" fill="#102D3A" stroke="#A9DDE7" class="box"/>
-  <text x="895" y="1178" class="label"><tspan x="895">Navigate; verify</tspan><tspan x="895" dy="50">sensitive edges</tspan></text>
+  <rect width="1600" height="640" fill="#08131E"/>
+  <text x="80" y="78" class="title" text-anchor="start"><tspan x="80">A graph can be right and still be old</tspan></text>
+  <text x="80" y="122" class="subtitle" text-anchor="start"><tspan x="80">The source changed. The old index still reports yesterday’s caller set.</tspan></text>
+  <rect x="65" y="225" width="330" height="210" rx="18" fill="#102D3A" stroke="#A9DDE7" class="box"/>
+  <text x="230" y="300" class="card-title" text-anchor="middle"><tspan x="230">Index built</tspan></text>
+  <text x="230" y="360" class="metric-small" text-anchor="middle"><tspan x="230">4 callers</tspan></text>
+  <path d="M395 330 H455" class="arrow"/>
+  <rect x="455" y="225" width="330" height="210" rx="18" fill="#332B1D" stroke="#F3C969" class="box"/>
+  <text x="620" y="300" class="card-title" text-anchor="middle"><tspan x="620">Source changes</tspan></text>
+  <text x="620" y="360" class="metric-small" text-anchor="middle"><tspan x="620">5 callers</tspan></text>
+  <path d="M785 330 H845" class="arrow"/>
+  <rect x="845" y="225" width="330" height="210" rx="18" fill="#332126" stroke="#F26B5B" class="box"/>
+  <text x="1010" y="300" class="card-title" text-anchor="middle"><tspan x="1010">Old graph</tspan></text>
+  <text x="1010" y="360" class="metric-small" text-anchor="middle"><tspan x="1010">4, misses 1</tspan></text>
+  <path d="M1175 330 H1235" class="arrow"/>
+  <rect x="1235" y="225" width="300" height="210" rx="18" fill="#153329" stroke="#62D2C3" class="box"/>
+  <text x="1385" y="300" class="card-title" text-anchor="middle"><tspan x="1385">Compare</tspan></text>
+  <text x="1385" y="360" class="metric-small" text-anchor="middle"><tspan x="1385">+ refresh</tspan></text>
+  <rect x="65" y="505" width="1470" height="88" rx="16" fill="#213039" stroke="#A9DDE7" class="box"/>
+  <text x="800" y="561" class="note" text-anchor="middle"><tspan x="800">A compact answer is current only when its revision still matches source.</tspan></text>
 </svg>

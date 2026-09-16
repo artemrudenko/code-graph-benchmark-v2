@@ -1,44 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1950" height="1650" viewBox="0 0 1950 1650" role="img" aria-labelledby="title desc">
-  <title id="title">One target and seventeen reported callers</title>
-  <desc id="desc">The low-level CIO parseHeaderValue function has one direct caller, parseHeaders. Code Review Graph returned seventeen results labelled as the CIO target: one correct caller and sixteen callers of a public overload or its tests.</desc>
-  <style>
-    .title { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:68px; font-weight:700; }
-    .sub { fill:#AABCC5; font-family:Arial, Helvetica, sans-serif; font-size:32px; }
-    .eyebrow { fill:#A9DDE7; font-family:Arial, Helvetica, sans-serif; font-size:29px; font-weight:700; letter-spacing:1.5px; }
-    .node { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:45px; font-weight:700; text-anchor:middle; }
-    .edge { fill:#B9C7D0; font-family:Arial, Helvetica, sans-serif; font-size:31px; text-anchor:middle; }
-    .metric { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:82px; font-weight:700; text-anchor:middle; }
-    .metriclabel { fill:#B9C7D0; font-family:Arial, Helvetica, sans-serif; font-size:31px; text-anchor:middle; }
-    .conclusion { fill:#F0EDE4; font-family:Arial, Helvetica, sans-serif; font-size:45px; font-weight:700; text-anchor:middle; }
-    .foot { fill:#AABCC5; font-family:Arial, Helvetica, sans-serif; font-size:29px; text-anchor:middle; }
-  </style>
-  <rect width="1950" height="1650" fill="#08131E"/>
-  <text x="120" y="115" class="title">One target. Seventeen reported callers.</text>
-  <text x="120" y="172" class="sub">A source-checked Ktor case: the same function name existed in different modules and overloads.</text>
-
-  <rect x="120" y="250" width="1710" height="340" rx="30" fill="#102D3A" stroke="#35596A" stroke-width="3"/>
-  <text x="180" y="320" class="eyebrow">SOURCE TRUTH</text>
-  <rect x="230" y="380" width="560" height="125" rx="22" fill="#0D202D" stroke="#A9DDE7" stroke-width="3"/>
-  <text x="510" y="455" class="node">parseHeaders</text>
-  <path d="M810 442 H1120" fill="none" stroke="#A9DDE7" stroke-width="8" marker-end="url(#arrow)"/>
-  <text x="965" y="405" class="edge">one direct caller</text>
-  <rect x="1140" y="380" width="560" height="125" rx="22" fill="#213039" stroke="#F26B5B" stroke-width="4"/>
-  <text x="1420" y="440" class="node">CIO parseHeaderValue</text>
-  <text x="975" y="555" class="edge">True caller count: 1</text>
-
-  <defs><marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M0,0 L14,7 L0,14 Z" fill="#A9DDE7"/></marker></defs>
-  <rect x="120" y="670" width="1710" height="570" rx="30" fill="#231F28" stroke="#F26B5B" stroke-width="4"/>
-  <text x="180" y="742" fill="#F26B5B" class="eyebrow">CODE REVIEW GRAPH RESPONSE</text>
-  <text x="180" y="798" class="sub">17 results were labelled as the CIO target.</text>
-  <rect x="230" y="865" width="610" height="240" rx="24" fill="#153329" stroke="#62D2C3" stroke-width="3"/>
-  <text x="535" y="970" class="metric">1 correct</text>
-  <text x="535" y="1028" class="metriclabel">parseHeaders, the real caller</text>
-  <rect x="1110" y="865" width="610" height="240" rx="24" fill="#332126" stroke="#F26B5B" stroke-width="3"/>
-  <text x="1415" y="970" class="metric">16 wrong</text>
-  <text x="1415" y="1028" class="metriclabel">callers of a public overload or its tests</text>
-  <text x="975" y="1180" class="foot">A compact answer can still be wrong for the exact definition you asked about.</text>
-
-  <rect x="120" y="1325" width="1710" height="150" rx="28" fill="#332B1D" stroke="#F3C969" stroke-width="3"/>
-  <text x="975" y="1390" class="conclusion">Before estimating impact, check the exact definition - not only the caller count.</text>
-  <text x="975" y="1545" class="foot">The raw result is retained in the evidence archive; this figure is a source-checked interpretation.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="650" viewBox="0 0 1600 650" role="img" aria-labelledby="title desc">
+  <title id="title">One target. Seventeen reported callers.</title>
+  <desc id="desc">The requested low-level Ktor function has one direct caller, parseHeaders. Code Review Graph returned 17 results labelled as the target, but 16 referred to a public overload or its tests.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#A9DDE7"/></marker>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 62px; font-weight: 700; fill: #F0EDE4; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 400; fill: #B7C8D2; }
+      .card-title { font-family: Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; fill: #F0EDE4; }
+      .card-body { font-family: Arial, Helvetica, sans-serif; font-size: 29px; font-weight: 400; fill: #B7C8D2; }
+      .metric { font-family: Arial, Helvetica, sans-serif; font-size: 68px; font-weight: 700; fill: #F0EDE4; }
+      .metric-small { font-family: Arial, Helvetica, sans-serif; font-size: 42px; font-weight: 700; fill: #F0EDE4; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-weight: 700; fill: #F0EDE4; }
+      .small-note { font-family: Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 400; fill: #B7C8D2; }
+      .box { stroke-width: 3; }
+      .arrow { fill: none; stroke: #A9DDE7; stroke-width: 4; marker-end: url(#arrow); }
+      .rule { stroke: #577581; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1600" height="650" fill="#08131E"/>
+  <text x="80" y="78" class="title" text-anchor="start"><tspan x="80">One target. Seventeen reported callers.</tspan></text>
+  <text x="80" y="122" class="subtitle" text-anchor="start"><tspan x="80">A source-checked Ktor case: the same name existed in another public overload.</tspan></text>
+  <rect x="80" y="205" width="570" height="260" rx="18" fill="#102D3A" stroke="#A9DDE7" class="box"/>
+  <text x="125" y="270" class="card-title" text-anchor="start"><tspan x="125">Source truth</tspan></text>
+  <text x="125" y="330" class="metric-small" text-anchor="start"><tspan x="125">CIO parseHeaderValue</tspan></text>
+  <text x="125" y="385" class="card-body" text-anchor="start"><tspan x="125">1 direct caller: parseHeaders</tspan></text>
+  <path d="M650 335 H760" class="arrow"/>
+  <rect x="760" y="205" width="760" height="260" rx="18" fill="#332126" stroke="#F26B5B" class="box"/>
+  <text x="805" y="270" class="card-title" text-anchor="start"><tspan x="805">Tool response</tspan></text>
+  <text x="805" y="325" class="card-body" text-anchor="start"><tspan x="805">17 labelled results</tspan></text>
+  <rect x="805" y="355" width="280" height="78" rx="12" fill="#153329" stroke="#62D2C3" class="box"/>
+  <text x="945" y="407" class="metric-small" text-anchor="middle"><tspan x="945">1 correct</tspan></text>
+  <rect x="1125" y="355" width="350" height="78" rx="12" fill="#332126" stroke="#F26B5B" class="box"/>
+  <text x="1300" y="407" class="metric-small" text-anchor="middle"><tspan x="1300">16 wrong</tspan></text>
+  <rect x="80" y="520" width="1440" height="88" rx="16" fill="#332B1D" stroke="#F3C969" class="box"/>
+  <text x="800" y="577" class="note" text-anchor="middle"><tspan x="800">Check the exact definition before estimating change impact.</tspan></text>
 </svg>

@@ -1,22 +1,8 @@
-%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","edgeLabelBackground":"#08131E","fontFamily":"Arial","fontSize":"19px"}}}%%
-flowchart TB
-    A[Compact retrieval answer] --> B{Exact target?}
-    B --> C{Scope and build right?}
-    C --> D{Tests separated?}
-    D --> E{Exact, candidate, or no match?}
-    E --> F{Source revision still current?}
-    F --> G[Use it to navigate;<br/>verify change-sensitive edges]
-    B -. unclear .-> H[Check current source]
-    C -. unclear .-> H
-    D -. unclear .-> H
-    E -. unclear .-> H
-    F -. unclear .-> H
-
-    classDef answer fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
-    classDef check fill:#0D202D,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
-    classDef result fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
-    classDef verify fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
-    class A answer;
-    class B,C,D,E,F check;
-    class G result;
-    class H verify;
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","fontFamily":"Arial","fontSize":"18px"}}}%%
+flowchart LR
+  A[Target<br/>definition] --> B[Scope<br/>root + build] --> C[Tests<br/>prod / tests] --> D[Match<br/>exact / candidate] --> E[Freshness<br/>revision matches] --> F[If unclear:<br/>verify current source]
+  classDef check fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+  classDef match fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
+  classDef fresh fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:2px;
+  classDef action fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
+  class A,B,C check; class D match; class E fresh; class F action;

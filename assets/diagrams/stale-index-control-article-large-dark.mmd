@@ -1,18 +1,8 @@
-%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","secondaryColor":"#213039","tertiaryColor":"#2A2530","edgeLabelBackground":"#08131E","fontFamily":"Arial","fontSize":"19px"}}}%%
-flowchart TB
-    A[Index says:<br/>4 direct callers] --> B[Source changes:<br/>5 direct callers]
-    B --> C[Old graph misses<br/>the new caller]
-    C --> D{Index revision<br/>and scope match?}
-    D -- No or unknown --> E[Check current source<br/>for the complete caller set]
-    E --> F[Refresh index<br/>and record revision]
-    D -- Yes --> G[Use index to navigate;<br/>verify change-sensitive edges]
-    F --> G
-
-    classDef index fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
-    classDef change fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:2px;
-    classDef risk fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
-    classDef verify fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
-    class A index;
-    class B,D change;
-    class C risk;
-    class E,F,G verify;
+%%{init: {"theme":"base","themeVariables":{"background":"#08131E","primaryColor":"#102D3A","primaryTextColor":"#F0EDE4","primaryBorderColor":"#A9DDE7","lineColor":"#A9DDE7","fontFamily":"Arial","fontSize":"18px"}}}%%
+flowchart LR
+  A[Index built<br/>4 callers] --> B[Source changes<br/>5 callers] --> C[Old graph<br/>4, misses 1] --> D[Compare<br/>+ refresh]
+  classDef source fill:#102D3A,stroke:#A9DDE7,color:#F0EDE4,stroke-width:2px;
+  classDef change fill:#332B1D,stroke:#F3C969,color:#F0EDE4,stroke-width:2px;
+  classDef stale fill:#332126,stroke:#F26B5B,color:#F0EDE4,stroke-width:2px;
+  classDef action fill:#153329,stroke:#62D2C3,color:#F0EDE4,stroke-width:2px;
+  class A source; class B change; class C stale; class D action;
